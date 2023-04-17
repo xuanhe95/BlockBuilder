@@ -4,31 +4,31 @@ using UnityEngine;
 using System;
 
 public class Possibility<T>{ // 每个Grid会带一个Prossibility
-    public List<T> types{set; get;} // dictionary?
+    public List<T> Types{set; get;} // dictionary?
     public Possibility(){
-        types = new List<T>();
+        Types = new List<T>();
     }
 
     public void Add(T type){
-        types.Add(type);
+        Types.Add(type);
     }
     public void Add(T type, int times){
         for(int i = 0; i < times; i++){
-            types.Add(type);
+            Types.Add(type);
         }
     }
     public void Remove(T type){
-        types.Remove(type);
+        Types.Remove(type);
     }
     public void RemoveAll(T type){
-        types.RemoveAll(data => type.Equals(data) );
+        Types.RemoveAll(data => type.Equals(data) );
     }
 
     public T GetType(System.Random random){
-        return types[random.Next(types.Count)];
+        return Types[random.Next(Types.Count)];
     }
 
     public int Size(){
-        return types.Count;
+        return Types.Count;
     }
 }
