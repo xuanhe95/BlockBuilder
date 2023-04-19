@@ -5,6 +5,19 @@ using System;
 
 public class Generator : MonoBehaviour
 {
+    public GameObject Water;
+    public GameObject Land;
+    public GameObject Building1;
+    public GameObject Building2;
+
+    public GameObject Roof;
+    public GameObject Sand;
+    public GameObject Tree;
+
+    Rule<GameObject> baseRule; 
+    Rule<GameObject> midRule;
+
+    System.Random rd;
 
     const int LEFT = 0;
     const int RIGHT = 1;
@@ -19,15 +32,27 @@ public class Generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rd = new Random();
+        GenerateRules();
         LevelBuilder(6,8,10);
         Instantiator();
 
     }
 
+
+    // Update is called once per frame
+    void Update()
+    {
+        Group<Vector3, GameObject> group;
+        group.Select(rd);
+        
+    }
+
     void LevelBuilder(int height, int width, int length){
         Possibility<GameObject> choices = PossibilityGenerator();
         for(int i = 0; i < height; i++){
-            levels.Add(LevelGenerator(i, width, length, 1, choices));
+            if(i == 0) levels.Add(LevelGenerator(i, width, length, 2, choices, baseRule));
+            else levels.Add(LevelGenerator(i, width, length, 2, choices, midRule));
         }
     }
 
@@ -41,10 +66,11 @@ public class Generator : MonoBehaviour
         return choices;
     }
 
-    Level<Vector3, GameObject> LevelGenerator(int levelID, int width, int length, double height, Possibility<GameObject> choices)
+    Level<Vector3, GameObject> LevelGenerator(int levelID, int width, int length, double height, Possibility<GameObject> choices, Rule<GameObject> rule)
     {
         int id = 0;
-        Level<Vector3, GameObject> level = new Level<Vector3, GameObject>(levelID, width, length,height);
+        Level<Vector3, GameObject> level = new Level<Vector3, GameObject>(levelID, width, length, height);
+        level.SetRule(rule);
         GameObject go = levelID == 0 ? Ground : Empty;
 
         
@@ -123,10 +149,37 @@ public class Generator : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+    void GenerateRules(){
+        baseRule = new Rule<GameObject>();
+        baseRule.AddRule(Water, Sand);
+        baseRule.AddRule(Water, Water);
+        baseRule.AddRule(Sand, Land);
+        baseRule.AddRule(Sand, Sand);
+        baseRule.AddRule(Land, Land);
+        baseRule.AddRule(Land, Tree);
+        //baseRule.AddRule(Land, Sand);
+        baseRule.AddRule(Tree, Tree);
+
+        baseRule.AddUpRule(Land, Building1);
+        baseRule.AddUpRule(Land, Building2);
+
+
+        midRule = new Rule<GameObject>();
+        midRule.AddUpRule(Building1, Roof);
+        midRule.AddUpRule(Building2, Roof);
+        midRule.AddUpRule(Building2, Building2);
+        midRule.AddUpRule(Building1, Building1);
+
+
+    
+        midRule.AddRule(Building1, Building1);
+        midRule.AddRule(Building2, Building2);
+
+
     }
+
+
+
 
 }
