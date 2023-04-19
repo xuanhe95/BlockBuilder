@@ -32,7 +32,7 @@ public class Generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rd = new Random();
+        rd = new System.Random();
         GenerateRules();
         LevelBuilder(6,8,10);
         Instantiator();
@@ -71,7 +71,7 @@ public class Generator : MonoBehaviour
         int id = 0;
         Level<Vector3, GameObject> level = new Level<Vector3, GameObject>(levelID, width, length, height);
         level.SetRule(rule);
-        GameObject go = levelID == 0 ? Ground : Empty;
+        GameObject go = levelID == 0 ? Water : Empty;
 
         
         for(int i = 0; i < width; i++)
@@ -109,8 +109,8 @@ public class Generator : MonoBehaviour
             for(int j = 0; j < length; j+=2)
             {
                 Group<Vector3, GameObject> group = new Group<Vector3, GameObject>(i, GroupType);
-                Debug.Log(i * length + j);
-                Debug.Log((i+1) * length + j);
+                //Debug.Log(i * length + j);
+                //Debug.Log((i+1) * length + j);
                 group.AddUnit(level.Units[i * length + j]);
                 group.AddUnit(level.Units[i * length + j+1]);
                 group.AddUnit(level.Units[(i+1)*length + j]);
@@ -152,6 +152,8 @@ public class Generator : MonoBehaviour
 
     void GenerateRules(){
         baseRule = new Rule<GameObject>();
+
+        //baseRule.AddRule(Empty);
         baseRule.AddRule(Water, Sand);
         baseRule.AddRule(Water, Water);
         baseRule.AddRule(Sand, Land);
@@ -171,10 +173,12 @@ public class Generator : MonoBehaviour
         midRule.AddUpRule(Building2, Building2);
         midRule.AddUpRule(Building1, Building1);
 
-
     
         midRule.AddRule(Building1, Building1);
         midRule.AddRule(Building2, Building2);
+
+        midRule.AddRule(Empty, Building1);
+        midRule.AddRule(Empty, Building2);
 
 
     }

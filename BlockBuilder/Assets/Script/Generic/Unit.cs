@@ -62,7 +62,18 @@ public class Unit<P, T>
     {
         if(selected) return;
 
+        foreach(Unit<P, T> relative in Relatives)
+        {
+            if(relative.Group == Group) continue;
+            HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
+            Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
+            //移除所有不在规则里的
+        }
+
+
         SetRandomType(random);
+
+
 
         foreach(Unit<P, T> relative in Relatives)
         {
@@ -71,6 +82,9 @@ public class Unit<P, T>
             relative.Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
             //移除所有不在规则里的
         }
+
+
+        
 
         Up.Choices.Types.RemoveAll(type => !Level.Rules.UpConditions[Type].Contains(type));
         Down.Choices.Types.RemoveAll(type => !Level.Rules.DownConditions[Type].Contains(type));
