@@ -9,11 +9,14 @@ public class Cursor : MonoBehaviour
     private Ray ray;
 
     private GameObject lastHit;
-
+    
     private RectTransform rectTransform;
+    
+    System.Random rd;
     // Start is called before the first frame update
     void Start()
     {
+        rd = new System.Random();
         rectTransform = this.GetComponent<RectTransform>();
     }
 
@@ -27,11 +30,13 @@ public class Cursor : MonoBehaviour
             this.transform.position = hit.collider.transform.position - new Vector3(0.5f, 0,0.5f);
             lastHit = hit.collider.gameObject;
         }
-        // if (Input.GetMouseButtonDown(1))
-        // {
-        //     //print("set");
-        //     SetCursor(0);
-        // }
+        if (Input.GetMouseButtonDown(0))
+        {
+            //print("set");
+            GroupCollider collider = hit.collider.GetComponent<GroupCollider>();
+            print(hit.collider.gameObject);
+            collider.thisGroup.Select(rd);
+        }
     }
 
     // public void SetCursor(int input)

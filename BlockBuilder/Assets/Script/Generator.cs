@@ -17,7 +17,7 @@ public class Generator : MonoBehaviour
     Rule<GameObject> baseRule; 
     Rule<GameObject> midRule;
 
-    System.Random rd;
+    //System.Random rd;
 
     const int LEFT = 0;
     const int RIGHT = 1;
@@ -32,7 +32,7 @@ public class Generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rd = new System.Random();
+        //rd = new System.Random();
         GenerateRules();
         LevelBuilder(6,8,10);
         Instantiator();
@@ -43,8 +43,8 @@ public class Generator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Group<Vector3, GameObject> group;
-        group.Select(rd);
+        //Group<Vector3, GameObject> group;
+        //group.Select(rd);
         
     }
 
@@ -141,7 +141,8 @@ public class Generator : MonoBehaviour
             {
                 Debug.Log(group.GetObject());
                 Debug.Log(group.Units[0].GetVector());
-                Instantiate(group.GetObject(), group.Units[0].GetVector(), Quaternion.identity);
+                GameObject GroupCollider = Instantiate(group.GetObject(), group.Units[0].GetVector(), Quaternion.identity);
+                GroupCollider.GetComponent<GroupCollider>().setGroup(group);
             }
 
 

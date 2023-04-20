@@ -65,8 +65,8 @@ public class Unit<P, T>
         foreach(Unit<P, T> relative in Relatives)
         {
             if(relative.Group == Group) continue;
-            HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
-            Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
+            //HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
+            //Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
             //移除所有不在规则里的
         }
 
