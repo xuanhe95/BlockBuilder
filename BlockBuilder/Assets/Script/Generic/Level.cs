@@ -42,7 +42,11 @@ public class Level<P, T>
         return true;
     }
     public bool SetRule(Rule<T> rule){
-        if(Rules != null) return false;
+        //if(Rules != null) return false;
+        foreach(T type in rule.Conditions.Keys)
+        {
+            Debug.Log("Added: " + type);
+        }
         Rules = rule;
         return true;
     }

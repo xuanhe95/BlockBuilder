@@ -58,7 +58,7 @@ public class GridElement : MonoBehaviour
     }
     private void InitializeCornerPos()
     {
-        print("set");
+        //print("set");
         corners[0].SetPosition(col.bounds.min.x, col.bounds.min.y, col.bounds.min.z);
         corners[1].SetPosition(col.bounds.max.x, col.bounds.min.y, col.bounds.min.z);
         corners[2].SetPosition(col.bounds.min.x, col.bounds.min.y, col.bounds.max.z);

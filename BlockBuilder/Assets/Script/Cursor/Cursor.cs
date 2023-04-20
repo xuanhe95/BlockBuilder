@@ -34,7 +34,7 @@ public class Cursor : MonoBehaviour
         {
             //print("set");
             GroupCollider collider = hit.collider.GetComponent<GroupCollider>();
-            print(hit.collider.gameObject);
+            //print(hit.collider.gameObject);
             collider.thisGroup.Select(rd);
         }
     }

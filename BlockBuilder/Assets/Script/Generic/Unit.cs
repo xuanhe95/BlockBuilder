@@ -36,12 +36,14 @@ public class Unit<P, T>
         Level = level;
         Relatives = new Unit<P, T>[4];
         selected = false;
+        Group = null;
     }
 
     public bool SetRandomType(System.Random random)
     {
-        if(selected) return false;
+        //if(selected) return false;
         Type = Choices.GetType(random);
+        Debug.Log("SET TYPE " + Type);
         selected = true;
         return true;
     }
@@ -62,11 +64,25 @@ public class Unit<P, T>
     {
         if(selected) return;
 
+
         foreach(Unit<P, T> relative in Relatives)
         {
+            //Debug.Log("CHECK" + relative);
+            if(relative == null){
+                //Debug.Log("wrong");
+                continue;
+            }
             if(relative.Group == Group) continue;
-            //HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
-            //Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
+            Debug.Log(Level.Rules.Conditions);
+
+            foreach(T type in Level.Rules.Conditions.Keys)
+            {
+                //Debug.Log("TYPE CHECK");
+                //Debug.Log(type);
+            }
+
+            HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
+            Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
             //移除所有不在规则里的
         }
 
@@ -77,6 +93,7 @@ public class Unit<P, T>
 
         foreach(Unit<P, T> relative in Relatives)
         {
+            if(relative == null) continue;
             if(relative.Group == Group) continue;
             HashSet<T> allowedTypes = Level.Rules.Conditions[Type];
             relative.Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
@@ -86,8 +103,8 @@ public class Unit<P, T>
 
         
 
-        Up.Choices.Types.RemoveAll(type => !Level.Rules.UpConditions[Type].Contains(type));
-        Down.Choices.Types.RemoveAll(type => !Level.Rules.DownConditions[Type].Contains(type));
+        //Up.Choices.Types.RemoveAll(type => !Level.Rules.UpConditions[Type].Contains(type));
+        //Down.Choices.Types.RemoveAll(type => !Level.Rules.DownConditions[Type].Contains(type));
     }
 }
 

@@ -20,12 +20,8 @@ public class Rule<T>
         if(!Conditions.ContainsKey(type))
         {
             Conditions.Add(type, new HashSet<T>());
-            return true;
         }
-        else
-        {
-            return Conditions[type].Add(connection);
-        }
+        return Conditions[type].Add(connection);
 
     }
 
@@ -36,12 +32,8 @@ public class Rule<T>
         if(!UpConditions.ContainsKey(type))
         {
             UpConditions.Add(type, new HashSet<T>());
-            return true;
         }
-        else
-        {
-            return UpConditions[type].Add(connection);
-        }
+        return UpConditions[type].Add(connection);
 
     }
     //*/

@@ -14,8 +14,8 @@ public class Generator : MonoBehaviour
     public GameObject Sand;
     public GameObject Tree;
 
-    Rule<GameObject> baseRule; 
-    Rule<GameObject> midRule;
+    Rule<GameObject> baseRule = new Rule<GameObject>(); 
+    Rule<GameObject> midRule = new Rule<GameObject>();
 
     //System.Random rd;
 
@@ -29,13 +29,25 @@ public class Generator : MonoBehaviour
     public GameObject Ground;
     public GameObject GroupType;
     private List<Level<Vector3, GameObject>> levels = new List<Level<Vector3, GameObject>>();
+
+
+    private List<GameObject> InstantiatedGo = new List<GameObject>();
+
+
     // Start is called before the first frame update
     void Start()
     {
         //rd = new System.Random();
         GenerateRules();
         LevelBuilder(6,8,10);
-        Instantiator();
+        
+        Debug.Log(levels.Count);
+        // PrintRules();
+        foreach(Level<Vector3, GameObject> level in levels)
+        {
+            Debug.Log(level.ID);
+            PrintRules(level);
+        }
 
     }
 
@@ -43,9 +55,10 @@ public class Generator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Instantiator();
         //Group<Vector3, GameObject> group;
         //group.Select(rd);
-        
+                
     }
 
     void LevelBuilder(int height, int width, int length){
@@ -70,6 +83,7 @@ public class Generator : MonoBehaviour
     {
         int id = 0;
         Level<Vector3, GameObject> level = new Level<Vector3, GameObject>(levelID, width, length, height);
+        //levels.Add(level);
         level.SetRule(rule);
         GameObject go = levelID == 0 ? Water : Empty;
 
@@ -116,6 +130,12 @@ public class Generator : MonoBehaviour
                 group.AddUnit(level.Units[(i+1)*length + j]);
                 group.AddUnit(level.Units[(i+1)*length + j + 1]);
 
+
+                //print(group.Units[0].Group + " TEST");
+                //print(group.Units[1].Group + " TEST");
+                //print(group.Units[2].Group + " TEST");
+                //print(group.Units[3].Group + " TEST");
+
                 level.Groups.Add(i*length+j, group);
             }
             
@@ -134,13 +154,13 @@ public class Generator : MonoBehaviour
         {
             foreach(Unit<Vector3, GameObject> unit in level.Units.Values)
             {
-                Instantiate(unit.GetObject(), unit.GetVector(), Quaternion.identity);
+                InstantiatedGo.Add(Instantiate(unit.GetObject(), unit.GetVector(), Quaternion.identity));
             }
 
             foreach(Group<Vector3, GameObject> group in level.Groups.Values)
             {
-                Debug.Log(group.GetObject());
-                Debug.Log(group.Units[0].GetVector());
+                //Debug.Log(group.GetObject());
+                //Debug.Log(group.Units[0].GetVector());
                 GameObject GroupCollider = Instantiate(group.GetObject(), group.Units[0].GetVector(), Quaternion.identity);
                 GroupCollider.GetComponent<GroupCollider>().setGroup(group);
             }
@@ -150,9 +170,16 @@ public class Generator : MonoBehaviour
 
     }
 
+    void UpdateUnits(){
+        foreach(GameObject go in InstantiatedGo)
+        {
+
+        }
+
+    }
+
 
     void GenerateRules(){
-        baseRule = new Rule<GameObject>();
 
         //baseRule.AddRule(Empty);
         baseRule.AddRule(Water, Sand);
@@ -167,8 +194,6 @@ public class Generator : MonoBehaviour
         baseRule.AddUpRule(Land, Building1);
         baseRule.AddUpRule(Land, Building2);
 
-
-        midRule = new Rule<GameObject>();
         midRule.AddUpRule(Building1, Roof);
         midRule.AddUpRule(Building2, Roof);
         midRule.AddUpRule(Building2, Building2);
@@ -180,8 +205,24 @@ public class Generator : MonoBehaviour
 
         midRule.AddRule(Empty, Building1);
         midRule.AddRule(Empty, Building2);
+        midRule.AddRule(Water, Water);
 
 
+    }
+
+    void PrintRules(Level<Vector3, GameObject> level){
+        Debug.Log("Work");
+        foreach(GameObject go in level.Rules.Conditions.Keys){
+            //Debug.Log("Rule");
+            Debug.Log(go);
+        }
+
+    }
+
+    void PrintRules(){
+        foreach(GameObject go in baseRule.Conditions.Keys){
+            Debug.Log(go);
+        }
     }
 
 
