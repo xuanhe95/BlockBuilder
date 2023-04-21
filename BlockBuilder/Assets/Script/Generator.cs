@@ -32,6 +32,7 @@ public class Generator : MonoBehaviour
 
 
     private List<GameObject> InstantiatedGo = new List<GameObject>();
+    private List<Unit<Vector3, GameObject>> InstantiatedUnit = new List<Unit<Vector3, GameObject>>();
     public GameObject meshAll;
     private Dictionary<int, Mesh> meshDic = new Dictionary<int, Mesh>();
 
@@ -59,6 +60,7 @@ public class Generator : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+            UpdateUnits();
             Instantiator();
         }   
     }
@@ -157,6 +159,7 @@ public class Generator : MonoBehaviour
             foreach(Unit<Vector3, GameObject> unit in level.Units.Values)
             {
                 InstantiatedGo.Add(Instantiate(unit.GetObject(), unit.GetVector(), Quaternion.identity));
+                //InstantiatedUnit.Add(unit);
             }
 
             foreach(Group<Vector3, GameObject> group in level.Groups.Values)
@@ -170,11 +173,12 @@ public class Generator : MonoBehaviour
     }
 
     void UpdateUnits(){
-        foreach(GameObject go in InstantiatedGo)
+        foreach(Unit<Vector3, GameObject> unit in InstantiatedUnit)
         {
-            //ModifyMeshWithGameObject(go,go.GetComponent<>())
+            GameObject go = unit.GetObject().gameObject;
+            GameObject type = unit.Type;
+            ModifyMeshWithGameObject(go, type);
         }
-
     }
 
     //将所有mesh以字典形式依序存储
@@ -198,15 +202,24 @@ public class Generator : MonoBehaviour
         }
     }
     
-    //现在的方法：用gameobject代替，但这显然效率较低
+    //现在的方法：用gameobject代替
     void ModifyMeshWithGameObject(GameObject gameObject, GameObject game)
+    {
+        if (game.GetComponent<MeshFilter>() != null)
+        {
+            MeshFilter filter = gameObject.GetComponent<MeshFilter>();
+            filter.mesh = game.GetComponent<MeshFilter>().sharedMesh;
+            MeshRenderer renderer = gameObject.GetComponent<MeshRenderer>();
+            renderer.material = gameObject.GetComponent<MeshRenderer>().sharedMaterial;
+        }
+    }
+    
+    void ModifyMeshWithMesh(GameObject gameObject, Mesh mesh)
     {
         if (gameObject.GetComponent<MeshFilter>() != null)
         {
             MeshFilter filter = gameObject.GetComponent<MeshFilter>();
-            filter.mesh = game.GetComponent<MeshFilter>().mesh;
-            MeshRenderer renderer = gameObject.GetComponent<MeshRenderer>();
-            renderer.material = gameObject.GetComponent<MeshRenderer>().material;
+            filter.mesh = mesh;
         }
     }
 

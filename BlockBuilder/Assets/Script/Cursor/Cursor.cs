@@ -28,15 +28,18 @@ public class Cursor : MonoBehaviour
         if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Group"))
         {
             this.transform.position = hit.collider.transform.position - new Vector3(0, 0,0);
-            lastHit = hit.collider.gameObject;
+            //lastHit = hit.collider.gameObject;
+            if (Input.GetMouseButtonDown(0))
+            {
+                //print("set");
+                if (hit.collider.GetComponent<GroupCollider>() != null)
+                {
+                    hit.collider.GetComponent<GroupCollider>().thisGroup.Select(rd);
+                }
+                //print(hit.collider.gameObject);
+            }
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            //print("set");
-            GroupCollider collider = hit.collider.GetComponent<GroupCollider>();
-            //print(hit.collider.gameObject);
-            collider.thisGroup.Select(rd);
-        }
+        
     }
 
     // public void SetCursor(int input)
