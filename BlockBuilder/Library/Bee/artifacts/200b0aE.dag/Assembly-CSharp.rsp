@@ -351,6 +351,7 @@
 "Assets/Script/Cursor/CornerMeshes.cs"
 "Assets/Script/Cursor/Cursor.cs"
 "Assets/Script/Cursor/GridElement.cs"
+"Assets/Script/Direction.cs"
 "Assets/Script/Generator.cs"
 "Assets/Script/Generic/CameraMovement.cs"
 "Assets/Script/Generic/Group.cs"

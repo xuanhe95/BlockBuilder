@@ -5,6 +5,9 @@ using System;
 
 public class Generator : MonoBehaviour
 {
+
+
+
     public GameObject Water;
     public GameObject Land;
     public GameObject Building1;
@@ -102,8 +105,8 @@ public class Generator : MonoBehaviour
                 new Unit<Vector3, GameObject>(id, vector, go, choices, level);
                 level.AddUnit(unit);
 
-                if(leftUnit != null) leftUnit.Relatives[RIGHT] = unit;
-                unit.Relatives[LEFT] = leftUnit;
+                if(leftUnit != null) leftUnit.Relatives[(int) Direction.Right] = unit;
+                unit.Relatives[(int) Direction.Left] = leftUnit;
                 leftUnit = unit;
             
                 id++;
@@ -114,8 +117,8 @@ public class Generator : MonoBehaviour
             for(int j = i+width; j < width * length; j+=width)
             {
                 Unit<Vector3, GameObject> forwardUnit = level.Units[j];
-                backUnit.Relatives[FORWARD] = forwardUnit;
-                forwardUnit.Relatives[BACK] = backUnit;
+                backUnit.Relatives[(int) Direction.Forward] = forwardUnit;
+                forwardUnit.Relatives[(int) Direction.Back] = backUnit;
                 backUnit = forwardUnit;
             }
 
@@ -227,24 +230,41 @@ public class Generator : MonoBehaviour
     void GenerateRules(){
 
         //baseRule.AddRule(Empty);
+
+
+        //  Water
         baseRule.AddRule(Water, Sand);
-        baseRule.AddRule(Water, Water);
+        //baseRule.AddRule(Water, Water);
+        baseRule.AddRule(Water, Land);
+
+        //  Sand
         baseRule.AddRule(Sand, Land);
         baseRule.AddRule(Sand, Sand);
+
+        //  Land
         baseRule.AddRule(Land, Land);
+        //baseRule.AddRule();
         baseRule.AddRule(Land, Tree);
         //baseRule.AddRule(Land, Sand);
+
+        //  Tree
         baseRule.AddRule(Tree, Tree);
 
+        //  Up Rules
+
+        //  Lnad
         baseRule.AddUpRule(Land, Building1);
         baseRule.AddUpRule(Land, Building2);
 
+
+        //  Building1
         midRule.AddUpRule(Building1, Roof);
         midRule.AddUpRule(Building2, Roof);
         midRule.AddUpRule(Building2, Building2);
         midRule.AddUpRule(Building1, Building1);
 
     
+        
         midRule.AddRule(Building1, Building1);
         midRule.AddRule(Building2, Building2);
 

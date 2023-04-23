@@ -5,10 +5,10 @@ using System;
 
 public class Unit<P, T>
 {
-    const int LEFT = 0;
-    const int RIGHT = 1;
-    const int FORWARD = 2;
-    const int BACK = 3;
+    //const int LEFT = 0;
+    //const int RIGHT = 1;
+    //const int FORWARD = 2;
+    //const int BACK = 3;
 
     public int ID;
     public P Vector; //hold position models
@@ -17,13 +17,6 @@ public class Unit<P, T>
     public Group<P, T> Group{get; set;}
 
     public Unit<P, T>[] Relatives{get; set;}
-    public Unit<P, T> Up{get; set;}
-    public Unit<P, T> Down{get; set;}
-    public Unit<P, T> Forward{get; set;}
-    public Unit<P, T> Back{get; set;}
-    public Unit<P, T> Left{get; set;}
-    public Unit<P, T> Right{get; set;}
-
     public Level<P, T> Level{get; set;}   // point to level
     private bool selected;
 
@@ -34,7 +27,7 @@ public class Unit<P, T>
         Type = type;
         Choices = choices;
         Level = level;
-        Relatives = new Unit<P, T>[4];
+        Relatives = new Unit<P, T>[6];
         selected = false;
         Group = null;
     }
@@ -42,11 +35,24 @@ public class Unit<P, T>
     public bool SetRandomType(System.Random random)
     {
         //if(selected) return false;
-        Type = Choices.GetType(random);
+        Type = Choices.GetRandomType(random);
         Debug.Log("SET TYPE " + Type);
         selected = true;
         return true;
     }
+
+    public bool SetType(int i)
+    {
+        //if(selected) return false;
+        Type = Choices.GetType(i);
+        Debug.Log("SET TYPE " + Type);
+        selected = true;
+        return true;
+    }
+
+
+
+
     public bool isSelected()
     {
         return selected;
@@ -60,10 +66,10 @@ public class Unit<P, T>
     {
         return Type;
     }
-    public void Select(System.Random random)
+    public void PreSelect()
     {
         if(selected) return;
-
+        Unify();
 
         foreach(Unit<P, T> relative in Relatives)
         {
@@ -87,9 +93,29 @@ public class Unit<P, T>
         }
 
 
-        SetRandomType(random);
 
 
+        //SetRandomType(random);
+        
+
+
+
+        //Up.Choices.Types.RemoveAll(type => !Level.Rules.UpConditions[Type].Contains(type));
+        //Down.Choices.Types.RemoveAll(type => !Level.Rules.DownConditions[Type].Contains(type));
+    }
+
+    public void Select()
+    {
+        PreSelect();
+        Unify();
+        AfterSelect();
+        //Unify();
+    }
+
+
+    public void AfterSelect()
+    {
+        
 
         foreach(Unit<P, T> relative in Relatives)
         {
@@ -103,8 +129,31 @@ public class Unit<P, T>
 
         
 
-        //Up.Choices.Types.RemoveAll(type => !Level.Rules.UpConditions[Type].Contains(type));
-        //Down.Choices.Types.RemoveAll(type => !Level.Rules.DownConditions[Type].Contains(type));
+    }
+
+
+    public void Unify()
+    {
+        foreach(Unit<P, T> relative in Relatives)
+        {
+            if(relative == null)
+            {
+                continue;
+            }
+            if(relative.Group != Group) continue;
+
+
+
+            //foreach(T type in relative.Choices.Types)
+            //{
+                Choices.Types.RemoveAll(type => !relative.Choices.Types.Contains(type));
+            //}
+
+
+            //HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
+            //Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
+            //移除所有不在规则里的
+        }
     }
 }
 
