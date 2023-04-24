@@ -103,7 +103,7 @@ public class Generator : MonoBehaviour
         
         for(int i = 0; i < width; i++)
         {
-            Unit<Vector3, GameObject> leftUnit = null;
+            Unit<Vector3, GameObject> backUnit = null;
             for(int j = 0; j < length; j++)
             {
                 Vector3 vector = new Vector3(i, levelID, j);
@@ -111,21 +111,23 @@ public class Generator : MonoBehaviour
                 new Unit<Vector3, GameObject>(id, vector, go, choices, level);
                 level.AddUnit(unit);
 
-                if(leftUnit != null) leftUnit.Relatives[RIGHT] = unit;
-                unit.Relatives[LEFT] = leftUnit;
-                leftUnit = unit;
+                if(backUnit != null) backUnit.Relatives[Direction.Forward] = unit;
+                unit.Relatives[Direction.Back] = backUnit;
+                backUnit = unit;
             
                 id++;
             }
         }
-        for(int i = 0; i < width; i++){
-            Unit<Vector3, GameObject> backUnit = level.Units[i];
-            for(int j = i+width; j < width * length; j+=width)
+
+
+        for(int i = 0; i < length; i++){
+            Unit<Vector3, GameObject> leftUnit = level.Units[i];
+            for(int j = i+length; j < width * length; j+=length)
             {
-                Unit<Vector3, GameObject> forwardUnit = level.Units[j];
-                backUnit.Relatives[FORWARD] = forwardUnit;
-                forwardUnit.Relatives[BACK] = backUnit;
-                backUnit = forwardUnit;
+                Unit<Vector3, GameObject> rightUnit = level.Units[j];
+                leftUnit.Relatives[Direction.Right] = rightUnit;
+                rightUnit.Relatives[Direction.Left] = leftUnit;
+                leftUnit = rightUnit;
             }
 
         }
@@ -135,7 +137,7 @@ public class Generator : MonoBehaviour
             
             for(int j = 0; j < length; j+=2)
             {
-                Group<Vector3, GameObject> group = new Group<Vector3, GameObject>(i, GroupType);
+                Group<Vector3, GameObject> group = new Group<Vector3, GameObject>(i*length/2+j/2, GroupType);
                 //Debug.Log(i * length + j);
                 //Debug.Log((i+1) * length + j);
                 group.AddUnit(level.Units[i * length + j]);

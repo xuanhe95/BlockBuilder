@@ -7,10 +7,10 @@ public class Group<P, T>
     public T Type;
     public int ID;
     public List<Unit<P, T>> Units { get; set; }
-    public Possibility<T> LeftChoices { get; set; }
-    public Possibility<T> RightChoices { get; set; }
-    public Possibility<T> ForwardChoices { get; set; }
-    public Possibility<T> BackChoices { get; set; }
+    //public Possibility<T> LeftChoices { get; set; }
+    //public Possibility<T> RightChoices { get; set; }
+    //public Possibility<T> ForwardChoices { get; set; }
+    //public Possibility<T> BackChoices { get; set; }
 
     public Possibility<T> Choices { get; set; }
 
@@ -27,6 +27,25 @@ public class Group<P, T>
         Units.Add(unit);
         unit.Group = this;
     }
+
+    public Group<P, T> getLeft()
+    {
+        Debug.Log("get left");
+        return Units[0].Relatives[Direction.Left].Group;
+    }
+    public Group<P, T> getRight()
+    {
+        Debug.Log("get Right");
+        return Units[3].Relatives[Direction.Right].Group;
+    }
+    public Group<P, T> getForward()
+    {
+        return Units[3].Relatives[Direction.Forward].Group;
+    }
+    public Group<P, T> getBack(){
+        return Units[0].Relatives[Direction.Back].Group;
+    }
+
 
     public int Size()
     {
@@ -109,31 +128,13 @@ public class Group<P, T>
     public int checkBackToBack(T type)
     {
         if (checkSurround(type) != -1 || checkFullSurround(type) != -1) return -2;
-        Unit<P, T> upLeft = Units[Direction.Left];
-        Unit<P, T> upRight = Units[Direction.Right];
-        Unit<P, T> downLeft = Units[Direction.Forward];
-        Unit<P, T> downRight = Units[Direction.Back];
-
-        //
-        Unit<P, T> upLeftSide = upLeft.Relatives[Direction.Up];
-        Unit<P, T> upRightSide = upRight.Relatives[Direction.Up];
-
-        Unit<P, T> downLeftSide = downLeft.Relatives[Direction.Down];
-        Unit<P, T> downRightSide = downRight.Relatives[Direction.Down];
-
-        Unit<P, T> leftUpSide = upLeft.Relatives[Direction.Left];
-        Unit<P, T> leftDownSide = downLeft.Relatives[Direction.Left];
-
-        Unit<P, T> rightUpSide = upRight.Relatives[Direction.Right];
-        Unit<P, T> rightDownSide = downRight.Relatives[Direction.Right];
-
-        if (upLeftSide == downLeftSide && upLeftSide.Type.Equals(type))
-        {
-            return Direction.Up;
-        }
-        else if (leftUpSide == rightUpSide && leftUpSide.Type.Equals(type))
+        if (getRight().Type.Equals(getLeft().Type) && getLeft().Type.Equals(type))
         {
             return Direction.Left;
+        }
+        else if (getForward().Type.Equals(getBack().Type) && getBack().Type.Equals(type))
+        {
+            return Direction.Forward;
         }
 
         return -1;
@@ -256,36 +257,19 @@ public class Group<P, T>
     public Group<P, T> FindRelativeGroup(Group<P, T> group, int direction)
 
     {
-        Unit<P, T> upLeft = Units[1];
-        Unit<P, T> upRight = Units[3];
-        Unit<P, T> downLeft = Units[0];
-        Unit<P, T> downRight = Units[2];
-
-        //
-        Unit<P, T> upLeftSide = upLeft.Relatives[Direction.Forward];
-        Unit<P, T> upRightSide = upRight.Relatives[Direction.Forward];
-
-        Unit<P, T> downLeftSide = downLeft.Relatives[Direction.Back];
-        Unit<P, T> downRightSide = downRight.Relatives[Direction.Back];
-
-        Unit<P, T> leftUpSide = upLeft.Relatives[Direction.Left];
-        Unit<P, T> leftDownSide = downLeft.Relatives[Direction.Left];
-
-        Unit<P, T> rightUpSide = upRight.Relatives[Direction.Right];
-        Unit<P, T> rightDownSide = downRight.Relatives[Direction.Right];
-
 
         switch (direction)
         {
             case Direction.Forward :
-                return upLeftSide.Group;
+                return getForward();
             case Direction.Back :
-                return downLeftSide.Group;
+                return getBack();
             case Direction.Left :
-                return leftUpSide.Group;
+                return getLeft();
             case Direction.Right :
-                return rightUpSide.Group;
+                return getRight();
             default:
+                Debug.Log("NULL");
                 return null;
         }
     }

@@ -36,7 +36,7 @@ public class Unit<P, T>
     {
         //if(selected) return false;
         Type = Choices.GetRandomType(random);
-        Debug.Log("SET TYPE " + Type);
+        //Debug.Log("SET TYPE " + Type);
         selected = true;
         return true;
     }
@@ -79,7 +79,7 @@ public class Unit<P, T>
                 continue;
             }
             if(relative.Group == Group) continue;
-            Debug.Log(Level.Rules.Conditions);
+            //Debug.Log(Level.Rules.Conditions);
 
             foreach(T type in Level.Rules.Conditions.Keys)
             {

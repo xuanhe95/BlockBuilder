@@ -106,10 +106,10 @@ public class Cursor : MonoBehaviour
 
     {
 
-        print("called");
+        //print("called");
         Group<Vector3, GameObject> group = lastHit.GetComponent<GroupCollider>().thisGroup;
 
-        print(group);
+        //print(group);
 
         switch (input)
 
@@ -156,22 +156,21 @@ public class Cursor : MonoBehaviour
                 group.FindRelativeGroup(group,Direction.Back).Select(rd);
 
                 break;
+             case 5:
 
-            // case 5:
-//
-// //add Z+
-//
-//                 group.FindRelativeGroup(group,Direction.Up).Select(rd);
-//
-//                 break;
-//
-//             case 6:
-//
-// //add Z-
-//
-//                 group.FindRelativeGroup(group,Direction.Down).Select(rd);
-//
-//                 break;
+// // //add Z+
+// //
+            group.FindRelativeGroup(group,Direction.Right).Select(rd);
+// //
+       break;
+// //
+ case 6:
+// //
+// // //add Z-
+// //
+  group.FindRelativeGroup(group,Direction.Left).Select(rd);
+// //
+  break;
 
         }
 
