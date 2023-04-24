@@ -26,12 +26,6 @@ public partial class Generator : MonoBehaviour
     Rule<GameObject> baseRule = new Rule<GameObject>(); 
     Rule<GameObject> midRule = new Rule<GameObject>();
 
-    //System.Random rd;
-
-    const int LEFT = 0;
-    const int RIGHT = 1;
-    const int FORWARD = 2;
-    const int  BACK = 3;
 
     public List<GameObject> Choices;
     //public GameObject Empty;
@@ -50,7 +44,7 @@ public partial class Generator : MonoBehaviour
     {
         //rd = new System.Random();
         GenerateRules();
-        LevelBuilder(6,8,10);
+        LevelBuilder(10,12,8);
         
         Debug.Log(levels.Count);
         // PrintRules();

@@ -33,6 +33,11 @@ public partial class Group<P, T>
         return Type;
     }
 
+    public Unit<P, T> GetUnit(int id)
+    {
+        return Units[id];
+    }
+
     public void Select(System.Random random)
     {
         foreach (Unit<P, T> unit in Units)

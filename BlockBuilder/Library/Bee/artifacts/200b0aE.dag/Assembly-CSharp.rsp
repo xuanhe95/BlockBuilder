@@ -356,6 +356,7 @@
 "Assets/Script/Generator/ActiveManager.cs"
 "Assets/Script/Generator/ChoiceGenerator.cs"
 "Assets/Script/Generator/Generator.cs"
+"Assets/Script/Generator/GeneratorHelper.cs"
 "Assets/Script/Generator/LevelGenerator.cs"
 "Assets/Script/Generator/RuleGenerator.cs"
 "Assets/Script/Generic/Choice.cs"

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class Generator : MonoBehaviour
 {
-    void LevelBuilder(int height, int width, int length)
+    void LevelBuilder(int width, int length, int height)
     {
         Choice<GameObject> choices = ChoiceGenerator();
         for(int i = 0; i < height; i++){
@@ -25,9 +25,6 @@ public partial class Generator : MonoBehaviour
             Unit<GameObject, GameObject> backUnit = null;
             for(int j = 0; j < length; j++)
             {
-
-
-
                 GameObject location = new GameObject();
                 //location.transform.rotation = Quaternion.Euler(0f,90f,0f);
                 location.transform.position = new Vector3(i, levelID, j);
@@ -65,12 +62,11 @@ public partial class Generator : MonoBehaviour
                 group.AddUnit(level.Units[(i+1)*length + j]);
                 group.AddUnit(level.Units[(i+1)*length + j + 1]);
 
-                group.Units[0].GetVector().transform.rotation = Quaternion.Euler(0f,270f,0f);
-                group.Units[1].GetVector().transform.rotation = Quaternion.Euler(0f,0f,0f);
-                group.Units[2].GetVector().transform.rotation = Quaternion.Euler(0f,90f,0f);
-                group.Units[3].GetVector().transform.rotation = Quaternion.Euler(0f,180f,0f);
 
-
+                SetRotation(group.GetUnit(2), 0f, 0f, 0f);
+                SetRotation(group.GetUnit(0), 0f, 90f, 0f);
+                SetRotation(group.GetUnit(1), 0f, 180f, 0f);
+                SetRotation(group.GetUnit(3), 0f, 270f, 0f);
 
                 level.Groups.Add(i*length/2+j/2, group);
             }
