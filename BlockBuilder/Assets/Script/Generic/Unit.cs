@@ -13,14 +13,14 @@ public class Unit<P, T>
     public int ID;
     public P Vector; //hold position models
     public T Type;  //hold graphic models
-    public Possibility<T> Choices;  // choices now had
+    public Choice<T> Choices;  // choices now had
     public Group<P, T> Group{get; set;}
 
     public Unit<P, T>[] Relatives{get; set;}
     public Level<P, T> Level{get; set;}   // point to level
     private bool selected;
 
-    public Unit(int id, P vector, T type, Possibility<T> choices, Level<P, T> level)
+    public Unit(int id, P vector, T type, Choice<T> choices, Level<P, T> level)
     {
         ID = id;
         Vector = vector;

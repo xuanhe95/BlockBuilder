@@ -107,7 +107,7 @@ public class Cursor : MonoBehaviour
     {
 
         //print("called");
-        Group<Vector3, GameObject> group = lastHit.GetComponent<GroupCollider>().thisGroup;
+        Group<GameObject, GameObject> group = lastHit.GetComponent<GroupCollider>().thisGroup;
 
         //print(group);
 
