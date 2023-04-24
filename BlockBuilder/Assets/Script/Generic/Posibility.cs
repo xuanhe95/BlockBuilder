@@ -24,8 +24,13 @@ public class Possibility<T>{ // 每个Grid会带一个Prossibility
         Types.RemoveAll(data => type.Equals(data) );
     }
 
-    public T GetType(System.Random random){
+    public T GetRandomType(System.Random random){
         return Types[random.Next(Types.Count)];
+    }
+
+    public T GetType(int i)
+    {
+        return Types[i];
     }
 
     public int Size(){
