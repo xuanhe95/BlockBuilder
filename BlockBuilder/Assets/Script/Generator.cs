@@ -5,12 +5,21 @@ using System;
 
 public class Generator : MonoBehaviour
 {
+    //Base
     public GameObject Water;
     public GameObject Land;
+    public GameObject Bridge;
+    
+    //Mid
     public GameObject Building1;
     public GameObject Building2;
+    public GameObject Terrace1;
+    public GameObject Terrace2;
 
+    //Roof
     public GameObject Roof;
+    public GameObject Empty;
+    
     public GameObject Sand;
     public GameObject Tree;
 
@@ -25,7 +34,7 @@ public class Generator : MonoBehaviour
     const int  BACK = 3;
 
     public List<GameObject> Choices;
-    public GameObject Empty;
+    //public GameObject Empty;
     public GameObject Ground;
     public GameObject GroupType;
     private List<Level<Vector3, GameObject>> levels = new List<Level<Vector3, GameObject>>();
@@ -225,14 +234,21 @@ public class Generator : MonoBehaviour
 
 
     void GenerateRules(){
-
+        //写Rules
+        
         //baseRule.AddRule(Empty);
-        baseRule.AddRule(Water, Sand);
+        baseRule.AddRule(Water, Land);
         baseRule.AddRule(Water, Water);
-        baseRule.AddRule(Sand, Land);
-        baseRule.AddRule(Sand, Sand);
+        baseRule.AddRule(Water, Bridge);
+
+        baseRule.AddRule(Land, Water);
         baseRule.AddRule(Land, Land);
-        baseRule.AddRule(Land, Tree);
+        baseRule.AddRule(Land, Bridge);
+
+        baseRule.AddRule(Bridge, Water);
+        baseRule.AddRule(Bridge, Land);
+        baseRule.AddRule(Bridge, Bridge);
+        
         //baseRule.AddRule(Land, Sand);
         baseRule.AddRule(Tree, Tree);
 
