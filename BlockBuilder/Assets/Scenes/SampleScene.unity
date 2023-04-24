@@ -123,6 +123,57 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &227984310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1740292738251411382, guid: 185029fc614c6c44db5592153150d956, type: 3}
+  m_PrefabInstance: {fileID: 323168978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &227984311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1740292738251411377, guid: 185029fc614c6c44db5592153150d956, type: 3}
+  m_PrefabInstance: {fileID: 323168978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227984310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccccce13284b72a469fed8bcecaa7825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &227984316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227984310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &227984317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227984310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &306123130
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +235,30 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+    - target: {fileID: 1740292736926326399, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 227984311}
+    - target: {fileID: 1740292736926326399, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292736926326399, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292737620003584, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 227984311}
+    - target: {fileID: 1740292737620003584, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292737620003584, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292737620003599, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -192,14 +267,50 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+    - target: {fileID: 1740292737693960157, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 227984311}
+    - target: {fileID: 1740292737693960157, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292737693960157, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292737954715374, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+    - target: {fileID: 1740292737954715375, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 227984311}
+    - target: {fileID: 1740292737954715375, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292737954715375, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292738188093291, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+    - target: {fileID: 1740292738188093292, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 227984311}
+    - target: {fileID: 1740292738188093292, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292738188093292, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292738251411378, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -304,6 +415,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+    - target: {fileID: 1740292738408112420, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 227984311}
+    - target: {fileID: 1740292738408112420, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetCursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292738408112420, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 185029fc614c6c44db5592153150d956, type: 3}
 --- !u!1 &705507993
@@ -544,9 +667,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Water: {fileID: 4064767890449205176, guid: 529695ab3569b44f899ca0ad485caac5, type: 3}
   Land: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
+  Bridge: {fileID: 0}
   Building1: {fileID: 4064767890449205176, guid: 6dc0cf82b9961491fa0d55488cd63a31, type: 3}
   Building2: {fileID: 4064767890449205176, guid: 949da21bd1f6745f0b4e56948ef6a7fa, type: 3}
+  Terrace1: {fileID: 0}
+  Terrace2: {fileID: 0}
   Roof: {fileID: 4064767890449205176, guid: 3baf609106cb14436bb1c7b89e718c22, type: 3}
+  Empty: {fileID: 4064767890449205176, guid: 69a9be310e0b34c86908116cd3e253db, type: 3}
   Sand: {fileID: 4064767890449205176, guid: b30fb5682350d4807b06f4ac7b0ad8d0, type: 3}
   Tree: {fileID: 4064767890449205176, guid: b835e14b9b99346a2b7fca4222eb188f, type: 3}
   Choices:
@@ -557,7 +684,6 @@ MonoBehaviour:
   - {fileID: 4064767890449205176, guid: 6dc0cf82b9961491fa0d55488cd63a31, type: 3}
   - {fileID: 4064767890449205176, guid: 949da21bd1f6745f0b4e56948ef6a7fa, type: 3}
   - {fileID: 4064767890449205176, guid: 529695ab3569b44f899ca0ad485caac5, type: 3}
-  Empty: {fileID: 4064767890449205176, guid: 69a9be310e0b34c86908116cd3e253db, type: 3}
   Ground: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
   GroupType: {fileID: 3471533950867280208, guid: 1405f2c6e880c9440b7e865c1f083226, type: 3}
   meshAll: {fileID: 0}

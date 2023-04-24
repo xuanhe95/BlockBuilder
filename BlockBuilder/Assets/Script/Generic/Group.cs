@@ -6,13 +6,14 @@ public class Group<P, T>
 {
     public T Type;
     public int ID;
-    public List<Unit<P, T>> Units{get; set;}
-    public Possibility<T> LeftChoices{get; set;}
-    public Possibility<T> RightChoices{get; set;}
-    public Possibility<T> ForwardChoices{get; set;}
-    public Possibility<T> BackChoices{get; set;}
+    public List<Unit<P, T>> Units { get; set; }
+    public Possibility<T> LeftChoices { get; set; }
+    public Possibility<T> RightChoices { get; set; }
+    public Possibility<T> ForwardChoices { get; set; }
+    public Possibility<T> BackChoices { get; set; }
 
-    public Possibility<T> Choices{get; set;}
+    public Possibility<T> Choices { get; set; }
+
     public Group(int id, T type)
 
     {
@@ -20,34 +21,42 @@ public class Group<P, T>
         ID = id;
         Units = new List<Unit<P, T>>();
     }
+
     public void AddUnit(Unit<P, T> unit)
     {
         Units.Add(unit);
         unit.Group = this;
     }
+
     public int Size()
     {
         return Units.Count;
     }
+
     public T GetObject()
     {
         return Type;
     }
 
-    public void Select(System.Random random){
-        foreach(Unit<P, T> unit in Units){
+    public void Select(System.Random random)
+    {
+        foreach (Unit<P, T> unit in Units)
+        {
             unit.Select();
         }
+
         SetType(random);
     }
 
-    public void SetType(System.Random random){
+    public void SetType(System.Random random)
+    {
 
 
         int i = random.Next(Units[0].Choices.Types.Count);
-        
 
-        foreach(Unit<P, T> unit in Units){
+
+        foreach (Unit<P, T> unit in Units)
+        {
             unit.SetType(i);
         }
 
@@ -83,14 +92,14 @@ public class Group<P, T>
 
 
 
-        
+
 
 
 
 
         //Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
         //移除所有不在规则里的
-        
+
 
 
 
@@ -99,7 +108,7 @@ public class Group<P, T>
 
     public int checkBackToBack(T type)
     {
-        if(checkSurround(type) != -1 || checkFullSurround(type) != -1) return -2;
+        if (checkSurround(type) != -1 || checkFullSurround(type) != -1) return -2;
         Unit<P, T> upLeft = Units[Direction.Left];
         Unit<P, T> upRight = Units[Direction.Right];
         Unit<P, T> downLeft = Units[Direction.Forward];
@@ -118,20 +127,21 @@ public class Group<P, T>
         Unit<P, T> rightUpSide = upRight.Relatives[Direction.Right];
         Unit<P, T> rightDownSide = downRight.Relatives[Direction.Right];
 
-        if( upLeftSide == downLeftSide && upLeftSide.Type.Equals(type))
+        if (upLeftSide == downLeftSide && upLeftSide.Type.Equals(type))
         {
             return Direction.Up;
         }
-        else if(leftUpSide == rightUpSide && leftUpSide.Type.Equals(type))
+        else if (leftUpSide == rightUpSide && leftUpSide.Type.Equals(type))
         {
             return Direction.Left;
         }
+
         return -1;
     }
 
     public int checkAdjacent(T type)
     {
-        if(checkSurround(type) != -1 || checkFullSurround(type) != -1) return -2;
+        if (checkSurround(type) != -1 || checkFullSurround(type) != -1) return -2;
 
         Unit<P, T> upLeft = Units[Direction.Left];
         Unit<P, T> upRight = Units[Direction.Right];
@@ -152,22 +162,22 @@ public class Group<P, T>
         Unit<P, T> rightDownSide = downRight.Relatives[Direction.Right];
 
 
-        if(upLeftSide == leftUpSide && upLeftSide.Type.Equals(type))
+        if (upLeftSide == leftUpSide && upLeftSide.Type.Equals(type))
         {
             return Direction.Left;
         }
-        else if(upLeftSide == rightUpSide && upLeftSide.Type.Equals(type))
+        else if (upLeftSide == rightUpSide && upLeftSide.Type.Equals(type))
         {
             return Direction.Up;
         }
-        else if(rightUpSide == downLeftSide && rightUpSide.Type.Equals(type))
+        else if (rightUpSide == downLeftSide && rightUpSide.Type.Equals(type))
         {
             return Direction.Right;
         }
-        else if(downLeftSide == leftUpSide && downLeftSide.Type.Equals(type))
+        else if (downLeftSide == leftUpSide && downLeftSide.Type.Equals(type))
         {
             return Direction.Down;
-        } 
+        }
         else return -1;
     }
 
@@ -191,31 +201,32 @@ public class Group<P, T>
         Unit<P, T> rightUpSide = upRight.Relatives[Direction.Right];
         Unit<P, T> rightDownSide = downRight.Relatives[Direction.Right];
 
-        if(upLeftSide == rightUpSide && rightUpSide == downLeftSide && downLeftSide.Type.Equals(type))
+        if (upLeftSide == rightUpSide && rightUpSide == downLeftSide && downLeftSide.Type.Equals(type))
         {
             return Direction.Up;
         }
-        else if(rightUpSide == downLeftSide && downLeftSide == leftDownSide && leftDownSide.Type.Equals(type))
+        else if (rightUpSide == downLeftSide && downLeftSide == leftDownSide && leftDownSide.Type.Equals(type))
         {
             return Direction.Right;
         }
-        else if(downLeftSide == leftDownSide && leftDownSide == upLeftSide && upLeftSide.Type.Equals(type))
+        else if (downLeftSide == leftDownSide && leftDownSide == upLeftSide && upLeftSide.Type.Equals(type))
         {
             return Direction.Down;
         }
-        else if(leftDownSide == upLeftSide && upLeftSide == rightUpSide && rightUpSide.Type.Equals(type))
+        else if (leftDownSide == upLeftSide && upLeftSide == rightUpSide && rightUpSide.Type.Equals(type))
         {
             return Direction.Left;
         }
+
         return -1;
     }
 
     public int checkFullSurround(T type)
     {
-        Unit<P, T> upLeft = Units[Direction.Left];
-        Unit<P, T> upRight = Units[Direction.Right];
-        Unit<P, T> downLeft = Units[Direction.Forward];
-        Unit<P, T> downRight = Units[Direction.Back];
+        Unit<P, T> upLeft = Units[1];
+        Unit<P, T> upRight = Units[3];
+        Unit<P, T> downLeft = Units[0];
+        Unit<P, T> downRight = Units[2];
 
         //
         Unit<P, T> upLeftSide = upLeft.Relatives[Direction.Up];
@@ -229,20 +240,53 @@ public class Group<P, T>
 
         Unit<P, T> rightUpSide = upRight.Relatives[Direction.Right];
         Unit<P, T> rightDownSide = downRight.Relatives[Direction.Right];
-        if(upLeftSide.Type.Equals(type) &&
-            rightUpSide.Type.Equals(type)&&
+        if (upLeftSide.Type.Equals(type) &&
+            rightUpSide.Type.Equals(type) &&
             downLeftSide.Type.Equals(type) &&
             leftUpSide.Type.Equals(type))
         {
             return Direction.Left;
         }
+
         return -1;
     }
 
 
 
+    public Group<P, T> FindRelativeGroup(Group<P, T> group, int direction)
 
-    
+    {
+        Unit<P, T> upLeft = Units[1];
+        Unit<P, T> upRight = Units[3];
+        Unit<P, T> downLeft = Units[0];
+        Unit<P, T> downRight = Units[2];
+
+        //
+        Unit<P, T> upLeftSide = upLeft.Relatives[Direction.Forward];
+        Unit<P, T> upRightSide = upRight.Relatives[Direction.Forward];
+
+        Unit<P, T> downLeftSide = downLeft.Relatives[Direction.Back];
+        Unit<P, T> downRightSide = downRight.Relatives[Direction.Back];
+
+        Unit<P, T> leftUpSide = upLeft.Relatives[Direction.Left];
+        Unit<P, T> leftDownSide = downLeft.Relatives[Direction.Left];
+
+        Unit<P, T> rightUpSide = upRight.Relatives[Direction.Right];
+        Unit<P, T> rightDownSide = downRight.Relatives[Direction.Right];
 
 
+        switch (direction)
+        {
+            case Direction.Forward :
+                return upLeftSide.Group;
+            case Direction.Back :
+                return downLeftSide.Group;
+            case Direction.Left :
+                return leftUpSide.Group;
+            case Direction.Right :
+                return rightUpSide.Group;
+            default:
+                return null;
+        }
+    }
 }
