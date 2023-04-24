@@ -5,15 +5,21 @@ using System;
 
 public class Generator : MonoBehaviour
 {
-
-
-
+    //Base
     public GameObject Water;
     public GameObject Land;
+    public GameObject Bridge;
+    
+    //Mid
     public GameObject Building1;
     public GameObject Building2;
+    public GameObject Terrace1;
+    public GameObject Terrace2;
 
+    //Roof
     public GameObject Roof;
+    public GameObject Empty;
+    
     public GameObject Sand;
     public GameObject Tree;
 
@@ -28,7 +34,7 @@ public class Generator : MonoBehaviour
     const int  BACK = 3;
 
     public List<GameObject> Choices;
-    public GameObject Empty;
+    //public GameObject Empty;
     public GameObject Ground;
     public GameObject GroupType;
     private List<Level<Vector3, GameObject>> levels = new List<Level<Vector3, GameObject>>();
@@ -105,8 +111,8 @@ public class Generator : MonoBehaviour
                 new Unit<Vector3, GameObject>(id, vector, go, choices, level);
                 level.AddUnit(unit);
 
-                if(leftUnit != null) leftUnit.Relatives[(int) Direction.Right] = unit;
-                unit.Relatives[(int) Direction.Left] = leftUnit;
+                if(leftUnit != null) leftUnit.Relatives[RIGHT] = unit;
+                unit.Relatives[LEFT] = leftUnit;
                 leftUnit = unit;
             
                 id++;
@@ -117,8 +123,8 @@ public class Generator : MonoBehaviour
             for(int j = i+width; j < width * length; j+=width)
             {
                 Unit<Vector3, GameObject> forwardUnit = level.Units[j];
-                backUnit.Relatives[(int) Direction.Forward] = forwardUnit;
-                forwardUnit.Relatives[(int) Direction.Back] = backUnit;
+                backUnit.Relatives[FORWARD] = forwardUnit;
+                forwardUnit.Relatives[BACK] = backUnit;
                 backUnit = forwardUnit;
             }
 
@@ -228,43 +234,33 @@ public class Generator : MonoBehaviour
 
 
     void GenerateRules(){
-
+        //写Rules
+        
         //baseRule.AddRule(Empty);
-
-
-        //  Water
-        baseRule.AddRule(Water, Sand);
-        //baseRule.AddRule(Water, Water);
         baseRule.AddRule(Water, Land);
+        baseRule.AddRule(Water, Water);
+        baseRule.AddRule(Water, Bridge);
 
-        //  Sand
-        baseRule.AddRule(Sand, Land);
-        baseRule.AddRule(Sand, Sand);
-
-        //  Land
+        baseRule.AddRule(Land, Water);
         baseRule.AddRule(Land, Land);
-        //baseRule.AddRule();
-        baseRule.AddRule(Land, Tree);
-        //baseRule.AddRule(Land, Sand);
+        baseRule.AddRule(Land, Bridge);
 
-        //  Tree
+        baseRule.AddRule(Bridge, Water);
+        baseRule.AddRule(Bridge, Land);
+        baseRule.AddRule(Bridge, Bridge);
+        
+        //baseRule.AddRule(Land, Sand);
         baseRule.AddRule(Tree, Tree);
 
-        //  Up Rules
-
-        //  Lnad
         baseRule.AddUpRule(Land, Building1);
         baseRule.AddUpRule(Land, Building2);
 
-
-        //  Building1
         midRule.AddUpRule(Building1, Roof);
         midRule.AddUpRule(Building2, Roof);
         midRule.AddUpRule(Building2, Building2);
         midRule.AddUpRule(Building1, Building1);
 
     
-        
         midRule.AddRule(Building1, Building1);
         midRule.AddRule(Building2, Building2);
 
