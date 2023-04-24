@@ -9,6 +9,20 @@ public partial class Group<P, T>
         return Units[0].Type;
     }
 
+    public Group<P, T> GetAdjacentGroup(int direction)
+    {
+        switch(direction)
+        {
+            case Direction.Left: return GetLeft();
+            case Direction.Right: return GetRight();
+            case Direction.Forward: return GetForward();
+            case Direction.Back: return GetBack();
+            case Direction.Up: return GetUp();
+            case Direction.Down: return GetDown();
+            default: return null;
+        }
+    }
+
     public Group<P, T> GetLeft()
     {
         Debug.Log("get Left");
@@ -25,6 +39,14 @@ public partial class Group<P, T>
     }
     public Group<P, T> GetBack(){
         return Units[0].Relatives[Direction.Back].Group;
+    }
+    public Group<P, T> GetUp()
+    {
+        return Units[0].Level.Up.Units[Units[0].ID].Group;
+    }
+    public Group<P, T> GetDown()
+    {
+        return Units[0].Level.Down.Units[Units[0].ID].Group;
     }
 
     public bool CheckEqual(T typeA, T typeB)

@@ -5,11 +5,6 @@ using System;
 
 public class Unit<P, T>
 {
-    //const int LEFT = 0;
-    //const int RIGHT = 1;
-    //const int FORWARD = 2;
-    //const int BACK = 3;
-
     public int ID;
     public P Vector; //hold position models
     public T Type;  //hold graphic models
@@ -49,9 +44,6 @@ public class Unit<P, T>
         selected = true;
         return true;
     }
-
-
-
 
     public bool isSelected()
     {
