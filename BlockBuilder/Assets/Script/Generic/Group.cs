@@ -5,6 +5,7 @@ using UnityEngine;
 public partial class Group<P, T>
 {
     public T Type;
+    public List<T> Types;
     public int ID;
     public List<Unit<P, T>> Units { get; set; }
     public Choice<T> Choices { get; set; }
@@ -14,6 +15,11 @@ public partial class Group<P, T>
         Type = type;
         ID = id;
         Units = new List<Unit<P, T>>();
+    }
+
+    public void AddSubTypes(List<T> types)
+    {
+        Types = types;
     }
 
     public void AddUnit(Unit<P, T> unit)
