@@ -5,6 +5,12 @@ using System;
 
 public partial class Generator : MonoBehaviour
 {
+    public List<GameObject> Waters;
+    public List<GameObject> Sands;
+    public List<GameObject> Lands;
+
+
+
     //Base
     public GameObject Water;
     public GameObject Land;
