@@ -25,7 +25,6 @@ public partial class Group<P, T>
         Choices.Types.RemoveAll(type => !allowedTypesForRight.Contains(type));
         Choices.Types.RemoveAll(type => !allowedTypesForForward.Contains(type));
         Choices.Types.RemoveAll(type => !allowedTypesForBack.Contains(type));
-
         Choices.Types.RemoveAll(type => !allowedTypesForUp.Contains(type));
 
         SetRandomType(random);

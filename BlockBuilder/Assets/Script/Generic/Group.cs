@@ -69,6 +69,16 @@ public partial class Group<P, T>
     }
 
 
+    public void Choose(System.Random random)
+    {
+        Types = Choices.ListedTypes[random.Next(Choices.Types.Count)];
+        for(int i = 0; i < 4; i++)
+        {
+            Units[i].SetType(Types[i]);
+        }
+    }
+
+
 
 
 }

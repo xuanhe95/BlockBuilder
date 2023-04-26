@@ -27,7 +27,7 @@ public class Cursor : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Group"))
         {
-            print(hit.collider.gameObject);
+            //print(hit.collider.gameObject);
             this.transform.position = hit.collider.transform.position;
             lastHit = hit.collider.gameObject;
         }

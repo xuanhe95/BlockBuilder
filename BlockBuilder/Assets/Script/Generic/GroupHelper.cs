@@ -35,17 +35,21 @@ public partial class Group<P, T>
     }
     public Group<P, T> GetForward()
     {
+        Debug.Log("get Forward");
         return Units[3].Relatives[Direction.Forward].Group;
     }
     public Group<P, T> GetBack(){
+        Debug.Log("get Back");
         return Units[0].Relatives[Direction.Back].Group;
     }
     public Group<P, T> GetUp()
     {
+        Debug.Log("get Up");
         return Units[0].Level.Up.Units[Units[0].ID].Group;
     }
     public Group<P, T> GetDown()
     {
+        Debug.Log("get Down");
         return Units[0].Level.Down.Units[Units[0].ID].Group;
     }
 

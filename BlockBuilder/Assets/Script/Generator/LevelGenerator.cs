@@ -9,7 +9,26 @@ public partial class Generator : MonoBehaviour
         Choice<GameObject> choices = ChoiceGenerator();
         for(int i = 0; i < height; i++){
             if(i == 0) levels.Add(LevelGenerator(i, width, length, 2, choices, baseRule));
-            else levels.Add(LevelGenerator(i, width, length, 2, choices, midRule));
+            else 
+            {
+                Level<GameObject, GameObject> downLevel = levels[levels.Count - 1];
+                Level<GameObject, GameObject> upLevel = LevelGenerator(i, width, length, 2, choices, midRule);
+                downLevel.Up = upLevel;
+                upLevel.Down = downLevel;
+
+                for(int id = 0; id < upLevel.Units.Count; id++)
+                {
+                    Unit<GameObject, GameObject> upUnit = upLevel.Units[id];
+                    Unit<GameObject, GameObject> downUnit = downLevel.Units[id];
+                    upUnit.Relatives[Direction.Down] = downUnit;
+                    downUnit.Relatives[Direction.Up] = upUnit;
+                }
+
+
+
+
+                levels.Add(upLevel);
+            }
         }
     }
 
@@ -56,7 +75,8 @@ public partial class Generator : MonoBehaviour
         {
             for(int j = 0; j < length; j+=2)
             {
-                Group<GameObject, GameObject> group = new Group<GameObject, GameObject>(i*length/2+j/2, GroupType);
+                Group<GameObject, GameObject> group =
+                new Group<GameObject, GameObject>(i*length/2+j/2, GroupType);
                 group.AddUnit(level.Units[i * length + j]);
                 group.AddUnit(level.Units[i * length + j+1]);
                 group.AddUnit(level.Units[(i+1)*length + j]);

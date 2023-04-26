@@ -52,12 +52,12 @@ public partial class Generator : MonoBehaviour
         GenerateRules();
         LevelBuilder(10,12,8);
         
-        Debug.Log(levels.Count);
+        //Debug.Log(levels.Count);
         // PrintRules();
         foreach(Level<GameObject, GameObject> level in levels)
         {
-            Debug.Log(level.ID);
-            PrintRules(level);
+            //Debug.Log(level.ID);
+            //PrintRules(level);
         }
         Instantiator();
 

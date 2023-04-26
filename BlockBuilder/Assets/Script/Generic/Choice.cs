@@ -5,6 +5,7 @@ using System;
 
 public class Choice<T>{ // 每个Grid会带一个Prossibility
     public List<T> Types{set; get;} // dictionary?
+    public List<List<T>> ListedTypes{set; get;}
     public Choice()
     {
         Types = new List<T>();
@@ -13,6 +14,11 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
     public void Add(T type){
         Types.Add(type);
     }
+    public void Add(List<T> listedType)
+    {
+        ListedTypes.Add(listedType);
+    }
+
     public void Add(T type, int times){
         for(int i = 0; i < times; i++){
             Types.Add(type);
@@ -23,6 +29,11 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
     }
     public void RemoveAll(T type){
         Types.RemoveAll(data => type.Equals(data) );
+    }
+
+    public void RemoveAll(List<T> listedType)
+    {
+        ListedTypes.RemoveAll(data => listedType.Equals(data));
     }
 
     public T GetRandomType(System.Random random){

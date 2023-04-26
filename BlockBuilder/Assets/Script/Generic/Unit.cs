@@ -66,15 +66,20 @@ public class Unit<P, T>
         if(selected) return;
         Unify();
 
-        foreach(Unit<P, T> relative in Relatives)
+
+
+
+
+        for(int i = 0; i < 4; i++)
         {
+            Unit<P, T> relative = Relatives[i];
             //Debug.Log("CHECK" + relative);
             if(relative == null){
                 //Debug.Log("wrong");
                 continue;
             }
             if(relative.Group == Group) continue;
-            //Debug.Log(Level.Rules.Conditions);
+            
 
             foreach(T type in Level.Rules.Conditions.Keys)
             {
@@ -86,6 +91,13 @@ public class Unit<P, T>
             Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
             //移除所有不在规则里的
         }
+        Debug.Log(Relatives[Direction.Down]);
+        HashSet<T> allowedTypesForUp = Level.Rules.UpConditions[Relatives[Direction.Down].Type];
+        foreach(T go in allowedTypesForUp)
+        {
+            Debug.Log(go);
+        }
+        Choices.Types.RemoveAll(type => !allowedTypesForUp.Contains(type));
 
 
 
@@ -149,6 +161,11 @@ public class Unit<P, T>
             //Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
             //移除所有不在规则里的
         }
+    }
+
+    public void SetType(T type)
+    {
+        Type = type;
     }
 }
 

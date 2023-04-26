@@ -12,6 +12,10 @@ public partial class Generator : MonoBehaviour
         baseRule.AddRule(Water, Water);
         baseRule.AddRule(Water, Bridge);
 
+        midRule.AddUpRule(Land, Tree);
+        midRule.AddUpRule(Water, Tree);
+        midRule.AddRule(Empty, Tree);
+
         baseRule.AddRule(Land, Water);
         baseRule.AddRule(Land, Land);
         baseRule.AddRule(Land, Bridge);
@@ -34,6 +38,9 @@ public partial class Generator : MonoBehaviour
     
         midRule.AddRule(Building1, Building1);
         midRule.AddRule(Building2, Building2);
+
+
+        midRule.AddRule(Tree, Tree);
 
         midRule.AddRule(Empty, Building1);
         midRule.AddRule(Empty, Building2);
