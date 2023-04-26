@@ -65,12 +65,12 @@ public partial class Generator : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if(Input.GetMouseButtonDown(0))
         {
             UpdateUnits();
-            Instantiator();
+            //Instantiator();
         }   
     }
 }

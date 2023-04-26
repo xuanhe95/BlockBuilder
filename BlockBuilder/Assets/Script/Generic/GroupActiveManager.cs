@@ -59,6 +59,10 @@ public partial class Group<P, T>
                 return GetLeft();
             case Direction.Right:
                 return GetRight();
+            case Direction.Up:
+                return GetUp();
+            case Direction.Down:
+                return GetDown();
             default:
                 return null;
         }

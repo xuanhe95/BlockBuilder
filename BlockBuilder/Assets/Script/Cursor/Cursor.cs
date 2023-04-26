@@ -27,18 +27,9 @@ public class Cursor : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Group"))
         {
-            //print(lastHit);
-            this.transform.position = hit.collider.transform.position - new Vector3(0, 0,0);
+            print(hit.collider.gameObject);
+            this.transform.position = hit.collider.transform.position;
             lastHit = hit.collider.gameObject;
-            // if (Input.GetMouseButtonDown(0))
-            // {
-            //     //print("set");
-            //     if (hit.collider.GetComponent<GroupCollider>() != null)
-            //     {
-            //         hit.collider.GetComponent<GroupCollider>().thisGroup.Select(rd);
-            //     }
-            //     //print(hit.collider.gameObject);
-            // }
         }
         
     }
@@ -125,52 +116,43 @@ public class Cursor : MonoBehaviour
 
             case 1:
 
-//add X+
-
-//计算X+的group
-
                 group.FindRelativeGroup(group,Direction.Left).Select(rd);
 
                 break;
 
             case 2:
-
-//add X-
+                
 
                 group.FindRelativeGroup(group,Direction.Right).Select(rd);
 
                 break;
 
             case 3:
-
-//add Y+
+                
 
                 group.FindRelativeGroup(group,Direction.Forward).Select(rd);
 
                 break;
 
             case 4:
-
-//add Y-
+                
 
                 group.FindRelativeGroup(group,Direction.Back).Select(rd);
 
                 break;
              case 5:
 
-// // //add Z+
-// //
-            group.FindRelativeGroup(group,Direction.Right).Select(rd);
-// //
-       break;
-// //
- case 6:
-// //
-// // //add Z-
-// //
-  group.FindRelativeGroup(group,Direction.Left).Select(rd);
-// //
-  break;
+
+    
+                group.FindRelativeGroup(group,Direction.Up).Select(rd);
+
+                break;
+
+            case 6:
+
+                group.FindRelativeGroup(group,Direction.Down).Select(rd);
+
+                break;
 
         }
 

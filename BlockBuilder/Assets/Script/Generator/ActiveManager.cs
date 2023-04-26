@@ -4,27 +4,53 @@ using UnityEngine;
 
 public partial class Generator : MonoBehaviour
 {
+    private List<GameObject> GroupColliders = new List<GameObject>();
 
     void Instantiator()
     {
-        foreach(Level<GameObject, GameObject> level in levels)
+        if (InstantiatedGo.Count > 0)
         {
-            foreach(Unit<GameObject, GameObject> unit in level.Units.Values)
+            foreach (var o in InstantiatedGo)
             {
-                InstantiatedGo.Add(Instantiate(unit.GetObject(), unit.GetVector().transform.position, unit.GetVector().transform.rotation));
+                Destroy(o);
+            }
+
+            foreach (var o in GroupColliders)
+            {
+                Destroy(o);
+
+            }
+
+            InstantiatedGo.Clear();
+            GroupColliders.Clear();
+        }
+
+        foreach (Level<GameObject, GameObject> level in levels)
+        {
+            foreach (Unit<GameObject, GameObject> unit in level.Units.Values)
+            {
+                InstantiatedGo.Add(Instantiate(unit.GetObject(), unit.GetVector().transform.position,
+                    unit.GetVector().transform.rotation));
                 //InstantiatedUnit.Add(unit);
             }
 
-            foreach(Group<GameObject, GameObject> group in level.Groups.Values)
+            foreach (Group<GameObject, GameObject> group in level.Groups.Values)
             {
-                GameObject GroupCollider = Instantiate(group.GetObject(), group.Units[0].GetVector().transform.position, Quaternion.identity);
-                GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
+                if (group.GetType() != Empty)
+                {
+                    GameObject GroupCollider = Instantiate(group.GetObject(),
+                        group.Units[0].GetVector().transform.position, Quaternion.identity);
+                    GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
+                    GroupColliders.Add(GroupCollider);
+                }
+
             }
         }
     }
 
-    void UpdateUnits(){
-        foreach(Unit<GameObject, GameObject> unit in InstantiatedUnit)
+    void UpdateUnits()
+    {
+        foreach (Unit<GameObject, GameObject> unit in InstantiatedUnit)
         {
             GameObject go = unit.GetObject().gameObject;
             GameObject type = unit.Type;
@@ -35,7 +61,7 @@ public partial class Generator : MonoBehaviour
     //将所有mesh以字典形式依序存储
     void InitializeMeshes()
     {
-        foreach(Transform child in meshAll.transform)
+        foreach (Transform child in meshAll.transform)
         {
             meshDic.Add(child.GetSiblingIndex(), child.GetComponent<MeshFilter>().sharedMesh);
         }
@@ -52,7 +78,7 @@ public partial class Generator : MonoBehaviour
             filter.mesh = meshResult;
         }
     }
-    
+
     //现在的方法：用gameobject代替
     void ModifyMeshWithGameObject(GameObject gameObject, GameObject game)
     {
@@ -64,7 +90,7 @@ public partial class Generator : MonoBehaviour
             renderer.material = gameObject.GetComponent<MeshRenderer>().sharedMaterial;
         }
     }
-    
+
     void ModifyMeshWithMesh(GameObject gameObject, Mesh mesh)
     {
         if (gameObject.GetComponent<MeshFilter>() != null)
@@ -73,5 +99,5 @@ public partial class Generator : MonoBehaviour
             filter.mesh = mesh;
         }
     }
-
+    
 }
