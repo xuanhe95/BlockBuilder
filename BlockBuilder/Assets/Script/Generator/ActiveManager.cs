@@ -8,6 +8,7 @@ public partial class Generator : MonoBehaviour
 
     void Instantiator()
     {
+        print("Instantiator Called");
         if (InstantiatedGo.Count > 0)
         {
             foreach (var o in InstantiatedGo)

@@ -15,6 +15,7 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         cameraTransform = transform;
+        cameraTransform.LookAt(origin);
     }
 
     void Update()
