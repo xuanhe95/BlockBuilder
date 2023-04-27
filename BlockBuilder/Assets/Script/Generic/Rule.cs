@@ -25,6 +25,16 @@ public class Rule<T>
 
     }
 
+    public void AddRule(List<T> types, List<T> connections)
+    {
+        AddRule(types[0], connections[0]);
+    }
+
+    public void AddUpRule(List<T> types, List<T> connections)
+    {
+        AddUpRule(types[0], connections[0]);
+    }
+
 
     public bool AddUpRule(T type, T connection)
     {   

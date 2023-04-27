@@ -8,6 +8,8 @@ public partial class Generator : MonoBehaviour
     public List<GameObject> Waters;
     public List<GameObject> Sands;
     public List<GameObject> Lands;
+    public List<GameObject> Trees;
+    public List<GameObject> Emptys;
 
 
 
@@ -34,6 +36,11 @@ public partial class Generator : MonoBehaviour
 
 
     public List<GameObject> Choices;
+
+
+    public List<List<GameObject>> ListedChoices;
+
+
     //public GameObject Empty;
     public GameObject Ground;
     public GameObject GroupType;
@@ -70,7 +77,7 @@ public partial class Generator : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             UpdateUnits();
-            //Instantiator();
+            Instantiator();
         }   
     }
 }

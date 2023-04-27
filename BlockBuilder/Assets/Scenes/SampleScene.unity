@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -238,7 +238,11 @@ PrefabInstance:
     - target: {fileID: 1740292736926326398, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292736926326398, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_Color.a
+      value: 0.11764706
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292736926326398, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -346,7 +350,11 @@ PrefabInstance:
     - target: {fileID: 1740292737620003599, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292737620003599, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_Color.a
+      value: 0.11764706
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292737620003599, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -362,7 +370,11 @@ PrefabInstance:
     - target: {fileID: 1740292737693960156, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292737693960156, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_Color.a
+      value: 0.11764706
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292737693960156, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -374,6 +386,10 @@ PrefabInstance:
     - target: {fileID: 1740292737693960156, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292737693960157, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 0.47058824
       objectReference: {fileID: 0}
     - target: {fileID: 1740292737693960157, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
@@ -414,7 +430,11 @@ PrefabInstance:
     - target: {fileID: 1740292737954715374, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292737954715374, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_Color.a
+      value: 0.11764706
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292737954715374, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -466,7 +486,11 @@ PrefabInstance:
     - target: {fileID: 1740292738188093291, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292738188093291, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_Color.a
+      value: 0.11764706
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292738188093291, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -565,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1740292738251411378, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00007265806
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1740292738251411378, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_LocalRotation.w
@@ -585,11 +609,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1740292738251411378, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000017595288
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1740292738251411378, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0085670035
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1740292738251411378, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -622,7 +646,11 @@ PrefabInstance:
     - target: {fileID: 1740292738408112419, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b53f1a94efd7ea64c8ddec941909da5c, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740292738408112419, guid: 185029fc614c6c44db5592153150d956, type: 3}
+      propertyPath: m_Color.a
+      value: 0.11764706
+      objectReference: {fileID: 0}
     - target: {fileID: 1740292738408112419, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -912,9 +940,11 @@ MonoBehaviour:
   Waters: []
   Sands: []
   Lands: []
+  Trees: []
+  Emptys: []
   Water: {fileID: 4064767890449205176, guid: 529695ab3569b44f899ca0ad485caac5, type: 3}
   Land: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
-  Bridge: {fileID: 0}
+  Bridge: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
   Building1: {fileID: 4064767890449205176, guid: 6dc0cf82b9961491fa0d55488cd63a31, type: 3}
   Building2: {fileID: 4064767890449205176, guid: 949da21bd1f6745f0b4e56948ef6a7fa, type: 3}
   Terrace1: {fileID: 0}

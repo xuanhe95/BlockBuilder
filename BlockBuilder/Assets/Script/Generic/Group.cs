@@ -28,6 +28,11 @@ public partial class Group<P, T>
         unit.Group = this;
     }
 
+    public List<T> GetChoices()
+    {
+        return Choices.Types;
+    }
+
 
     public int Size()
     {

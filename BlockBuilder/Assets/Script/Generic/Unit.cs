@@ -115,7 +115,7 @@ public class Unit<P, T>
     {
         PreSelect();
         Unify();
-        AfterSelect();
+        //AfterSelect();
         //Unify();
     }
 

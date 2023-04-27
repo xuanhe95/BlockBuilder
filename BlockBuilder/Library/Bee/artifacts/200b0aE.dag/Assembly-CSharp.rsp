@@ -372,6 +372,7 @@
 "Assets/Script/Generic/Scaler.cs"
 "Assets/Script/Generic/Unit.cs"
 "Assets/Script/GroupCollider.cs"
+"Assets/Script/Types.cs"
 -langversion:9.0
 
 /deterministic
