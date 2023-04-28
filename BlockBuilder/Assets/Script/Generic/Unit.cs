@@ -8,12 +8,27 @@ public class Unit<P, T>
     public int ID;
     public P Vector; //hold position models
     public T Type;  //hold graphic models
+
+    
     public Choice<T> Choices;  // choices now had
     public Group<P, T> Group{get; set;}
 
     public Unit<P, T>[] Relatives{get; set;}
     public Level<P, T> Level{get; set;}   // point to level
     private bool selected;
+
+    public Unit(int id, P vector, Choice<T> choices, Level<P, T> level)
+    {
+        ID = id;
+        Vector = vector;
+        //Type = null;
+        Choices = choices;
+        Level = level;
+        Relatives = new Unit<P, T>[6];
+        selected = false;
+        Group = null;
+    }
+
 
     public Unit(int id, P vector, T type, Choice<T> choices, Level<P, T> level)
     {
@@ -34,6 +49,11 @@ public class Unit<P, T>
         //Debug.Log("SET TYPE " + Type);
         selected = true;
         return true;
+    }
+
+    public void SetType(T type)
+    {
+        Type = type;
     }
 
     public bool SetType(int i)
@@ -163,9 +183,5 @@ public class Unit<P, T>
         }
     }
 
-    public void SetType(T type)
-    {
-        Type = type;
-    }
 }
 

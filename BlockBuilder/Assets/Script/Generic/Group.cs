@@ -10,11 +10,13 @@ public partial class Group<P, T>
     public List<Unit<P, T>> Units { get; set; }
     public Choice<T> Choices { get; set; }
 
-    public Group(int id, T type)
+    public Group(int id, List<T> types)
     {
-        Type = type;
+        Types = types;
         ID = id;
         Units = new List<Unit<P, T>>();
+
+        //Debug.Log(Types);
     }
 
     public void AddSubTypes(List<T> types)
@@ -41,7 +43,7 @@ public partial class Group<P, T>
 
     public T GetObject()
     {
-        return Type;
+        return Types[0];
     }
 
     public Unit<P, T> GetUnit(int id)

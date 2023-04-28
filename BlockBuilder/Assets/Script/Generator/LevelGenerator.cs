@@ -8,8 +8,11 @@ public partial class Generator : MonoBehaviour
     {
         Choice<GameObject> choices = ChoiceGenerator();
         for(int i = 0; i < height; i++){
-            if(i == 0) levels.Add(LevelGenerator(i, width, length, 2, choices, baseRule));
-            else 
+            if(i == 0)  // base level
+            {
+                levels.Add(LevelGenerator(i, width, length, 2, choices, baseRule));
+            }
+            else    // rest levels
             {
                 Level<GameObject, GameObject> downLevel = levels[levels.Count - 1];
                 Level<GameObject, GameObject> upLevel = LevelGenerator(i, width, length, 2, choices, midRule);
@@ -23,10 +26,6 @@ public partial class Generator : MonoBehaviour
                     upUnit.Relatives[Direction.Down] = downUnit;
                     downUnit.Relatives[Direction.Up] = upUnit;
                 }
-
-
-
-
                 levels.Add(upLevel);
             }
         }
@@ -38,7 +37,8 @@ public partial class Generator : MonoBehaviour
         Level<GameObject, GameObject> level = new Level<GameObject, GameObject>(levelID, width, length, height);
         //levels.Add(level);
         level.SetRule(rule);
-        GameObject go = levelID == 0 ? Water : Empty;
+        //GameObject go = levelID == 0 ? Water : Empty;
+
         for(int i = 0; i < width; i++)
         {
             Unit<GameObject, GameObject> backUnit = null;
@@ -48,7 +48,7 @@ public partial class Generator : MonoBehaviour
                 //location.transform.rotation = Quaternion.Euler(0f,90f,0f);
                 location.transform.position = new Vector3(i, levelID, j);
                 Unit<GameObject, GameObject> unit = 
-                new Unit<GameObject, GameObject>(id, location, go, choices, level);
+                new Unit<GameObject, GameObject>(id, location, choices, level);
                 level.AddUnit(unit);
 
                 if(backUnit != null) backUnit.Relatives[Direction.Forward] = unit;
@@ -76,19 +76,20 @@ public partial class Generator : MonoBehaviour
             for(int j = 0; j < length; j+=2)
             {
                 Group<GameObject, GameObject> group =
-                new Group<GameObject, GameObject>(i*length/2+j/2, GroupType);
+                new Group<GameObject, GameObject>(i*length/2+j/2, Waters);
                 group.AddUnit(level.Units[i * length + j]);
                 group.AddUnit(level.Units[i * length + j+1]);
                 group.AddUnit(level.Units[(i+1)*length + j]);
                 group.AddUnit(level.Units[(i+1)*length + j + 1]);
 
-
-                SetRotation(group.GetUnit(2), 0f, 0f, 0f);
-                SetRotation(group.GetUnit(0), 0f, 90f, 0f);
-                SetRotation(group.GetUnit(1), 0f, 180f, 0f);
+                SetRotation(group.GetUnit(0), 0f, 0f, 0f);
+                SetRotation(group.GetUnit(1), 0f, 90f, 0f);
+                SetRotation(group.GetUnit(2), 0f, 180f, 0f);
                 SetRotation(group.GetUnit(3), 0f, 270f, 0f);
 
                 level.Groups.Add(i*length/2+j/2, group);
+
+                group.SetTypes();
             }
         }
 

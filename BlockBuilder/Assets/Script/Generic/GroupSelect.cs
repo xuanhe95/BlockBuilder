@@ -51,4 +51,16 @@ public partial class Group<P, T>
     {
         return Choices.Types[id];
     }
+
+
+
+
+    public void SetTypes()
+    {
+        for(int i = 1; i < Types.Count; i++)
+        {
+            Units[i-1].SetType(Types[i]);
+        }
+        Debug.Log("SET TYPE " + Types[0]);
+    }
 }

@@ -6,7 +6,6 @@ public class LevelGenerator : MonoBehaviour
 {
     public static LevelGenerator instance;
     public int width = 5;
-
     public int height = 10;
 
     public GridElement gridElement;

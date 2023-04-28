@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeoPicker : MonoBehaviour
+public class GeoPicker
 {
-    public GameObject Obj;
-    
-    void Start()
-    {
-        List<GameObject>go = ReadListFromGeo(Obj);
-        foreach (var VARIABLE in go)
-        {
-            Instantiate(VARIABLE, transform.position, Quaternion.identity);
-        }
-    }
+    // public GameObject Obj;
 
-    public List<GameObject> ReadListFromGeo(GameObject GOtoRead)
+    // GeoPicker(GameObject go)
+    // {
+    //     Obj = go;
+    // }
+    
+    // public void Start()
+    // {
+    //     List<GameObject>go = ReadListFromGeo(Obj);
+    //     foreach (var VARIABLE in go)
+    //     {
+    //         Instantiate(VARIABLE, transform.position, Quaternion.identity);
+    //     }
+    // }
+
+    public List<GameObject> ReadListFrom(GameObject GOtoRead)
     {
         List<GameObject> meshGO = new List<GameObject>();
         GameObject thisGroup = new GameObject();

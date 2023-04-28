@@ -8,7 +8,7 @@ public partial class Generator : MonoBehaviour
 
     void Instantiator()
     {
-        print("Instantiator Called");
+        //print("Instantiator Called");
         if (InstantiatedGo.Count > 0)
         {
             foreach (var o in InstantiatedGo)
@@ -35,17 +35,17 @@ public partial class Generator : MonoBehaviour
                 //InstantiatedUnit.Add(unit);
             }
 
-            foreach (Group<GameObject, GameObject> group in level.Groups.Values)
-            {
-                if (group.GetType() != Empty)
-                {
-                    GameObject GroupCollider = Instantiate(group.GetObject(),
-                        group.Units[0].GetVector().transform.position, Quaternion.identity);
-                    GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
-                    GroupColliders.Add(GroupCollider);
-                }
+            // foreach (Group<GameObject, GameObject> group in level.Groups.Values)
+            // {
+            //     if (group.GetType() != Empty)
+            //     {
+            //         GameObject GroupCollider = Instantiate(group.GetObject(),
+            //             group.Units[0].GetVector().transform.position, Quaternion.identity);
+            //         GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
+            //         GroupColliders.Add(GroupCollider);
+            //     }
 
-            }
+            // }
         }
     }
 

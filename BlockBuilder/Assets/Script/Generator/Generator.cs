@@ -5,14 +5,6 @@ using System;
 
 public partial class Generator : MonoBehaviour
 {
-    public List<GameObject> Waters;
-    public List<GameObject> Sands;
-    public List<GameObject> Lands;
-    public List<GameObject> Trees;
-    public List<GameObject> Emptys;
-
-
-
     //Base
     public GameObject Water;
     public GameObject Land;
@@ -43,7 +35,7 @@ public partial class Generator : MonoBehaviour
 
     //public GameObject Empty;
     public GameObject Ground;
-    public GameObject GroupType;
+    //public GameObject GroupType;
     private List<Level<GameObject, GameObject>> levels = new List<Level<GameObject, GameObject>>();
 
 
@@ -51,12 +43,15 @@ public partial class Generator : MonoBehaviour
     private List<Unit<GameObject, GameObject>> InstantiatedUnit = new List<Unit<GameObject, GameObject>>();
     public GameObject meshAll;
     private Dictionary<int, Mesh> meshDic = new Dictionary<int, Mesh>();
-
+    private GeoPicker picker;
     // Start is called before the first frame update
     void Start()
     {
+        picker = new GeoPicker();
+
         //rd = new System.Random();
         GenerateRules();
+        generateMeshs();
         LevelBuilder(10,12,8);
         
         //Debug.Log(levels.Count);
