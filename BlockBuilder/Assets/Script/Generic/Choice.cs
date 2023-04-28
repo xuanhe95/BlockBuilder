@@ -9,15 +9,22 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
     public Choice()
     {
         Types = new List<T>();
+        ListedTypes = new List<List<T>>();
+    }
+    public void Add(List<T> listedType)
+    {
+        if(listedType == null) return;
+        ListedTypes.Add(listedType);
+    }
+    public void RemoveAll(List<T> listedType)
+    {
+        ListedTypes.RemoveAll(data => listedType.Equals(data));
     }
 
     public void Add(T type){
         Types.Add(type);
     }
-    public void Add(List<T> listedType)
-    {
-        ListedTypes.Add(listedType);
-    }
+
 
     public void Add(T type, int times){
         for(int i = 0; i < times; i++){
@@ -31,10 +38,7 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
         Types.RemoveAll(data => type.Equals(data) );
     }
 
-    public void RemoveAll(List<T> listedType)
-    {
-        ListedTypes.RemoveAll(data => listedType.Equals(data));
-    }
+
 
     public T GetRandomType(System.Random random){
         return Types[random.Next(Types.Count)];

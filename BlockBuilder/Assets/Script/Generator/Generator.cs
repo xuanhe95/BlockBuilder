@@ -26,10 +26,6 @@ public partial class Generator : MonoBehaviour
     Rule<GameObject> baseRule = new Rule<GameObject>(); 
     Rule<GameObject> midRule = new Rule<GameObject>();
 
-
-    public List<GameObject> Choices;
-
-
     public List<List<GameObject>> ListedChoices;
 
 
@@ -50,8 +46,9 @@ public partial class Generator : MonoBehaviour
         picker = new GeoPicker();
 
         //rd = new System.Random();
+        GenerateMeshs();
         GenerateRules();
-        generateMeshs();
+
         LevelBuilder(10,12,8);
         
         //Debug.Log(levels.Count);

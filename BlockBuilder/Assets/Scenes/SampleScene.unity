@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -897,51 +897,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 30
---- !u!1 &1245439845
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1245439847}
-  - component: {fileID: 1245439846}
-  m_Layer: 0
-  m_Name: Geo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1245439846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245439845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ec749f000d3c57428a85aec83581a19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Obj: {fileID: 919132149155446097, guid: de195aead23a9194b8a2967b330316ba, type: 3}
---- !u!4 &1245439847
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245439845}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4073447, y: 0.4651289, z: 0.55723333}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1399872355
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,12 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80836ffc10d4d47ba9a54978a4943e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Waters: []
-  Sands: []
-  Lands: []
-  Trees: []
-  Emptys: []
-  Water: {fileID: 4064767890449205176, guid: 529695ab3569b44f899ca0ad485caac5, type: 3}
+  Water: {fileID: 919132149155446097, guid: de195aead23a9194b8a2967b330316ba, type: 3}
   Land: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
   Bridge: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
   Building1: {fileID: 4064767890449205176, guid: 6dc0cf82b9961491fa0d55488cd63a31, type: 3}
@@ -1002,14 +952,5 @@ MonoBehaviour:
   Empty: {fileID: 4064767890449205176, guid: 69a9be310e0b34c86908116cd3e253db, type: 3}
   Sand: {fileID: 4064767890449205176, guid: b30fb5682350d4807b06f4ac7b0ad8d0, type: 3}
   Tree: {fileID: 4064767890449205176, guid: b835e14b9b99346a2b7fca4222eb188f, type: 3}
-  Choices:
-  - {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
-  - {fileID: 4064767890449205176, guid: 3baf609106cb14436bb1c7b89e718c22, type: 3}
-  - {fileID: 4064767890449205176, guid: b30fb5682350d4807b06f4ac7b0ad8d0, type: 3}
-  - {fileID: 4064767890449205176, guid: b835e14b9b99346a2b7fca4222eb188f, type: 3}
-  - {fileID: 4064767890449205176, guid: 6dc0cf82b9961491fa0d55488cd63a31, type: 3}
-  - {fileID: 4064767890449205176, guid: 949da21bd1f6745f0b4e56948ef6a7fa, type: 3}
-  - {fileID: 4064767890449205176, guid: 529695ab3569b44f899ca0ad485caac5, type: 3}
   Ground: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
-  GroupType: {fileID: 3471533950867280208, guid: 1405f2c6e880c9440b7e865c1f083226, type: 3}
   meshAll: {fileID: 0}
