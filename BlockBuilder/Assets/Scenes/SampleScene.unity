@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -941,15 +941,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80836ffc10d4d47ba9a54978a4943e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Water: {fileID: 919132149155446097, guid: de195aead23a9194b8a2967b330316ba, type: 3}
-  Land: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
+  Water: {fileID: 8536340266247955374, guid: 61603014e35b6a041b8cc166301a7422, type: 3}
+  Land: {fileID: 5891887969008597611, guid: b1bfa65bd8036404b9251bd39b6545c1, type: 3}
   Bridge: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}
-  Building1: {fileID: 4064767890449205176, guid: 6dc0cf82b9961491fa0d55488cd63a31, type: 3}
+  Building1: {fileID: 1825253400605684802, guid: e70b6387f3a80434d9df2d9d21b1ed8e, type: 3}
   Building2: {fileID: 4064767890449205176, guid: 949da21bd1f6745f0b4e56948ef6a7fa, type: 3}
   Terrace1: {fileID: 0}
   Terrace2: {fileID: 0}
   Roof: {fileID: 4064767890449205176, guid: 3baf609106cb14436bb1c7b89e718c22, type: 3}
-  Empty: {fileID: 4064767890449205176, guid: 69a9be310e0b34c86908116cd3e253db, type: 3}
+  Empty: {fileID: 8536340266247955374, guid: 3e18c80e5ecaafc408bcbf27c8b91023, type: 3}
   Sand: {fileID: 4064767890449205176, guid: b30fb5682350d4807b06f4ac7b0ad8d0, type: 3}
   Tree: {fileID: 4064767890449205176, guid: b835e14b9b99346a2b7fca4222eb188f, type: 3}
   Ground: {fileID: 4064767890449205176, guid: 663de328ec9a444d299b1a8b82549e3f, type: 3}

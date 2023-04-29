@@ -10,12 +10,12 @@ public partial class Generator : MonoBehaviour
         for(int i = 0; i < height; i++){
             if(i == 0)  // base level
             {
-                levels.Add(LevelGenerator(i, width, length, 2, choices, baseRule));
+                levels.Add(LevelGenerator(i, width, length, 2, Waters, choices, baseRule));
             }
             else    // rest levels
             {
                 Level<GameObject, GameObject> downLevel = levels[levels.Count - 1];
-                Level<GameObject, GameObject> upLevel = LevelGenerator(i, width, length, 2, choices, midRule);
+                Level<GameObject, GameObject> upLevel = LevelGenerator(i, width, length, 2, Emptys, choices, midRule);
                 downLevel.Up = upLevel;
                 upLevel.Down = downLevel;
 
@@ -31,7 +31,7 @@ public partial class Generator : MonoBehaviour
         }
     }
 
-    Level<GameObject, GameObject> LevelGenerator(int levelID, int width, int length, double height, Choice<GameObject> choices, Rule<GameObject> rule)
+    Level<GameObject, GameObject> LevelGenerator(int levelID, int width, int length, double height, List<GameObject> initGo, Choice<GameObject> choices, Rule<GameObject> rule)
     {
         int id = 0;
         Level<GameObject, GameObject> level = new Level<GameObject, GameObject>(levelID, width, length, height);
@@ -76,7 +76,7 @@ public partial class Generator : MonoBehaviour
             for(int j = 0; j < length; j+=2)
             {
                 Group<GameObject, GameObject> group =
-                new Group<GameObject, GameObject>(i*length/2+j/2, Waters);
+                new Group<GameObject, GameObject>(i*length/2+j/2, initGo);
                 group.AddUnit(level.Units[i * length + j]);
                 group.AddUnit(level.Units[i * length + j+1]);
                 group.AddUnit(level.Units[(i+1)*length + j]);
