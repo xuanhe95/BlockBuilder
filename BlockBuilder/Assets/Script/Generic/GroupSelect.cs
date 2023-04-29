@@ -7,13 +7,13 @@ public partial class Group<P, T>
 {
     public void Regulate(System.Random random)
     {
-        HashSet<T> allowedTypesForLeft = GetLevel().Rules.Conditions[GetLeft().Type];
-        HashSet<T> allowedTypesForRight = GetLevel().Rules.Conditions[GetRight().Type];
-        HashSet<T> allowedTypesForForward = GetLevel().Rules.Conditions[GetForward().Type];
-        HashSet<T> allowedTypesForBack = GetLevel().Rules.Conditions[GetBack().Type];
+        HashSet<Type<T>> allowedTypesForLeft = GetLevel().Rules.Conditions[GetLeft().Type];
+        HashSet<Type<T>> allowedTypesForRight = GetLevel().Rules.Conditions[GetRight().Type];
+        HashSet<Type<T>> allowedTypesForForward = GetLevel().Rules.Conditions[GetForward().Type];
+        HashSet<Type<T>> allowedTypesForBack = GetLevel().Rules.Conditions[GetBack().Type];
 
-        HashSet<T> allowedTypesForUp = GetLevel().Rules.UpConditions[GetUp().Type];
-        HashSet<T> allowedTypesForDown = GetLevel().Rules.DownConditions[GetDown().Type];
+        HashSet<Type<T>> allowedTypesForUp = GetLevel().Rules.UpConditions[GetUp().Type];
+        HashSet<Type<T>> allowedTypesForDown = GetLevel().Rules.DownConditions[GetDown().Type];
 
         List<T> choices = new List<T>();
         foreach(T type in choices)
@@ -47,7 +47,7 @@ public partial class Group<P, T>
         Debug.Log("SET TYPE " + Type);
     }
 
-    public T GetType(int id)
+    public Type<T> GetType(int id)
     {
         return Choices.Types[id];
     }
@@ -57,10 +57,10 @@ public partial class Group<P, T>
 
     public void SetTypes()
     {
-        for(int i = 1; i < Types.Count; i++)
+        for(int i = 1; i < Type.Types.Count; i++)
         {
-            Units[i-1].SetType(Types[i]);
+            Units[i-1].SetType(Type.Types[i]);
         }
-        Debug.Log("SET TYPE " + Types[0]);
+        Debug.Log("SET TYPE " + Type.GetName());
     }
 }

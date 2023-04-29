@@ -5,29 +5,28 @@ using UnityEngine;
 public partial class Generator
 {
 
-    private List<GameObject> Waters;
-    private List<GameObject> Sands;
-    private List<GameObject> Lands;
-    private List<GameObject> Trees;
-    private List<GameObject> Emptys;
-    private List<List<GameObject>> Meshes;
+    private Type<GameObject> Waters;
+    private Type<GameObject> Sands;
+    private Type<GameObject> Lands;
+    private Type<GameObject> Trees;
+    private Type<GameObject> Emptys;
+    private List<Type<GameObject>> Meshes;
 
     public void GenerateMeshs()
     {
-        Emptys = picker.ReadListFrom(Empty);
-        Waters = picker.ReadListFrom(Water);
-        Sands = picker.ReadListFrom(Sand);
-        Lands = picker.ReadListFrom(Land);
-        Trees = picker.ReadListFrom(Tree);
+        Emptys = new Type<GameObject>(picker.ReadListFrom(Empty));
+        Waters = new Type<GameObject>(picker.ReadListFrom(Water));
+        Sands = new Type<GameObject>(picker.ReadListFrom(Sand));
+        Lands = new Type<GameObject>(picker.ReadListFrom(Land));
+        Trees = new Type<GameObject>(picker.ReadListFrom(Tree));
 
-        Meshes = new List<List<GameObject>>();
+        Meshes = new List<Type<GameObject>>();
 
-        //Meshes.Add(Emptys);
+        Meshes.Add(Emptys);
         Meshes.Add(Waters);
-        Debug.Log(Meshes[0]);
-        //Meshes.Add(Sands);
-        //Meshes.Add(Lands);
-        //Meshes.Add(Trees);
+        Meshes.Add(Sands);
+        Meshes.Add(Lands);
+        Meshes.Add(Trees);
 
     }
 }

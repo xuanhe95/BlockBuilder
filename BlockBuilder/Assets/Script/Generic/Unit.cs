@@ -42,27 +42,9 @@ public class Unit<P, T>
         Group = null;
     }
 
-    public bool SetRandomType(System.Random random)
-    {
-        //if(selected) return false;
-        Type = Choices.GetRandomType(random);
-        //Debug.Log("SET TYPE " + Type);
-        selected = true;
-        return true;
-    }
-
     public void SetType(T type)
     {
         Type = type;
-    }
-
-    public bool SetType(int i)
-    {
-        //if(selected) return false;
-        Type = Choices.GetType(i);
-        Debug.Log("SET TYPE " + Type);
-        selected = true;
-        return true;
     }
 
     public bool isSelected()
@@ -81,107 +63,107 @@ public class Unit<P, T>
     {
         return Type;
     }
-    public void PreSelect()
-    {
-        if(selected) return;
-        Unify();
+    // public void PreSelect()
+    // {
+    //     if(selected) return;
+    //     Unify();
 
 
 
 
 
-        for(int i = 0; i < 4; i++)
-        {
-            Unit<P, T> relative = Relatives[i];
-            //Debug.Log("CHECK" + relative);
-            if(relative == null){
-                //Debug.Log("wrong");
-                continue;
-            }
-            if(relative.Group == Group) continue;
+    //     for(int i = 0; i < 4; i++)
+    //     {
+    //         Unit<P, T> relative = Relatives[i];
+    //         //Debug.Log("CHECK" + relative);
+    //         if(relative == null){
+    //             //Debug.Log("wrong");
+    //             continue;
+    //         }
+    //         if(relative.Group == Group) continue;
             
 
-            foreach(T type in Level.Rules.Conditions.Keys)
-            {
-                //Debug.Log("TYPE CHECK");
-                //Debug.Log(type);
-            }
+    //         foreach(T type in Level.Rules.Conditions.Keys)
+    //         {
+    //             //Debug.Log("TYPE CHECK");
+    //             //Debug.Log(type);
+    //         }
 
-            HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
-            Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
-            //移除所有不在规则里的
-        }
-        Debug.Log(Relatives[Direction.Down]);
-        HashSet<T> allowedTypesForUp = Level.Rules.UpConditions[Relatives[Direction.Down].Type];
-        foreach(T go in allowedTypesForUp)
-        {
-            Debug.Log(go);
-        }
-        Choices.Types.RemoveAll(type => !allowedTypesForUp.Contains(type));
-
-
+    //         HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
+    //         Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
+    //         //移除所有不在规则里的
+    //     }
+    //     Debug.Log(Relatives[Direction.Down]);
+    //     HashSet<T> allowedTypesForUp = Level.Rules.UpConditions[Relatives[Direction.Down].Type];
+    //     foreach(T go in allowedTypesForUp)
+    //     {
+    //         Debug.Log(go);
+    //     }
+    //     Choices.Types.RemoveAll(type => !allowedTypesForUp.Contains(type));
 
 
-        //SetRandomType(random);
+
+
+    //     //SetRandomType(random);
         
 
 
 
-        //Up.Choices.Types.RemoveAll(type => !Level.Rules.UpConditions[Type].Contains(type));
-        //Down.Choices.Types.RemoveAll(type => !Level.Rules.DownConditions[Type].Contains(type));
-    }
+    //     //Up.Choices.Types.RemoveAll(type => !Level.Rules.UpConditions[Type].Contains(type));
+    //     //Down.Choices.Types.RemoveAll(type => !Level.Rules.DownConditions[Type].Contains(type));
+    // }
 
-    public void Select()
-    {
-        PreSelect();
-        Unify();
-        //AfterSelect();
-        //Unify();
-    }
+    // public void Select()
+    // {
+    //     PreSelect();
+    //     Unify();
+    //     //AfterSelect();
+    //     //Unify();
+    // }
 
 
-    public void AfterSelect()
-    {
+    // public void AfterSelect()
+    // {
         
 
-        foreach(Unit<P, T> relative in Relatives)
-        {
-            if(relative == null) continue;
-            if(relative.Group == Group) continue;
-            HashSet<T> allowedTypes = Level.Rules.Conditions[Type];
-            relative.Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
-            //移除所有不在规则里的
-        }
+    //     foreach(Unit<P, T> relative in Relatives)
+    //     {
+    //         if(relative == null) continue;
+    //         if(relative.Group == Group) continue;
+    //         HashSet<T> allowedTypes = Level.Rules.Conditions[Type];
+    //         relative.Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
+    //         //移除所有不在规则里的
+    //     }
 
 
         
 
-    }
+    // }
 
 
-    public void Unify()
-    {
-        foreach(Unit<P, T> relative in Relatives)
-        {
-            if(relative == null)
-            {
-                continue;
-            }
-            if(relative.Group != Group) continue;
+    // public void Unify()
+    // {
+    //     foreach(Unit<P, T> relative in Relatives)
+    //     {
+    //         if(relative == null)
+    //         {
+    //             continue;
+    //         }
+    //         if(relative.Group != Group) continue;
 
 
 
-            //foreach(T type in relative.Choices.Types)
-            //{
-                Choices.Types.RemoveAll(type => !relative.Choices.Types.Contains(type));
-            //}
+    //         //foreach(T type in relative.Choices.Types)
+    //         //{
+    //             Choices.Types.RemoveAll(type => !relative.Choices.Types.Contains(type));
+    //         //}
 
 
-            //HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
-            //Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
-            //移除所有不在规则里的
-        }
-    }
+    //         //HashSet<T> allowedTypesForThis = Level.Rules.Conditions[relative.Type];
+    //         //Choices.Types.RemoveAll(type => !allowedTypesForThis.Contains(type));
+    //         //移除所有不在规则里的
+    //     }
+    // }
 
 }
 

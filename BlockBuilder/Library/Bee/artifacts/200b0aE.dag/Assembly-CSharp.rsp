@@ -370,6 +370,7 @@
 "Assets/Script/Generic/Rule.cs"
 "Assets/Script/Generic/RuleGenerator.cs"
 "Assets/Script/Generic/Scaler.cs"
+"Assets/Script/Generic/Type.cs"
 "Assets/Script/Generic/Unit.cs"
 "Assets/Script/Geometry/GeoPicker.cs"
 "Assets/Script/GroupCollider.cs"

@@ -14,8 +14,6 @@ public class Level<P, T>
     public Level<P, T> Up {get; set;}
     public Level<P, T> Down {get; set;}
 
-
-
     //public Possibility<T> choices;
     public Level(int level, int width, int length, double height){
         ID = level;
@@ -42,11 +40,6 @@ public class Level<P, T>
         return true;
     }
     public bool SetRule(Rule<T> rule){
-        //if(Rules != null) return false;
-        foreach(T type in rule.Conditions.Keys)
-        {
-            //Debug.Log("Added: " + type);
-        }
         Rules = rule;
         return true;
     }

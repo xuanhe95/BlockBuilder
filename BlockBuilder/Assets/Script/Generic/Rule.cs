@@ -4,74 +4,39 @@ using UnityEngine;
 
 public class Rule<T>
 {  // 每个level有一条rule
-    public Dictionary<T, HashSet<T>> Conditions{get; set;}
-    public Dictionary<T, HashSet<T>> UpConditions{get; set;}
-    public Dictionary<T, HashSet<T>> DownConditions{get; set;}
+    public Dictionary<Type<T>, HashSet<Type<T>>> Conditions{get; set;}
+    public Dictionary<Type<T>, HashSet<Type<T>>> UpConditions{get; set;}
+    public Dictionary<Type<T>, HashSet<Type<T>>> DownConditions{get; set;}
     public Rule()
     {
-        Conditions = new Dictionary<T, HashSet<T>>();
-        UpConditions = new Dictionary<T, HashSet<T>>();
-        DownConditions = new Dictionary<T, HashSet<T>>();
+        Conditions = new Dictionary<Type<T>, HashSet<Type<T>>>();
+        UpConditions = new Dictionary<Type<T>, HashSet<Type<T>>>();
+        DownConditions = new Dictionary<Type<T>, HashSet<Type<T>>>();
     }
 //*
-    public bool AddRule(T type, T connection)
+    public bool AddRule(Type<T> type, Type<T> connection)
     {   
 
         if(!Conditions.ContainsKey(type))
         {
-            Conditions.Add(type, new HashSet<T>());
+            Conditions.Add(type, new HashSet<Type<T>>());
         }
         return Conditions[type].Add(connection);
 
     }
-
-    public void AddRule(List<T> types, List<T> connections)
-    {
-        AddRule(types[0], connections[0]);
-    }
-
-    public void AddUpRule(List<T> types, List<T> connections)
-    {
-        AddUpRule(types[0], connections[0]);
-    }
-
-
-    public bool AddUpRule(T type, T connection)
+    public bool AddUpRule(Type<T> type, Type<T> connection)
     {   
 
         if(!UpConditions.ContainsKey(type))
         {
-            UpConditions.Add(type, new HashSet<T>());
+            UpConditions.Add(type, new HashSet<Type<T>>());
         }
         return UpConditions[type].Add(connection);
 
     }
-    //*/
-    public bool AddRule(T type, HashSet<T> adjType)
+
+    public bool AddDownRule(Type<T> type, Type<T> connection)
     {
-        if(Conditions.ContainsKey(type)) return false;
-        Conditions.Add(type, adjType);
         return true;
-    }
-
-    public bool AddUpRule(T type, HashSet<T> adjType)
-    {
-        if(UpConditions.ContainsKey(type)) return false;
-        UpConditions.Add(type, adjType);
-        return true;
-    }
-
-    public bool AddDownRule(T type, HashSet<T> adjType)
-    {
-        if(DownConditions.ContainsKey(type)) return false;
-        DownConditions.Add(type, adjType);
-        return true;
-    }
-
-
-
-    public bool ClearRule(T type)
-    {
-        return Conditions.Remove(type);
     }
 }

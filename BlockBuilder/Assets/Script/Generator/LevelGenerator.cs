@@ -31,7 +31,7 @@ public partial class Generator : MonoBehaviour
         }
     }
 
-    Level<GameObject, GameObject> LevelGenerator(int levelID, int width, int length, double height, List<GameObject> initGo, Choice<GameObject> choices, Rule<GameObject> rule)
+    Level<GameObject, GameObject> LevelGenerator(int levelID, int width, int length, double height, Type<GameObject> initGo, Choice<GameObject> choices, Rule<GameObject> rule)
     {
         int id = 0;
         Level<GameObject, GameObject> level = new Level<GameObject, GameObject>(levelID, width, length, height);

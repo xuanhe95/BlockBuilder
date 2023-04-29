@@ -13,7 +13,7 @@ public partial class Generator : MonoBehaviour
         //choices.Add(Lands);
         //choices.Add(Trees);
 
-        foreach(List<GameObject> listedType in Meshes)
+        foreach(Type<GameObject> listedType in Meshes)
         {
             if(listedType == null) continue;
             choices.Add(listedType);
