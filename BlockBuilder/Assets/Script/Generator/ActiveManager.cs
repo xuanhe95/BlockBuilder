@@ -47,7 +47,7 @@ public partial class Generator : MonoBehaviour
                 {
                     GameObject GroupCollider = Instantiate(collider,
                         group.Units[0].GetVector().transform.position - new Vector3(0.5f,0,0.5f), Quaternion.identity);
-                    print(GroupCollider);
+                    //print(GroupCollider);
                     GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
                     //GroupColliders.Add(GroupCollider);
                 }

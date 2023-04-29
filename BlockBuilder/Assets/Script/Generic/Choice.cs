@@ -19,7 +19,10 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
     }
 
     public Type<T> GetRandomType(System.Random random){
-        return Types[random.Next(Types.Count)];
+        Debug.Log(Types.Count);
+        Type<T> type = Types[random.Next(Types.Count)];
+        //Debug.Log(type);
+        return type;
     }
 
     public Type<T> GetType(int i)

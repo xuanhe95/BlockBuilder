@@ -12,22 +12,16 @@ public partial class Group<P, T>
         HashSet<Type<T>> allowedTypesForForward = GetLevel().Rules.Conditions[GetForward().Type];
         HashSet<Type<T>> allowedTypesForBack = GetLevel().Rules.Conditions[GetBack().Type];
 
-        HashSet<Type<T>> allowedTypesForUp = GetLevel().Rules.UpConditions[GetUp().Type];
-        HashSet<Type<T>> allowedTypesForDown = GetLevel().Rules.DownConditions[GetDown().Type];
-
-        List<T> choices = new List<T>();
-        foreach(T type in choices)
-        {
-            choices.Add(type);
-        }
+        HashSet<Type<T>> allowedTypesForDown = GetLevel().Rules.UpConditions[GetDown().Type];
+        //HashSet<Type<T>> allowedTypesForDown = GetLevel().Rules.DownConditions[GetDown().Type];
 
         Choices.Types.RemoveAll(type => !allowedTypesForLeft.Contains(type));
         Choices.Types.RemoveAll(type => !allowedTypesForRight.Contains(type));
         Choices.Types.RemoveAll(type => !allowedTypesForForward.Contains(type));
         Choices.Types.RemoveAll(type => !allowedTypesForBack.Contains(type));
-        Choices.Types.RemoveAll(type => !allowedTypesForUp.Contains(type));
+        Choices.Types.RemoveAll(type => !allowedTypesForDown.Contains(type));
 
-        SetRandomType(random);
+        //SetRandomType(random);
         //GetLeft().Choices.Types;
     }
 
@@ -38,6 +32,7 @@ public partial class Group<P, T>
 
     public void SetRandomType(System.Random random)
     {
+        Debug.Log("Tst");
         Type = Choices.GetRandomType(random);
         Debug.Log("SET TYPE " + Type);
         SetTypes();

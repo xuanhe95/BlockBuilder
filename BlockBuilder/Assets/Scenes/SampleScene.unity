@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -952,5 +952,5 @@ MonoBehaviour:
   Terrace2: {fileID: 0}
   Roof: {fileID: 4064767890449205176, guid: 3baf609106cb14436bb1c7b89e718c22, type: 3}
   Empty: {fileID: 8536340266247955374, guid: 3e18c80e5ecaafc408bcbf27c8b91023, type: 3}
-  Sand: {fileID: 4064767890449205176, guid: b30fb5682350d4807b06f4ac7b0ad8d0, type: 3}
-  Tree: {fileID: 4064767890449205176, guid: b835e14b9b99346a2b7fca4222eb188f, type: 3}
+  Sand: {fileID: 7267987929096762572, guid: 5378cb8a49ab77f42a9a53d5f39f3c6b, type: 3}
+  Tree: {fileID: 3546575603583193904, guid: 877835183728528439f324ea663e2db8, type: 3}

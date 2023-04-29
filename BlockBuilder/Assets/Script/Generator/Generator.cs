@@ -28,12 +28,12 @@ public partial class Generator : MonoBehaviour
     void Start()
     {
         
-
+        
         //rd = new System.Random();
         GenerateMeshs();
         GenerateRules();
 
-        LevelBuilder(10,12,8);
+        LevelBuilder(16,14,8);
         
         //Debug.Log(levels.Count);
         // PrintRules();

@@ -8,16 +8,16 @@ public partial class Generator : MonoBehaviour
 
     void LevelBuilder(int width, int length, int height)
     {
-        Choice<GameObject> choices = ChoiceGenerator();
+        //Choice<GameObject> choices = ChoiceGenerator();
         for(int i = 0; i < height; i++){
             if(i == 0)  // base level
             {
-                levels.Add(LevelGenerator(i, width, length, 2, Waters, choices, baseRule));
+                levels.Add(LevelGenerator(i, width, length, 2, Waters, ChoiceGenerator(), baseRule));
             }
             else    // rest levels
             {
                 Level<GameObject, GameObject> downLevel = levels[levels.Count - 1];
-                Level<GameObject, GameObject> upLevel = LevelGenerator(i, width, length, 2, Emptys, choices, midRule);
+                Level<GameObject, GameObject> upLevel = LevelGenerator(i, width, length, 2, Emptys, ChoiceGenerator(), midRule);
                 downLevel.Up = upLevel;
                 upLevel.Down = downLevel;
 
@@ -50,7 +50,7 @@ public partial class Generator : MonoBehaviour
                 //location.transform.rotation = Quaternion.Euler(0f,90f,0f);
                 location.transform.position = new Vector3(i, levelID, j);
                 Unit<GameObject, GameObject> unit = 
-                new Unit<GameObject, GameObject>(id, location, choices, level);
+                new Unit<GameObject, GameObject>(id, location, ChoiceGenerator(), level);
                 level.AddUnit(unit);
 
                 if(backUnit != null) backUnit.Relatives[Direction.Forward] = unit;
@@ -78,7 +78,7 @@ public partial class Generator : MonoBehaviour
             for(int j = 0; j < length; j+=2)
             {
                 Group<GameObject, GameObject> group =
-                new Group<GameObject, GameObject>(i*length/2+j/2, initGo);
+                new Group<GameObject, GameObject>(i*length/2+j/2, initGo, ChoiceGenerator());
                 group.AddUnit(level.Units[i * length + j]);
                 group.AddUnit(level.Units[i * length + j+1]);
                 group.AddUnit(level.Units[(i+1)*length + j]);

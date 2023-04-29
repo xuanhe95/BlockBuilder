@@ -10,10 +10,11 @@ public partial class Group<P, T>
     public List<Unit<P, T>> Units { get; set; }
     public Choice<T> Choices { get; set; }
 
-    public Group(int id, Type<T> type)
+    public Group(int id, Type<T> type, Choice<T> choice)
     {
         Type = type;
         ID = id;
+        Choices = choice;
         Units = new List<Unit<P, T>>();
     }
 
@@ -50,9 +51,12 @@ public partial class Group<P, T>
 
     public void Select(System.Random random)
     {
+        Regulate(random);
         Type = Choices.GetRandomType(random);
+        Debug.Log(Type + "Size " + Type.Types.Count);
         for(int i = 0; i < 4; i++)
         {
+            Debug.Log(Type.GetType(i));
             Units[i].SetType(Type.GetType(i));
         }
     }

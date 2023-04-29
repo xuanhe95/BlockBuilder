@@ -25,7 +25,7 @@ public partial class Generator
 
         Meshes = new List<Type<GameObject>>();
 
-        Meshes.Add(Emptys);
+        //Meshes.Add(Emptys);
         Meshes.Add(Waters);
         Meshes.Add(Sands);
         Meshes.Add(Lands);

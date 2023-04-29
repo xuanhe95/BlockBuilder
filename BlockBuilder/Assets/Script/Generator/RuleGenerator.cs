@@ -7,20 +7,25 @@ public partial class Generator : MonoBehaviour
     private Rule<GameObject> baseRule = new Rule<GameObject>(); 
     private Rule<GameObject> midRule = new Rule<GameObject>();
 
- void GenerateRules(){
+    public void GenerateRules(){
+        AddSimpleRule(midRule, Sands, Lands);
+        AddSimpleRule(midRule, Sands);
+        AddSimpleRule(midRule, Lands);
+        AddSimpleRule(midRule, Trees);
+        AddSimpleRule(midRule, Waters);
+
         AddSimpleUpRule(midRule, Waters, Sands);
         AddSimpleUpRule(midRule, Waters, Lands);
-        AddSimpleRule(midRule, Sands, Lands);
         AddSimpleUpRule(midRule, Sands, Trees);
-        AddSimpleRule(midRule, Trees);
         AddSimpleUpRule(midRule, Lands, Trees);
+        AddSimpleUpRule(midRule, Trees, Trees);
     }
 
     public void AddSimpleUpRule(Rule<GameObject> rule, Type<GameObject> baseGo, Type<GameObject> go)
     {
         rule.AddRule(Emptys, go);
-        rule.AddUpRule(baseGo, go);
         rule.AddRule(go, go);
+        rule.AddUpRule(baseGo, go);
     }
 
     public void AddSimpleRule(Rule<GameObject> rule, Type<GameObject> go)
