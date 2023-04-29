@@ -5,37 +5,98 @@ using UnityEngine;
 
 public partial class Group<P, T>
 {
-    public void Regulate(System.Random random)
+
+    public void Select(System.Random random)
     {
-        HashSet<Type<T>> allowedTypesForLeft = GetLevel().Rules.Conditions[GetLeft().Type];
-        HashSet<Type<T>> allowedTypesForRight = GetLevel().Rules.Conditions[GetRight().Type];
-        HashSet<Type<T>> allowedTypesForForward = GetLevel().Rules.Conditions[GetForward().Type];
-        HashSet<Type<T>> allowedTypesForBack = GetLevel().Rules.Conditions[GetBack().Type];
+        Regulate();
+        if(Choices.GetRandomType(random) == null) return;
+        Type = Choices.GetRandomType(random);
+        Debug.Log(Type + "Size " + Type.Types.Count);
+        for(int i = 0; i < 4; i++)
+        {
+            Debug.Log(Type.GetType(i));
+            Units[i].SetType(Type.GetType(i));
+        }
+    }
 
-        HashSet<Type<T>> allowedTypesForDown = GetLevel().Rules.UpConditions[GetDown().Type];
-        //HashSet<Type<T>> allowedTypesForDown = GetLevel().Rules.DownConditions[GetDown().Type];
+    public void Regulate()
+    {
+        HashSet<Type<T>> allowedTypes;
+        
 
-        Choices.Types.RemoveAll(type => !allowedTypesForLeft.Contains(type));
-        Choices.Types.RemoveAll(type => !allowedTypesForRight.Contains(type));
-        Choices.Types.RemoveAll(type => !allowedTypesForForward.Contains(type));
-        Choices.Types.RemoveAll(type => !allowedTypesForBack.Contains(type));
-        Choices.Types.RemoveAll(type => !allowedTypesForDown.Contains(type));
-
-        //SetRandomType(random);
-        //GetLeft().Choices.Types;
+        if(GetLeft() != null)
+        {
+            allowedTypes = GetLevel().GetRule().GetAllowedTypes(GetLeft().GetTypes(), Direction.Left);
+            if(allowedTypes != null){
+                Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
+            }
+            else
+            {
+                Choices.Types.Clear();
+            }
+        }
+        if(GetRight() != null)
+        {
+            allowedTypes = GetLevel().GetRule().GetAllowedTypes(GetRight().GetTypes(), Direction.Right);
+            if(allowedTypes != null){
+                Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
+            }
+            else
+            {
+                Choices.Types.Clear();
+            }
+        }
+        if(GetForward() != null)
+        {
+            allowedTypes = GetLevel().GetRule().GetAllowedTypes(GetForward().GetTypes(), Direction.Forward);
+            if(allowedTypes != null){
+                Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
+            }
+            else
+            {
+                Choices.Types.Clear();
+            }
+        }
+        if(GetBack() != null)
+        {
+            allowedTypes = GetLevel().GetRule().GetAllowedTypes(GetBack().GetTypes(), Direction.Back);
+            if(allowedTypes != null){
+                Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
+            }
+            else
+            {
+                Choices.Types.Clear();
+            }
+        }
+        if(GetDown() != null)
+        {
+            allowedTypes = GetLevel().GetRule().GetAllowedTypes(GetDown().GetTypes(), Direction.Down);
+            if(allowedTypes != null){
+                Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
+            }
+            else
+            {
+                Choices.Types.Clear();
+            }
+        }
+        // if(GetUp() != null)
+        // {
+        //     allowedTypes = GetLevel().GetRule().GetAllowedTypes(GetUp().GetTypes(), Direction.Up);
+        //     if(allowedTypes != null){
+        //         Choices.Types.RemoveAll(type => !allowedTypes.Contains(type));
+        //     }
+        //     else
+        //     {
+        //         Choices.Types.Clear();
+        //     }
+        // }
+        
+        
     }
 
     public Level<P, T> GetLevel()
     {
         return Units[0].Level;
-    }
-
-    public void SetRandomType(System.Random random)
-    {
-        Debug.Log("Tst");
-        Type = Choices.GetRandomType(random);
-        Debug.Log("SET TYPE " + Type);
-        SetTypes();
     }
 
     public Type<T> GetType(int id)

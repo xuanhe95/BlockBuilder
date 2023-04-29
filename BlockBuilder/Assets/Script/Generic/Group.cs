@@ -49,17 +49,11 @@ public partial class Group<P, T>
         return Units[id];
     }
 
-    public void Select(System.Random random)
+    public T GetType()
     {
-        Regulate(random);
-        Type = Choices.GetRandomType(random);
-        Debug.Log(Type + "Size " + Type.Types.Count);
-        for(int i = 0; i < 4; i++)
-        {
-            Debug.Log(Type.GetType(i));
-            Units[i].SetType(Type.GetType(i));
-        }
+        return Type.GetName();
     }
+
 
 
 

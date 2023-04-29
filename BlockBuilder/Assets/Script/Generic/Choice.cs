@@ -13,6 +13,14 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
     {
         Types.Add(type);
     }
+    public void Add(Type<T> type, int times)
+    {
+        for(int i = 0; i < times; i++)
+        {
+            Types.Add(type);
+        }
+    }
+
     public void RemoveAll(Type<T> type)
     {
         Types.RemoveAll(data => type.Equals(data));
@@ -20,6 +28,7 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
 
     public Type<T> GetRandomType(System.Random random){
         Debug.Log(Types.Count);
+        if(Types.Count == 0) return null;
         Type<T> type = Types[random.Next(Types.Count)];
         //Debug.Log(type);
         return type;

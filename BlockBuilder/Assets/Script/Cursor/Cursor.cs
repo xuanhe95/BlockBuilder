@@ -115,43 +115,45 @@ public class Cursor : MonoBehaviour
 // break;
 
             case 1:
-
-                group.FindRelativeGroup(group,Direction.Left).Select(rd);
+                Group<GameObject, GameObject> leftGroup = group.FindRelativeGroup(group, Direction.Left);
+                if(leftGroup == null) break;
+                leftGroup.Select(rd);
 
                 break;
 
             case 2:
                 
 
-                group.FindRelativeGroup(group,Direction.Right).Select(rd);
+                Group<GameObject, GameObject> rightGroup = group.FindRelativeGroup(group, Direction.Right);
+                if(rightGroup == null) break;
+                rightGroup.Select(rd);
 
                 break;
 
             case 3:
                 
-
-                group.FindRelativeGroup(group,Direction.Forward).Select(rd);
-
+                Group<GameObject, GameObject> forwardGroup = group.FindRelativeGroup(group, Direction.Forward);
+                if(forwardGroup == null) break;
+                forwardGroup.Select(rd);
                 break;
 
             case 4:
                 
-
-                group.FindRelativeGroup(group,Direction.Back).Select(rd);
-
+                Group<GameObject, GameObject> backGroup = group.FindRelativeGroup(group, Direction.Back);
+                if(backGroup == null) break;
+                backGroup.Select(rd);
                 break;
              case 5:
-
-
-    
-                group.FindRelativeGroup(group,Direction.Up).Select(rd);
+                Group<GameObject, GameObject> upGroup = group.FindRelativeGroup(group, Direction.Up);
+                if(upGroup == null) break;
+                upGroup.Select(rd);
 
                 break;
 
             case 6:
-
-                group.FindRelativeGroup(group,Direction.Down).Select(rd);
-
+                Group<GameObject, GameObject> downGroup = group.FindRelativeGroup(group, Direction.Down);
+                if(downGroup == null) break;
+                downGroup.Select(rd);
                 break;
 
         }

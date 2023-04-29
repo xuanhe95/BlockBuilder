@@ -43,6 +43,11 @@ public class Level<P, T>
         Rules = rule;
         return true;
     }
+
+    public Rule<T> GetRule()
+    {
+        return Rules;
+    }
 }
 
 

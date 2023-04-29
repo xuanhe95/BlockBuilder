@@ -4,10 +4,6 @@ using UnityEngine;
 
 public partial class Group<P, T>
 {
-    public T GetType()
-    {
-        return Type.GetName();
-    }
 
     public Group<P, T> GetAdjacentGroup(int direction)
     {
@@ -26,31 +22,43 @@ public partial class Group<P, T>
     public Group<P, T> GetLeft()
     {
         Debug.Log("get Left");
-        return Units[0].Relatives[Direction.Left].Group;
+        Unit<P, T> unit = Units[0].Relatives[Direction.Left];
+        if(unit == null) return null;
+        return unit.Group;
     }
     public Group<P, T> GetRight()
     {
         Debug.Log("get Right");
-        return Units[3].Relatives[Direction.Right].Group;
+        Unit<P, T> unit = Units[3].Relatives[Direction.Right];
+        if(unit == null) return null;
+        return unit.Group;
     }
     public Group<P, T> GetForward()
     {
         Debug.Log("get Forward");
-        return Units[3].Relatives[Direction.Forward].Group;
+        Unit<P, T> unit = Units[3].Relatives[Direction.Forward];
+        if(unit == null) return null;
+        return unit.Group;
     }
     public Group<P, T> GetBack(){
         Debug.Log("get Back");
-        return Units[0].Relatives[Direction.Back].Group;
+        Unit<P, T> unit = Units[0].Relatives[Direction.Back];
+        if(unit == null) return null;
+        return unit.Group;
     }
     public Group<P, T> GetUp()
     {
         Debug.Log("get Up");
-        return Units[0].Level.Up.Units[Units[0].ID].Group;
+        Unit<P, T> unit = Units[0].Level.Up.Units[Units[0].ID];
+        if(unit == null) return null;
+        return unit.Group;
     }
     public Group<P, T> GetDown()
     {
         Debug.Log("get Down");
-        return Units[0].Level.Down.Units[Units[0].ID].Group;
+        Unit<P, T> unit = Units[0].Level.Down.Units[Units[0].ID];
+        if(unit == null) return null;
+        return unit.Group;
     }
 
     public bool CheckEqual(T typeA, T typeB)

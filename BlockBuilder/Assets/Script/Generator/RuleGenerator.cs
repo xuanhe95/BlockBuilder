@@ -16,9 +16,12 @@ public partial class Generator : MonoBehaviour
 
         AddSimpleUpRule(midRule, Waters, Sands);
         AddSimpleUpRule(midRule, Waters, Lands);
-        AddSimpleUpRule(midRule, Sands, Trees);
+        AddSimpleUpRule(midRule, Sands, Lands);
         AddSimpleUpRule(midRule, Lands, Trees);
-        AddSimpleUpRule(midRule, Trees, Trees);
+        AddSimpleUpRule(midRule, Trees);
+
+        AddSimpleUpRule(midRule, Lands);
+
     }
 
     public void AddSimpleUpRule(Rule<GameObject> rule, Type<GameObject> baseGo, Type<GameObject> go)
@@ -26,6 +29,13 @@ public partial class Generator : MonoBehaviour
         rule.AddRule(Emptys, go);
         rule.AddRule(go, go);
         rule.AddUpRule(baseGo, go);
+    }
+
+    public void AddSimpleUpRule(Rule<GameObject> rule, Type<GameObject> go)
+    {
+        rule.AddRule(Emptys, go);
+        rule.AddRule(go, go);
+        rule.AddUpRule(go, go);
     }
 
     public void AddSimpleRule(Rule<GameObject> rule, Type<GameObject> go)

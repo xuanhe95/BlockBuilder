@@ -35,6 +35,35 @@ public class Rule<T>
 
     }
 
+    public Dictionary<Type<T>, HashSet<Type<T>>> GetRules(int direction)
+    {
+        switch(direction)
+        {
+            case Direction.Left:
+            case Direction.Right:
+            case Direction.Forward:
+            case Direction.Back:
+                return Conditions;
+            case Direction.Up:
+                return DownConditions;
+            case Direction.Down:
+                return UpConditions;
+            default:
+                return Conditions;
+
+        }
+    }
+
+    public HashSet<Type<T>> GetAllowedTypes(Type<T> type, int direction)
+    {
+        if(type == null) return null;
+        HashSet<Type<T>> allowedTypes = null;
+        GetRules(direction).TryGetValue(type, out allowedTypes);
+        
+        return allowedTypes;
+
+    }
+
     public bool AddDownRule(Type<T> type, Type<T> connection)
     {
         return true;

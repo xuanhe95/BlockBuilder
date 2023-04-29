@@ -8,9 +8,9 @@ public partial class Generator : MonoBehaviour
     {
         Choice<GameObject> choices = new Choice<GameObject>();
         choices.Add(Waters);
-        choices.Add(Sands);
-        choices.Add(Lands);
-        choices.Add(Trees);
+        choices.Add(Lands, 3);
+        choices.Add(Trees, 3);
+        choices.Add(Sands, 10);
         // foreach(Type<GameObject> type in Meshes)
         // {
         //     Debug.Log("Added " + type);
