@@ -4,6 +4,11 @@ using UnityEngine;
 
 public partial class Generator : MonoBehaviour
 {
+    private List<GameObject> InstantiatedGo = new List<GameObject>();
+    private List<Unit<GameObject, GameObject>> InstantiatedUnit = new List<Unit<GameObject, GameObject>>();
+    public GameObject meshAll;
+    private Dictionary<int, Mesh> meshDic = new Dictionary<int, Mesh>();
+
     private List<GameObject> GroupColliders = new List<GameObject>();
 
     void Instantiator()

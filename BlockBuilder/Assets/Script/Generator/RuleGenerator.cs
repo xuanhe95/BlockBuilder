@@ -4,6 +4,9 @@ using UnityEngine;
 
 public partial class Generator : MonoBehaviour
 {
+    private Rule<GameObject> baseRule = new Rule<GameObject>(); 
+    private Rule<GameObject> midRule = new Rule<GameObject>();
+
  void GenerateRules(){
         AddSimpleUpRule(midRule, Waters, Sands);
         AddSimpleUpRule(midRule, Waters, Lands);

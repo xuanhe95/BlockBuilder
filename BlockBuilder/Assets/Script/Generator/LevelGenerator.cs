@@ -4,6 +4,8 @@ using UnityEngine;
 
 public partial class Generator : MonoBehaviour
 {
+    private List<Level<GameObject, GameObject>> levels = new List<Level<GameObject, GameObject>>();
+
     void LevelBuilder(int width, int length, int height)
     {
         Choice<GameObject> choices = ChoiceGenerator();

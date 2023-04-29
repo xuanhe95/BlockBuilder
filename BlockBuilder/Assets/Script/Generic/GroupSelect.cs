@@ -36,23 +36,17 @@ public partial class Group<P, T>
         return Units[0].Level;
     }
 
-    public void SetType(int id)
-    {
-        Type = Choices.GetType(id);
-        Debug.Log("SET TYPE " + Type);
-    }
     public void SetRandomType(System.Random random)
     {
         Type = Choices.GetRandomType(random);
         Debug.Log("SET TYPE " + Type);
+        SetTypes();
     }
 
     public Type<T> GetType(int id)
     {
         return Choices.Types[id];
     }
-
-
 
 
     public void SetTypes()

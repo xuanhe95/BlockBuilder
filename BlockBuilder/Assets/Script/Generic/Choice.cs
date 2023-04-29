@@ -4,11 +4,9 @@ using UnityEngine;
 using System;
 
 public class Choice<T>{ // 每个Grid会带一个Prossibility
-    //public List<T> Types{set; get;} // dictionary?
     public List<Type<T>> Types{set; get;}
     public Choice()
     {
-        //Types = new List<T>();
         Types = new List<Type<T>>();
     }
     public void Add(Type<T> type)

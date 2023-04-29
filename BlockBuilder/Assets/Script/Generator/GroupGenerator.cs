@@ -12,8 +12,11 @@ public partial class Generator
     private Type<GameObject> Emptys;
     private List<Type<GameObject>> Meshes;
 
+    private GeoPicker picker;
+
     public void GenerateMeshs()
     {
+        picker = new GeoPicker();
         Emptys = new Type<GameObject>(picker.ReadListFrom(Empty));
         Waters = new Type<GameObject>(picker.ReadListFrom(Water));
         Sands = new Type<GameObject>(picker.ReadListFrom(Sand));

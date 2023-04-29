@@ -12,12 +12,9 @@ public partial class Group<P, T>
 
     public Group(int id, Type<T> type)
     {
-        //Type = types[0];
         Type = type;
         ID = id;
         Units = new List<Unit<P, T>>();
-
-        //Debug.Log(Types);
     }
 
     public void AddUnit(Unit<P, T> unit)
@@ -48,7 +45,7 @@ public partial class Group<P, T>
 
     public void Select(System.Random random)
     {
-        Type = Choices.GetType(random.Next(Choices.Size()));
+        Type = Choices.GetRandomType(random);
         for(int i = 0; i < 4; i++)
         {
             Units[i].SetType(Type.GetType(i));

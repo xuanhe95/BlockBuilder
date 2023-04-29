@@ -6,7 +6,7 @@ public partial class Group<P, T>
 {
     public T GetType()
     {
-        return Units[0].Type;
+        return Type.GetName();
     }
 
     public Group<P, T> GetAdjacentGroup(int direction)
