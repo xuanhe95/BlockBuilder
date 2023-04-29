@@ -38,6 +38,11 @@ public partial class Group<P, T>
         return Type.GetName();
     }
 
+    public Type<T> GetTypes()
+    {
+        return Type;
+    }
+
     public Unit<P, T> GetUnit(int id)
     {
         return Units[id];

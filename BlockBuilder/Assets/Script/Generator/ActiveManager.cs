@@ -8,6 +8,7 @@ public partial class Generator : MonoBehaviour
     private List<Unit<GameObject, GameObject>> InstantiatedUnit = new List<Unit<GameObject, GameObject>>();
     public GameObject meshAll;
     private Dictionary<int, Mesh> meshDic = new Dictionary<int, Mesh>();
+    public GameObject collider;
 
     private List<GameObject> GroupColliders = new List<GameObject>();
 
@@ -39,17 +40,19 @@ public partial class Generator : MonoBehaviour
                 //InstantiatedUnit.Add(unit);
             }
 
-            // foreach (Group<GameObject, GameObject> group in level.Groups.Values)
-            // {
-            //     if (group.GetType() != Empty)
-            //     {
-            //         GameObject GroupCollider = Instantiate(group.GetObject(),
-            //             group.Units[0].GetVector().transform.position, Quaternion.identity);
-            //         GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
-            //         GroupColliders.Add(GroupCollider);
-            //     }
-
-            // }
+            foreach (Group<GameObject, GameObject> group in level.Groups.Values)
+            {
+                
+                if (group.GetTypes() != Emptys)
+                {
+                    GameObject GroupCollider = Instantiate(collider,
+                        group.Units[0].GetVector().transform.position - new Vector3(0.5f,0,0.5f), Quaternion.identity);
+                    print(GroupCollider);
+                    GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
+                    //GroupColliders.Add(GroupCollider);
+                }
+            
+            }
         }
     }
 
