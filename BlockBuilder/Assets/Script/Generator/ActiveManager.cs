@@ -30,8 +30,7 @@ public partial class Generator : MonoBehaviour
         {
             foreach (Unit<GameObject, GameObject> unit in level.Units.Values)
             {
-                InstantiatedGo.Add(Instantiate(unit.GetObject(), unit.GetVector().transform.position,
-                    unit.GetVector().transform.rotation));
+                InstantiatedGo.Add(Instantiate(unit.GetObject(), unit.Group.Units[0].GetVector().transform.position, Quaternion.identity));
                 //InstantiatedUnit.Add(unit);
             }
 
