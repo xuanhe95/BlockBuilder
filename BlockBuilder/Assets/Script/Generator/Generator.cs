@@ -33,7 +33,7 @@ public partial class Generator : MonoBehaviour
         GenerateMeshs();
         GenerateRules();
 
-        LevelBuilder(16,14,8);
+        LevelBuilder(28,20,16);
         
         //Debug.Log(levels.Count);
         // PrintRules();

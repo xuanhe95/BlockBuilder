@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Choice<T>{ // 每个Grid会带一个Prossibility
-    public List<Type<T>> Types{set; get;}
+public class Choice<T>
+{ // 每个Grid会带一个Prossibility
+    public List<Type<T>> Types { set; get; }
+
     public Choice()
     {
         Types = new List<Type<T>>();
     }
+
     public void Add(Type<T> type)
     {
         Types.Add(type);
     }
+
     public void Add(Type<T> type, int times)
     {
-        for(int i = 0; i < times; i++)
+        for (int i = 0; i < times; i++)
         {
             Types.Add(type);
         }
@@ -26,9 +30,11 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
         Types.RemoveAll(data => type.Equals(data));
     }
 
-    public Type<T> GetRandomType(System.Random random){
+    public Type<T> GetRandomType(System.Random random)
+    {
         Debug.Log(Types.Count);
-        if(Types.Count == 0) return null;
+        if (Types.Count == 0)
+            return null;
         Type<T> type = Types[random.Next(Types.Count)];
         //Debug.Log(type);
         return type;
@@ -39,7 +45,8 @@ public class Choice<T>{ // 每个Grid会带一个Prossibility
         return Types[i];
     }
 
-    public int Size(){
+    public int Size()
+    {
         return Types.Count;
     }
 }
