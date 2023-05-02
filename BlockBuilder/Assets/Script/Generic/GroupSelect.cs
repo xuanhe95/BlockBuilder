@@ -16,38 +16,88 @@ public partial class Group<P, T>
 
     public void SetUnitTypes()
     {
-        Debug.Log(Type + "Size " + Type.Types.Count);
+        //Debug.Log(Type + "Size " + Type.Types.Count);
         for (int i = 0; i < 4; i++)
         {
-            Debug.Log(Type.GetType(i));
+            //Debug.Log(Type.GetType(i));
             Units[i].SetType(Type.GetType(i));
         }
     }
 
     public void Select(System.Random random)
     {
-        int dir = CheckBackToBack(Map[(int)Geo.Land].GetName());
-        if (dir == Direction.Left || dir == Direction.Forward)
-        {
-            Debug.Log("SET Special");
-            SetTypeWithSpecialRule();
-        }
-        else
-        {
-            Debug.Log("SET regular");
-            SetTypeWithRegularRule(random);
-        }
+        Regulate();
+        Debug.Log("Choices1 " + Choices.Types.Count);
+        RegulateAdd();
+        Debug.Log("Choices2 " + Choices.Types.Count);
+        SetType(random);
         SetUnitTypes();
     }
 
-    public void SetTypeWithSpecialRule()
+    public void RegulateAdd()
     {
-        Type = Map[(int)Geo.Bridge];
+        int dir = CheckBackToBack(Map[(int)Geo.Land].GetName());
+
+        switch (dir)
+        {
+            case Direction.Left:
+                AddChoice(Map[(int)Geo.Bridge2], 15);
+                break;
+            case Direction.Forward:
+                AddChoice(Map[(int)Geo.Bridge1], 15);
+                break;
+            default:
+                break;
+        }
+
+        dir = CheckAdjacent(Map[(int)Geo.Land].GetName());
+
+        switch (dir)
+        {
+            case Direction.Left:
+                AddChoice(Map[(int)Geo.T1D], 12);
+                break;
+            case Direction.Right:
+                AddChoice(Map[(int)Geo.T1B], 12);
+                break;
+            case Direction.Forward:
+                AddChoice(Map[(int)Geo.T1C], 12);
+                break;
+            case Direction.Back:
+                AddChoice(Map[(int)Geo.T1A], 12);
+                break;
+            default:
+                break;
+        }
+
+        dir = CheckHalfSurround(Map[(int)Geo.Land].GetName());
+        switch (dir)
+        {
+            case Direction.Left:
+                AddChoice(Map[(int)Geo.T2D], 12);
+                break;
+            case Direction.Right:
+                AddChoice(Map[(int)Geo.T2B], 12);
+                break;
+            case Direction.Forward:
+                AddChoice(Map[(int)Geo.T2C], 12);
+                break;
+            case Direction.Back:
+                AddChoice(Map[(int)Geo.T2A], 12);
+                break;
+            default:
+                break;
+        }
     }
 
-    public void SetTypeWithRegularRule(System.Random random)
+    public void AddChoice(Type<T> type, int times)
     {
-        Regulate();
+        Debug.Log("ADD " + times + " Times");
+        Choices.Add(type, times);
+    }
+
+    public void SetType(System.Random random)
+    {
         Type = Choices.GetRandomType(random);
     }
 

@@ -9,7 +9,14 @@ public enum Geo
     Sand,
     Land,
     Tree,
-    Bridge,
-    T1,
-    T2
+    Bridge1,
+    Bridge2,
+    T1A,
+    T1B,
+    T1C,
+    T1D,
+    T2A,
+    T2B,
+    T2C,
+    T2D
 }

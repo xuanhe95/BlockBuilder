@@ -5,24 +5,6 @@ using System;
 
 public partial class Generator : MonoBehaviour
 {
-    //Base
-    public GameObject Water;
-    public GameObject Land;
-    public GameObject Bridge;
-
-    //Mid
-    public GameObject Building1;
-    public GameObject Building2;
-    public GameObject Terrace1;
-    public GameObject Terrace2;
-
-    //Roof
-    public GameObject Roof;
-    public GameObject Empty;
-
-    public GameObject Sand;
-    public GameObject Tree;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +12,7 @@ public partial class Generator : MonoBehaviour
         GenerateMeshs();
         GenerateRules();
 
-        LevelBuilder(28, 20, 16);
+        LevelBuilder(36, 30, 16);
 
         //Debug.Log(levels.Count);
         // PrintRules();

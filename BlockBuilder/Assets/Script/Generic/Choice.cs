@@ -15,10 +15,11 @@ public class Choice<T>
     public void Add(Type<T> type)
     {
         Types.Add(type);
-    }
+    } 
 
     public void Add(Type<T> type, int times)
     {
+        Debug.Log("ADD " + times);
         for (int i = 0; i < times; i++)
         {
             Types.Add(type);
