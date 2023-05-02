@@ -9,10 +9,11 @@ public class Cursor : MonoBehaviour
     private Ray ray;
 
     private GameObject lastHit;
-    
+
     private RectTransform rectTransform;
-    
+
     System.Random rd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,6 @@ public class Cursor : MonoBehaviour
             this.transform.position = hit.collider.transform.position;
             lastHit = hit.collider.gameObject;
         }
-        
     }
 
     // public void SetCursor(int input)
@@ -39,7 +39,7 @@ public class Cursor : MonoBehaviour
     //     coord coord = lastHit.GetCoord();
     //     int width = LevelGenerator.instance.width;
     //     int height = LevelGenerator.instance.height;
-    //     
+    //
     //     switch (input)
     //     {
     //         case 0:
@@ -67,7 +67,7 @@ public class Cursor : MonoBehaviour
     //                 LevelGenerator.instance.gridElements[coord.x + width * (coord.z + width * (1+coord.y))].SetEnable();
     //             }
     //             break;
-    //             
+    //
     //         case 4:
     //             //add Y-
     //             if (coord.y > 0)
@@ -92,73 +92,88 @@ public class Cursor : MonoBehaviour
     //             break;
     //     }
     // }
-    
+
     public void SetCursor(int input)
-
     {
-
         print("SetCursorCalled");
         Group<GameObject, GameObject> group = lastHit.GetComponent<GroupCollider>().thisGroup;
 
         //print(group);
 
         switch (input)
-
         {
+            // case 0:
 
-// case 0:
+            // //remove grid
 
-// //remove grid
+            // lastHit.SetDisable();
 
-// lastHit.SetDisable();
-
-// break;
+            // break;
 
             case 1:
-                Group<GameObject, GameObject> leftGroup = group.FindRelativeGroup(group, Direction.Left);
-                if(leftGroup == null) break;
+                Group<GameObject, GameObject> leftGroup = group.FindRelativeGroup(
+                    group,
+                    Direction.Left
+                );
+                if (leftGroup == null)
+                    break;
                 leftGroup.Select(rd);
 
                 break;
 
             case 2:
-                
 
-                Group<GameObject, GameObject> rightGroup = group.FindRelativeGroup(group, Direction.Right);
-                if(rightGroup == null) break;
+                Group<GameObject, GameObject> rightGroup = group.FindRelativeGroup(
+                    group,
+                    Direction.Right
+                );
+                if (rightGroup == null)
+                    break;
                 rightGroup.Select(rd);
 
                 break;
 
             case 3:
-                
-                Group<GameObject, GameObject> forwardGroup = group.FindRelativeGroup(group, Direction.Forward);
-                if(forwardGroup == null) break;
+
+                Group<GameObject, GameObject> forwardGroup = group.FindRelativeGroup(
+                    group,
+                    Direction.Forward
+                );
+                if (forwardGroup == null)
+                    break;
                 forwardGroup.Select(rd);
                 break;
 
             case 4:
-                
-                Group<GameObject, GameObject> backGroup = group.FindRelativeGroup(group, Direction.Back);
-                if(backGroup == null) break;
+
+                Group<GameObject, GameObject> backGroup = group.FindRelativeGroup(
+                    group,
+                    Direction.Back
+                );
+                if (backGroup == null)
+                    break;
                 backGroup.Select(rd);
                 break;
-             case 5:
-                Group<GameObject, GameObject> upGroup = group.FindRelativeGroup(group, Direction.Up);
-                if(upGroup == null) break;
+            case 5:
+                Group<GameObject, GameObject> upGroup = group.FindRelativeGroup(
+                    group,
+                    Direction.Up
+                );
+                if (upGroup == null)
+                    break;
                 upGroup.Select(rd);
 
                 break;
 
             case 6:
-                Group<GameObject, GameObject> downGroup = group.FindRelativeGroup(group, Direction.Down);
-                if(downGroup == null) break;
+                Group<GameObject, GameObject> downGroup = group.FindRelativeGroup(
+                    group,
+                    Direction.Down
+                );
+                if (downGroup == null)
+                    break;
                 downGroup.Select(rd);
                 break;
-
         }
-
     }
-    
-    
 }

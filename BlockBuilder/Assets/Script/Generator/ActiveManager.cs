@@ -5,7 +5,8 @@ using UnityEngine;
 public partial class Generator : MonoBehaviour
 {
     private List<GameObject> InstantiatedGo = new List<GameObject>();
-    private List<Unit<GameObject, GameObject>> InstantiatedUnit = new List<Unit<GameObject, GameObject>>();
+    private List<Unit<GameObject, GameObject>> InstantiatedUnit =
+        new List<Unit<GameObject, GameObject>>();
     public GameObject meshAll;
     private Dictionary<int, Mesh> meshDic = new Dictionary<int, Mesh>();
     public GameObject collider;
@@ -25,7 +26,6 @@ public partial class Generator : MonoBehaviour
             foreach (var o in GroupColliders)
             {
                 Destroy(o);
-
             }
 
             InstantiatedGo.Clear();
@@ -36,22 +36,29 @@ public partial class Generator : MonoBehaviour
         {
             foreach (Unit<GameObject, GameObject> unit in level.Units.Values)
             {
-                InstantiatedGo.Add(Instantiate(unit.GetObject(), unit.Group.Units[0].GetVector().transform.position, Quaternion.identity));
+                InstantiatedGo.Add(
+                    Instantiate(
+                        unit.GetObject(),
+                        unit.Group.Units[0].GetVector().transform.position,
+                        Quaternion.identity
+                    )
+                );
                 //InstantiatedUnit.Add(unit);
             }
 
             foreach (Group<GameObject, GameObject> group in level.Groups.Values)
             {
-                
-                if (group.GetTypes() != Emptys)
+                if (group.GetTypes() != GeoMap[(int)Geo.Empty])
                 {
-                    GameObject GroupCollider = Instantiate(collider,
-                        group.Units[0].GetVector().transform.position - new Vector3(0.5f,0,0.5f), Quaternion.identity);
+                    GameObject GroupCollider = Instantiate(
+                        collider,
+                        group.Units[0].GetVector().transform.position - new Vector3(0.5f, 0, 0.5f),
+                        Quaternion.identity
+                    );
                     //print(GroupCollider);
                     GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
                     //GroupColliders.Add(GroupCollider);
                 }
-            
             }
         }
     }
@@ -107,5 +114,4 @@ public partial class Generator : MonoBehaviour
             filter.mesh = mesh;
         }
     }
-    
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class Direction
 {
+    public const int None = -1;
     public const int Left = 0;
     public const int Right = 1;
     public const int Forward = 2;

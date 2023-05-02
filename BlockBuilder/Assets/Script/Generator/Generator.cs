@@ -9,7 +9,7 @@ public partial class Generator : MonoBehaviour
     public GameObject Water;
     public GameObject Land;
     public GameObject Bridge;
-    
+
     //Mid
     public GameObject Building1;
     public GameObject Building2;
@@ -19,46 +19,41 @@ public partial class Generator : MonoBehaviour
     //Roof
     public GameObject Roof;
     public GameObject Empty;
-    
+
     public GameObject Sand;
     public GameObject Tree;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        
         //rd = new System.Random();
         GenerateMeshs();
         GenerateRules();
 
-        LevelBuilder(28,20,16);
-        
+        LevelBuilder(28, 20, 16);
+
         //Debug.Log(levels.Count);
         // PrintRules();
-        foreach(Level<GameObject, GameObject> level in levels)
+        foreach (Level<GameObject, GameObject> level in levels)
         {
             //Debug.Log(level.ID);
             //PrintRules(level);
         }
         Instantiator();
-
     }
-
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if(Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             Instantiator();
-        }   
+        }
     }
 
     // IEnumerator UpdateIns()
     // {
     //     yield return new WaitForSeconds(0);
-    //     
+    //
     // }
 }

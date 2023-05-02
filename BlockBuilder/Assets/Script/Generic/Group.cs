@@ -9,12 +9,14 @@ public partial class Group<P, T>
     public int ID;
     public List<Unit<P, T>> Units { get; set; }
     public Choice<T> Choices { get; set; }
+    private Dictionary<int, Type<T>> Map;
 
-    public Group(int id, Type<T> type, Choice<T> choice)
+    public Group(int id, Type<T> type, Choice<T> choice, Dictionary<int, Type<T>> map)
     {
         Type = type;
         ID = id;
         Choices = choice;
+        Map = map;
         Units = new List<Unit<P, T>>();
     }
 
@@ -53,9 +55,4 @@ public partial class Group<P, T>
     {
         return Type.GetName();
     }
-
-
-
-
-
 }
