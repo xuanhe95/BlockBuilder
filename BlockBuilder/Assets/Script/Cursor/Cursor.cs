@@ -12,6 +12,8 @@ public class Cursor : MonoBehaviour
 
     private RectTransform rectTransform;
 
+    private Stack<Group<GameObject, GameObject>> History = new Stack<Group<GameObject, GameObject>>(); 
+
     System.Random rd;
 
     // Start is called before the first frame update
@@ -117,6 +119,7 @@ public class Cursor : MonoBehaviour
                 );
                 if (leftGroup == null)
                     break;
+                PushToHistory(leftGroup);
                 leftGroup.Select(rd);
 
                 break;
@@ -129,6 +132,7 @@ public class Cursor : MonoBehaviour
                 );
                 if (rightGroup == null)
                     break;
+                PushToHistory(rightGroup);
                 rightGroup.Select(rd);
 
                 break;
@@ -141,6 +145,7 @@ public class Cursor : MonoBehaviour
                 );
                 if (forwardGroup == null)
                     break;
+                PushToHistory(forwardGroup);
                 forwardGroup.Select(rd);
                 break;
 
@@ -153,7 +158,10 @@ public class Cursor : MonoBehaviour
                 if (backGroup == null)
                     break;
                 backGroup.Select(rd);
+                PushToHistory(backGroup);
                 break;
+            
+            
             case 5:
                 Group<GameObject, GameObject> upGroup = group.FindRelativeGroup(
                     group,
@@ -162,6 +170,19 @@ public class Cursor : MonoBehaviour
                 if (upGroup == null)
                     break;
                 upGroup.Select(rd);
+                // print(upGroup.GetChoices());
+                // print(upGroup.GetChoices().GetType());
+                //
+                // List<Type<GameObject>> AllType = upGroup.GetChoices().GetTypes();
+                // List<GameObject> AllGO = new List<GameObject>();
+                // foreach (Type<GameObject> thisType in AllType)
+                // {
+                //     foreach (GameObject go in thisType.GetObjects())
+                //     {
+                //         Instantiate(go,upGroup.get)
+                //     }
+                // }
+                //PushToHistory(upGroup);
 
                 break;
 
@@ -173,7 +194,13 @@ public class Cursor : MonoBehaviour
                 if (downGroup == null)
                     break;
                 downGroup.Select(rd);
+                PushToHistory(downGroup);
                 break;
         }
+    }
+
+    private void PushToHistory(Group<GameObject,GameObject> ThisGroup)
+    {
+        History.Push(ThisGroup);
     }
 }

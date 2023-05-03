@@ -16,6 +16,12 @@ public class Type<T>
     {
         return Types[id+1];
     }
+
+    public List<T> GetObjects()
+    {
+        return Types;
+    }
+    
     public T GetName()
     {
         return Parent;

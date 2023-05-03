@@ -16,6 +16,11 @@ public class Choice<T>
         Types = types;
     }
 
+    public List<Type<T>> GetTypes()
+    {
+        return Types;
+    }
+
     public void Add(Type<T> type)
     {
         Types.Add(type);
