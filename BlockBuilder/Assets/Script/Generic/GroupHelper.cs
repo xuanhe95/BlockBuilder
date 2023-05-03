@@ -69,6 +69,7 @@ public partial class Group<P, T>
     public Group<P, T> GetUp()
     {
         Debug.Log("get Up");
+        if(Units[0].Level.Up == null) return null;
         Unit<P, T> unit = Units[0].Level.Up.Units[Units[0].ID];
         if (unit == null)
             return null;
@@ -78,6 +79,7 @@ public partial class Group<P, T>
     public Group<P, T> GetDown()
     {
         Debug.Log("get Down");
+         if(Units[0].Level.Down == null) return null;
         Unit<P, T> unit = Units[0].Level.Down.Units[Units[0].ID];
         if (unit == null)
             return null;
