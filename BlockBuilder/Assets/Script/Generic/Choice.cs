@@ -12,6 +12,10 @@ public class Choice<T>
         Types = new List<Type<T>>();
     }
 
+    public Choice(List<Type<T>> types){
+        Types = types;
+    }
+
     public void Add(Type<T> type)
     {
         Types.Add(type);

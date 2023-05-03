@@ -4,101 +4,38 @@ using UnityEngine;
 
 public partial class Group<P, T>
 {
-    public int CheckEqualToType(T type)
+    public void SetTypes()
     {
-        int i = 0;
-        if (CheckEqual(GetLeft().GetType(), type))
-            i++;
-        if (CheckEqual(GetRight().GetType(), type))
-            i++;
-        if (CheckEqual(GetForward().GetType(), type))
-            i++;
-        if (CheckEqual(GetBack().GetType(), type))
-            i++;
-        return i;
+        SetUnitTypes();
+        Debug.Log("SET TYPE " + Type.GetName());
     }
 
-    public int CheckBackToBack(T type)
+    public void Reset()
     {
-        if (CheckHalfSurround(type) != -1)
-            return -2;
-        else if (CheckEqual(GetRight().GetType(), GetLeft().GetType(), type))
-            return Direction.Left;
-        else if (CheckEqual(GetForward().GetType(), GetBack().GetType(), type))
-            return Direction.Forward;
-        else
-            return -1;
+        Type = Map[(int)Geo.Empty];
     }
 
-    public int CheckAdjacent(T type)
+    public void SetType(Choice<T> choices, System.Random random)
     {
-        if (CheckHalfSurround(type) != -1)
-            return -2;
-        if (CheckEqual(GetLeft().GetType(), GetForward().GetType(), type))
-            return Direction.Left;
-        else if (CheckEqual(GetForward().GetType(), GetRight().GetType(), type))
-            return Direction.Forward;
-        else if (CheckEqual(GetRight().GetType(), GetBack().GetType(), type))
-            return Direction.Right;
-        else if (CheckEqual(GetBack().GetType(), GetLeft().GetType(), type))
-            return Direction.Back;
-        else
-            return -1;
+        Type = choices.GetRandomType(random);
+        SetUnitTypes();
     }
 
-    public int CheckHalfSurround(T type)
+    public void SetUnitTypes()
     {
-        if (CheckSurround(type) != -1)
-            return -2;
-        else if (
-            CheckEqual(GetForward().GetType(), GetRight().GetType(), GetBack().GetType(), type)
-        )
-            return Direction.Forward;
-        else if (CheckEqual(GetRight().GetType(), GetBack().GetType(), GetLeft().GetType(), type))
-            return Direction.Right;
-        else if (CheckEqual(GetBack().GetType(), GetLeft().GetType(), GetForward().GetType(), type))
-            return Direction.Back;
-        else if (
-            CheckEqual(GetLeft().GetType(), GetForward().GetType(), GetRight().GetType(), type)
-        )
-            return Direction.Left;
-        else
-            return -1;
-    }
-
-    public int CheckSurround(T type)
-    {
-        if (
-            CheckEqual(
-                GetLeft().GetType(),
-                GetForward().GetType(),
-                GetRight().GetType(),
-                GetBack().GetType()
-            )
-        )
-            return Direction.Left;
-        else
-            return -1;
-    }
-
-    public Group<P, T> FindRelativeGroup(Group<P, T> group, int direction)
-    {
-        switch (direction)
+        //Debug.Log(Type + "Size " + Type.Types.Count);
+        for (int i = 0; i < 4; i++)
         {
-            case Direction.Forward:
-                return GetForward();
-            case Direction.Back:
-                return GetBack();
-            case Direction.Left:
-                return GetLeft();
-            case Direction.Right:
-                return GetRight();
-            case Direction.Up:
-                return GetUp();
-            case Direction.Down:
-                return GetDown();
-            default:
-                return null;
+            //Debug.Log(Type.GetType(i));
+            Units[i].SetType(Type.GetType(i));
         }
+    }
+
+    public Choice<T> GetChoices()
+    {
+        Choice<T> choices = CreateTempChoices();
+        Regulate(choices);
+        RegulateAdd(choices);
+        return choices;
     }
 }

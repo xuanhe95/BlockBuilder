@@ -26,11 +26,6 @@ public partial class Group<P, T>
         unit.Group = this;
     }
 
-    public List<Type<T>> GetChoices()
-    {
-        return Choices.Types;
-    }
-
     public int Size()
     {
         return Units.Count;
