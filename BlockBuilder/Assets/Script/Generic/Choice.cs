@@ -16,6 +16,18 @@ public class Choice<T>
         Types = types;
     }
 
+    public List<Type<T>> GetSet(){
+        List<Type<T>> ret = new List<Type<T>>();
+        HashSet<Type<T>> set = new HashSet<Type<T>>();
+        foreach(Type<T> type in Types){
+            if(!set.Contains(type)){
+                set.Add(type);
+                ret.Add(type);
+            }
+        }
+        return ret;
+    }
+
     public List<Type<T>> GetTypes()
     {
         return Types;
