@@ -31,6 +31,11 @@ public partial class Generator : MonoBehaviour
         {
             Instantiator();
         }
+        
+        if (Input.GetMouseButtonUp(2))
+        {
+            Instantiator();
+        }
     }
 
     // IEnumerator UpdateIns()

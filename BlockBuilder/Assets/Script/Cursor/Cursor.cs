@@ -32,8 +32,11 @@ public class Cursor : MonoBehaviour
         {
             //print(hit.collider.gameObject);
             this.transform.position = hit.collider.transform.position;
+            
             lastHit = hit.collider.gameObject;
         }
+        
+        
     }
 
     // public void SetCursor(int input)
@@ -169,19 +172,29 @@ public class Cursor : MonoBehaviour
                 );
                 if (upGroup == null)
                     break;
+                
                 upGroup.Select(rd);
                 // print(upGroup.GetChoices());
                 // print(upGroup.GetChoices().GetType());
                 //
-                // List<Type<GameObject>> AllType = upGroup.GetChoices().GetTypes();
-                // List<GameObject> AllGO = new List<GameObject>();
-                // foreach (Type<GameObject> thisType in AllType)
-                // {
-                //     foreach (GameObject go in thisType.GetObjects())
-                //     {
-                //         Instantiate(go,upGroup.get)
-                //     }
-                // }
+                int index = 0;
+                List<Type<GameObject>> AllType = upGroup.GetChoicesSet();
+                List<GameObject> SelectedGroup = AllType[index].GetObjects();
+                Type<GameObject> CurrentSelection = AllType[index];
+                
+                group.SetType(CurrentSelection);
+                for (int i = 1; i < 5; i++)
+                {
+                    Instantiate(SelectedGroup[i], upGroup.GetUnit(0).GetVector().transform.position, Quaternion.identity);
+                    // List<GameObject> AllGO = new List<GameObject>();
+                    // foreach (Type<GameObject> thisType in AllType)
+                    // {
+                    //     foreach (GameObject go in thisType.GetObjects())
+                    //     {
+                    //         Instantiate(go,upGroup.get)
+                    //     }
+                    // }
+                }
                 //PushToHistory(upGroup);
 
                 break;
