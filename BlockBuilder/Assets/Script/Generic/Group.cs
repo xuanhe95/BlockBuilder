@@ -51,8 +51,5 @@ public partial class Group<P, T>
         return Type.GetName();
     }
 
-    public void SetType(Type<T> type)
-    {
-        Type = type;
-    }
+
 }

@@ -18,19 +18,30 @@ public partial class Group<P, T>
         Type = Map[(int)Geo.Empty];
     }
 
-    public void SetType(Choice<T> choices, System.Random random)
+    public void SetType(Type<T> type)
     {
-        Type = choices.GetRandomType(random);
+        Type = type;
         SetUnitTypes();
     }
 
-    public void InitSet(){
+    public void SetType(Choice<T> choices, System.Random random)
+    {
+        Type<T> temp = choices.GetRandomType(random);
+        if (temp == null)
+            return;
+        Type = temp;
+        SetUnitTypes();
+    }
+
+    public void InitSet()
+    {
         ChoicesSet = GetChoicesSet();
     }
 
     public void SetNext()
     {
-        if(ChoicesID == ChoicesSet.Count){
+        if (ChoicesID == ChoicesSet.Count)
+        {
             ChoicesID = 0;
         }
         Type = ChoicesSet[ChoicesID];
@@ -56,7 +67,8 @@ public partial class Group<P, T>
         return choices;
     }
 
-    public List<Type<T>> GetChoicesSet(){
+    public List<Type<T>> GetChoicesSet()
+    {
         Choice<T> choices = CreateTempChoices();
         Regulate(choices);
         RegulateAdd(choices);

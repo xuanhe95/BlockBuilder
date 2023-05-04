@@ -69,7 +69,8 @@ public partial class Group<P, T>
     public Group<P, T> GetUp()
     {
         Debug.Log("get Up");
-        if(Units[0].Level.Up == null) return null;
+        if (Units[0].Level.Up == null)
+            return null;
         Unit<P, T> unit = Units[0].Level.Up.Units[Units[0].ID];
         if (unit == null)
             return null;
@@ -79,7 +80,8 @@ public partial class Group<P, T>
     public Group<P, T> GetDown()
     {
         Debug.Log("get Down");
-         if(Units[0].Level.Down == null) return null;
+        if (Units[0].Level.Down == null)
+            return null;
         Unit<P, T> unit = Units[0].Level.Down.Units[Units[0].ID];
         if (unit == null)
             return null;
@@ -104,6 +106,15 @@ public partial class Group<P, T>
     public bool CheckEqual(T typeA, T typeB, T typeC, T typeD, T typeE)
     {
         return CheckEqual(typeA, typeB, typeC) && CheckEqual(typeA, typeD, typeE);
+    }
+
+    public bool CheckEqual(Group<P, T> groupA, Group<P, T> groupB)
+    {
+        if (groupA == null || groupB == null)
+        {
+            return true;
+        }
+        return groupA.GetType().Equals(groupB.GetType());
     }
 
     public int CheckEqualToType(T type)
@@ -170,13 +181,15 @@ public partial class Group<P, T>
 
     public int CheckSurround(T type)
     {
+        Group<P, T> left = GetLeft();
+        Group<P, T> forward = GetForward();
+        Group<P, T> right = GetRight();
+        Group<P, T> back = GetBack();
+
         if (
-            CheckEqual(
-                GetLeft().GetType(),
-                GetForward().GetType(),
-                GetRight().GetType(),
-                GetBack().GetType()
-            )
+            CheckEqual(GetLeft(), GetRight())
+            && CheckEqual(GetForward(), GetBack())
+            && CheckEqual(GetForward(), GetLeft())
         )
             return Direction.Left;
         else
