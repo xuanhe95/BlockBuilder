@@ -196,7 +196,7 @@ public partial class Group<P, T>
             return -1;
     }
 
-    public Group<P, T> FindRelativeGroup(Group<P, T> group, int direction)
+    public Group<P, T> FindRelativeGroup(int direction)
     {
         switch (direction)
         {
