@@ -350,6 +350,7 @@
 "Assets/Script/Cursor/CornerElement.cs"
 "Assets/Script/Cursor/CornerMeshes.cs"
 "Assets/Script/Cursor/Cursor.cs"
+"Assets/Script/Cursor/CursorHistory.cs"
 "Assets/Script/Cursor/CursorPreview.cs"
 "Assets/Script/Cursor/GridElement.cs"
 "Assets/Script/Cursor/GroupCollider.cs"

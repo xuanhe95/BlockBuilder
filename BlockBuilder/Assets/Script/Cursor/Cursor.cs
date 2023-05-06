@@ -13,8 +13,6 @@ public partial class Cursor : MonoBehaviour
 
     private RectTransform rectTransform;
 
-    private Stack<Group<GameObject, GameObject>> History =
-        new Stack<Group<GameObject, GameObject>>();
 
     System.Random rd;
 
@@ -28,6 +26,7 @@ public partial class Cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateScroll();
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Group"))
@@ -39,81 +38,22 @@ public partial class Cursor : MonoBehaviour
                 .thisGroup;
             if (hit.collider.gameObject != lastHit)
             {
-                ResetPreview();
+                ResetPreview(true);
 
                 if (PrepareCurrent(group.FindRelativeGroup(Direction.Up)))
                 {
                     InstancePreview(currentSelection, currentTypes, currentGroup);
                 }
             }
-
-            if (Input.GetMouseButtonDown(2) && currentTypes.Count != 0)
-            {
-                ResetPreview();
-                TogglePreview(1);
-            }
             lastHit = hit.collider.gameObject;
         }
-    }
 
-    // public void SetCursor(int input)
-    // {
-    //     coord coord = lastHit.GetCoord();
-    //     int width = LevelGenerator.instance.width;
-    //     int height = LevelGenerator.instance.height;
-    //
-    //     switch (input)
-    //     {
-    //         case 0:
-    //             //remove grid
-    //             lastHit.SetDisable();
-    //             break;
-    //         case 1:
-    //             //add X+
-    //             if (coord.x < width - 1)
-    //             {
-    //                 LevelGenerator.instance.gridElements[coord.x + width * (coord.z + width * coord.y) + 1].SetEnable();
-    //             }
-    //             break;
-    //         case 2:
-    //             //add X-
-    //             if (coord.x > 0)
-    //             {
-    //                 LevelGenerator.instance.gridElements[coord.x + width * (coord.z + width * coord.y) - 1].SetEnable();
-    //             }
-    //             break;
-    //         case 3:
-    //             //add Y+
-    //             if (coord.y < height - 1)
-    //             {
-    //                 LevelGenerator.instance.gridElements[coord.x + width * (coord.z + width * (1+coord.y))].SetEnable();
-    //             }
-    //             break;
-    //
-    //         case 4:
-    //             //add Y-
-    //             if (coord.y > 0)
-    //             {
-    //                 LevelGenerator.instance.gridElements[coord.x + width * (coord.z + width * (coord.y-1))].SetEnable();
-    //             }
-    //
-    //             break;
-    //         case 5:
-    //             //add Z+
-    //             if (coord.z < width - 1)
-    //             {
-    //                 LevelGenerator.instance.gridElements[coord.x + width * (coord.z + 1 + width * coord.y)].SetEnable();
-    //             }
-    //             break;
-    //         case 6:
-    //             //add Z-
-    //             if (coord.z > 0)
-    //             {
-    //                 LevelGenerator.instance.gridElements[coord.x + width * (coord.z - 1 + width * coord.y)].SetEnable();
-    //             }
-    //             break;
-    //     }
-    // }
+        if(Input.GetMouseButtonDown(1)){
+            Withdraw();
+            
+        }
+        
+    }
 
     public void SetCursor(int input)
     {
@@ -176,33 +116,10 @@ public partial class Cursor : MonoBehaviour
                 if (upGroup == null)
                     break;
 
-                upGroup.Select(rd);
-                // print(upGroup.GetChoices());
-                // print(upGroup.GetChoices().GetType());
-                //
-                int index = 0;
-                List<Type<GameObject>> AllType = upGroup.GetChoicesSet();
-                List<GameObject> SelectedGroup = AllType[index].GetObjects();
-                Type<GameObject> CurrentSelection = AllType[index];
-
-                group.SetType(CurrentSelection);
-                for (int i = 1; i < 5; i++)
-                {
-                    Instantiate(
-                        SelectedGroup[i],
-                        upGroup.GetUnit(0).GetVector().transform.position,
-                        Quaternion.identity
-                    );
-                    // List<GameObject> AllGO = new List<GameObject>();
-                    // foreach (Type<GameObject> thisType in AllType)
-                    // {
-                    //     foreach (GameObject go in thisType.GetObjects())
-                    //     {
-                    //         Instantiate(go,upGroup.get)
-                    //     }
-                    // }
-                }
-                //PushToHistory(upGroup);
+                upGroup.SetType(currentTypes[currentSelection]);
+                
+                
+                PushToHistory(upGroup);
 
                 break;
 
@@ -216,8 +133,5 @@ public partial class Cursor : MonoBehaviour
         }
     }
 
-    private void PushToHistory(Group<GameObject, GameObject> ThisGroup)
-    {
-        History.Push(ThisGroup);
-    }
+
 }

@@ -51,5 +51,10 @@ public partial class Group<P, T>
         return Type.GetName();
     }
 
+    public void SetEmpty(){
+        Type = Map[(int) Geo.Empty];
+        SetUnitTypes();
+    }
+
 
 }
