@@ -17,7 +17,7 @@ public class Type<T>
         return Types[id+1];
     }
 
-    public List<T> GetObjects()
+    public List<T> GetTypes()
     {
         return Types;
     }

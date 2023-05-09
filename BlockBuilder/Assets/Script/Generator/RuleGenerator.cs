@@ -23,11 +23,11 @@ public partial class Generator : MonoBehaviour
 
         AddSimpleUpRule(midRule, GeoMap[(int)Geo.Land]);
 
-        foreach(int index in Sand.GetComponent<RuleCreator>().IntRule){
-            AddSimpleRule(midRule, GeoMap[(int)Geo.Sand], GeoMap[index]);
-        }
-        foreach(int index in Tree.GetComponent<RuleCreator>().IntRule){
-            AddSimpleRule(midRule, GeoMap[(int)Geo.Tree], GeoMap[index]);
+        foreach(GameObject go in GoMap.Values){
+            if(go.GetComponent<RuleCreator>() == null) continue;
+            foreach(GameObject relative in go.GetComponent<RuleCreator>().Rule){
+                AddSimpleRule(midRule, ModMap[go], ModMap[relative]);
+            }
         }
 
     }

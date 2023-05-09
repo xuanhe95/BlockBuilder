@@ -53,7 +53,7 @@
      <Compile Include="Assets/Script/Cursor/CursorPreview.cs" />
      <Compile Include="Assets/Script/Cursor/CornerElement.cs" />
      <Compile Include="Assets/Script/Helper/GeoPicker.cs" />
-     <Compile Include="Assets/RuleCreator.cs" />
+     <Compile Include="Assets/Script/RuleCreator.cs" />
      <Compile Include="Assets/Script/Helper/CameraMovement.cs" />
      <Compile Include="Assets/Script/Generic/Rule.cs" />
      <Compile Include="Assets/Script/Cursor/Cursor.cs" />
@@ -70,6 +70,9 @@
      <Compile Include="Assets/Script/Generator/ChoiceGenerator.cs" />
      <Compile Include="Assets/Script/Generic/GroupActiveManager.cs" />
      <Compile Include="Assets/Script/Generic/Group.cs" />
+     <Compile Include="Assets/Script/GroupManager.cs" />
+     <Compile Include="Assets/Script/GroupHelper.cs" />
+     <Compile Include="Assets/Script/GroupNext.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.3.22f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

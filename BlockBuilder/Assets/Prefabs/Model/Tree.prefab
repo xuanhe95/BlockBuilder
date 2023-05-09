@@ -214,7 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030c5f88339714afa973e0c4e701521f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rule: []
+  Rule:
+  - {fileID: 3546575603583193904}
   Up: []
   Down: []
   IntRule: 03000000

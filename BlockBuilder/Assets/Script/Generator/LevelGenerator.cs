@@ -117,8 +117,7 @@ public partial class Generator : MonoBehaviour
                 Group<GameObject, GameObject> group = new Group<GameObject, GameObject>(
                     i * length / 2 + j / 2,
                     initGo,
-                    ChoiceGenerator(),
-                    GeoMap
+                    ChoiceGenerator()
                 );
                 group.AddUnit(level.Units[i * length + j]);
                 group.AddUnit(level.Units[i * length + j + 1]);

@@ -115,8 +115,10 @@ public partial class Cursor : MonoBehaviour
                 Group<GameObject, GameObject> upGroup = group.FindRelativeGroup(Direction.Up);
                 if (upGroup == null)
                     break;
+                if(currentTypes[currentSelection] != null){
+                    upGroup.SetType(currentTypes[currentSelection]);
+                }
 
-                upGroup.SetType(currentTypes[currentSelection]);
                 
                 
                 PushToHistory(upGroup);
