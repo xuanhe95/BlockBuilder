@@ -11,6 +11,9 @@ public partial class Generator : MonoBehaviour
     private Dictionary<int, Mesh> meshDic = new Dictionary<int, Mesh>();
     public GameObject collider;
 
+    // private Dictionary<Group<GameObject, GameObject>, GameObject> colliderMap =
+    //  new Dictionary<Group<GameObject, GameObject>, GameObject>();
+
     private List<GameObject> GroupColliders = new List<GameObject>();
 
     void Instantiator()
@@ -57,7 +60,17 @@ public partial class Generator : MonoBehaviour
                     );
                     //print(GroupCollider);
                     GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
+                    // if(!colliderMap.ContainsKey(group)){
+                    //     colliderMap.Add(group, GroupCollider);
+                    // }
                     //GroupColliders.Add(GroupCollider);
+                }
+                else{
+                    // if(colliderMap.ContainsKey(group)){
+                    //     Destroy(colliderMap[group]);
+                    //     colliderMap.Remove(group);
+                    // }
+                    
                 }
             }
         }

@@ -341,6 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4159723588059638184}
+  - component: {fileID: 2198421338116147334}
   m_Layer: 0
   m_Name: Sand
   m_TagString: Untagged
@@ -367,3 +368,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2198421338116147334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7267987929096762572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030c5f88339714afa973e0c4e701521f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rule:
+  - {fileID: 0}
+  Up: []
+  Down: []
+  IntRule: 03000000

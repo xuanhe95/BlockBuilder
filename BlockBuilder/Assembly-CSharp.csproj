@@ -40,6 +40,7 @@
      <Compile Include="Assets/Script/Cursor/Bitmask.cs" />
      <Compile Include="Assets/Script/Generator/Generator.cs" />
      <Compile Include="Assets/Script/Generator/LevelGenerator.cs" />
+     <Compile Include="Assets/Script/Cursor/CursorHistory.cs" />
      <Compile Include="Assets/Script/Cursor/GroupCollider.cs" />
      <Compile Include="Assets/Script/Generic/Level.cs" />
      <Compile Include="Assets/Script/Generator/RuleGenerator.cs" />
@@ -68,7 +69,7 @@
      <Compile Include="Assets/Script/Generator/ChoiceGenerator.cs" />
      <Compile Include="Assets/Script/Generic/GroupActiveManager.cs" />
      <Compile Include="Assets/Script/Generic/Group.cs" />
-     <Compile Include="Assets/Script/Cursor/CursorHistory.cs" />
+     <Compile Include="Assets/RuleCreator.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.3.22f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

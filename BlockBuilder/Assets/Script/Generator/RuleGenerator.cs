@@ -9,10 +9,10 @@ public partial class Generator : MonoBehaviour
 
     public void GenerateRules()
     {
-        AddSimpleRule(midRule, GeoMap[(int)Geo.Sand], GeoMap[(int)Geo.Land]);
+        //AddSimpleRule(midRule, GeoMap[(int)Geo.Sand], GeoMap[(int)Geo.Land]);
         AddSimpleRule(midRule, GeoMap[(int)Geo.Sand]);
         AddSimpleRule(midRule, GeoMap[(int)Geo.Land]);
-        AddSimpleRule(midRule, GeoMap[(int)Geo.Tree]);
+        //AddSimpleRule(midRule, GeoMap[(int)Geo.Tree]);
         AddSimpleRule(midRule, GeoMap[(int)Geo.Water]);
 
         AddSimpleUpRule(midRule, GeoMap[(int)Geo.Water], GeoMap[(int)Geo.Sand]);
@@ -22,6 +22,14 @@ public partial class Generator : MonoBehaviour
         AddSimpleUpRule(midRule, GeoMap[(int)Geo.Tree]);
 
         AddSimpleUpRule(midRule, GeoMap[(int)Geo.Land]);
+
+        foreach(int index in Sand.GetComponent<RuleCreator>().IntRule){
+            AddSimpleRule(midRule, GeoMap[(int)Geo.Sand], GeoMap[index]);
+        }
+        foreach(int index in Tree.GetComponent<RuleCreator>().IntRule){
+            AddSimpleRule(midRule, GeoMap[(int)Geo.Tree], GeoMap[index]);
+        }
+
     }
 
     public void AddSimpleUpRule(Rule<GameObject> rule, Type<GameObject> baseGo, Type<GameObject> go)
