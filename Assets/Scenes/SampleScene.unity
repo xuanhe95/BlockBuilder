@@ -645,7 +645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1740292738251411382, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1740292738408112419, guid: 185029fc614c6c44db5592153150d956, type: 3}
       propertyPath: m_Sprite
@@ -1010,7 +1010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1399872357
 Transform:
   m_ObjectHideFlags: 0
@@ -1040,6 +1040,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshAll: {fileID: 0}
   collider: {fileID: 3471533950867280208, guid: 1405f2c6e880c9440b7e865c1f083226, type: 3}
+  width: 36
+  length: 30
+  height: 4
   Models:
   - {fileID: 8536340266247955374, guid: a2039e93c75d24abea772e0adb05f773, type: 3}
   - {fileID: 8536340266247955374, guid: 4e043857b5211473ba0f956d86731eb1, type: 3}
