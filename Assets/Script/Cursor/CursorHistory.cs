@@ -15,6 +15,6 @@ public partial class Cursor : MonoBehaviour
 
     private void Withdraw(){
         Group<GameObject, GameObject> lastGroup = History.Pop();
-        lastGroup.SetEmpty();
+        //lastGroup.getSetEmpty();
     }
 }

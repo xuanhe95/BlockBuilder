@@ -12,7 +12,7 @@ public partial class Cursor : MonoBehaviour
     private bool PrepareCurrent(Group<GameObject, GameObject> group)
     {
         currentGroup = group;
-        currentTypes = group.GetChoicesSet();
+        //currentTypes = group.GetChoicesSet();
         currentSelection = Random.Range(0, currentTypes.Count);
         print(currentTypes.Count);
         if (currentTypes.Count > 0)
@@ -31,7 +31,7 @@ public partial class Cursor : MonoBehaviour
         {
             Preview = new GameObject();
             Type<GameObject> type = types[index];
-            foreach (var go in type.GetObjects())
+            foreach (GameObject go in type.GetTypes())
             {
                 Vector3 position = group.GetUnit(0).GetVector().transform.position;
                 GameObject newGO = Instantiate(go, position, Quaternion.identity);
@@ -82,16 +82,16 @@ public partial class Cursor : MonoBehaviour
     private void UpdateScroll(){
         if(currentTypes == null) return;
                     if(currentTypes.Count != 0){
-                float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
-                if (scrollWheel > 0f){
-                    ResetPreview(false);
-                    TogglePreview(1);
-                }
-                else if(scrollWheel < 0f){
-                    ResetPreview(false);
-                    TogglePreview(-1);
-                }
-            }
+                        float scrollWheel = Input.GetAxis("Mouse ScrollWheel");
+                        if (scrollWheel > 0f){
+                            ResetPreview(false);
+                            TogglePreview(1);
+                        }
+                        else if(scrollWheel < 0f){
+                            ResetPreview(false);
+                            TogglePreview(-1);
+                        }
+                    }
 
     }
 

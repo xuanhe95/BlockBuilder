@@ -36,11 +36,12 @@ public partial class Cursor : MonoBehaviour
             Group<GameObject, GameObject> group = hit.collider.gameObject
                 .GetComponent<GroupCollider>()
                 .thisGroup;
+            GroupManager manager = hit.collider.gameObject.GetComponent<GroupManager>();
             if (hit.collider.gameObject != lastHit)
             {
                 ResetPreview(true);
 
-                if (PrepareCurrent(group.FindRelativeGroup(Direction.Up)))
+                if (PrepareCurrent(manager.FindRelativeGroup(Direction.Up)))
                 {
                     InstancePreview(currentSelection, currentTypes, currentGroup);
                 }
@@ -59,6 +60,7 @@ public partial class Cursor : MonoBehaviour
     {
         print("SetCursorCalled");
         Group<GameObject, GameObject> group = lastHit.GetComponent<GroupCollider>().thisGroup;
+        GroupManager manager = hit.collider.gameObject.GetComponent<GroupManager>();
 
         //print(group);
 
@@ -73,64 +75,72 @@ public partial class Cursor : MonoBehaviour
             // break;
 
             case 1:
-                Group<GameObject, GameObject> leftGroup = group.FindRelativeGroup(Direction.Left);
+                Group<GameObject, GameObject> leftGroup = manager.FindRelativeGroup(Direction.Left);
                 if (leftGroup == null)
                     break;
+                if(currentTypes[currentSelection] != null){
+                    leftGroup.SetType(currentTypes[currentSelection]);
+                }
                 PushToHistory(leftGroup);
-                leftGroup.Select(rd);
-
+                
                 break;
 
             case 2:
 
-                Group<GameObject, GameObject> rightGroup = group.FindRelativeGroup(Direction.Right);
+                Group<GameObject, GameObject> rightGroup = manager.FindRelativeGroup(Direction.Right);
                 if (rightGroup == null)
                     break;
+                if(currentTypes[currentSelection] != null){
+                    rightGroup.SetType(currentTypes[currentSelection]);
+                }
                 PushToHistory(rightGroup);
-                rightGroup.Select(rd);
-
+                
                 break;
 
             case 3:
 
-                Group<GameObject, GameObject> forwardGroup = group.FindRelativeGroup(
-                    Direction.Forward
-                );
+                Group<GameObject, GameObject> forwardGroup = manager.FindRelativeGroup(Direction.Forward);
                 if (forwardGroup == null)
                     break;
+                if(currentTypes[currentSelection] != null){
+                    forwardGroup.SetType(currentTypes[currentSelection]);
+                }
                 PushToHistory(forwardGroup);
-                forwardGroup.Select(rd);
+                
                 break;
 
             case 4:
 
-                Group<GameObject, GameObject> backGroup = group.FindRelativeGroup(Direction.Back);
+                Group<GameObject, GameObject> backGroup = manager.FindRelativeGroup(Direction.Back);
                 if (backGroup == null)
                     break;
-                backGroup.Select(rd);
+                if(currentTypes[currentSelection] != null){
+                    backGroup.SetType(currentTypes[currentSelection]);
+                }
                 PushToHistory(backGroup);
+                
                 break;
 
             case 5:
-                Group<GameObject, GameObject> upGroup = group.FindRelativeGroup(Direction.Up);
+                Group<GameObject, GameObject> upGroup = manager.FindRelativeGroup(Direction.Up);
                 if (upGroup == null)
                     break;
                 if(currentTypes[currentSelection] != null){
                     upGroup.SetType(currentTypes[currentSelection]);
                 }
-
-                
-                
                 PushToHistory(upGroup);
 
                 break;
 
             case 6:
-                Group<GameObject, GameObject> downGroup = group.FindRelativeGroup(Direction.Down);
+                Group<GameObject, GameObject> downGroup = manager.FindRelativeGroup(Direction.Down);
                 if (downGroup == null)
                     break;
-                downGroup.Select(rd);
+                if(currentTypes[currentSelection] != null){
+                    downGroup.SetType(currentTypes[currentSelection]);
+                }
                 PushToHistory(downGroup);
+
                 break;
         }
     }

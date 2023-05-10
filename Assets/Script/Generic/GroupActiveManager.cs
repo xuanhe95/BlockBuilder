@@ -46,7 +46,7 @@ public partial class Group<P, T>
     //     RegulateAdd(choices);
     //     return choices;
     // }
-
+    //
     // public List<Type<T>> GetChoicesSet()
     // {
     //     Choice<T> choices = CreateTempChoices();

@@ -5,6 +5,11 @@ using System;
 
 public partial class Generator : MonoBehaviour
 {
+    public int width = 36;
+
+    public int length = 30;
+
+    public int height = 16;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,7 +17,7 @@ public partial class Generator : MonoBehaviour
         GenerateMeshs();
         GenerateRules();
 
-        LevelBuilder(36, 30, 16);
+        LevelBuilder(width, length, height);
 
         //Debug.Log(levels.Count);
         // PrintRules();

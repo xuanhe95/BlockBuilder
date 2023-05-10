@@ -11,9 +11,12 @@ public class CameraMovement : MonoBehaviour
     public float rotationSpeed = 10.0f;
     private Transform cameraTransform;
     private Vector3 origin = new Vector3(5,5,5);
+    private Generator gen;
 
     void Start()
     {
+        gen = GameObject.FindObjectOfType<Generator>();
+        origin = new Vector3((float)gen.width, (float)gen.height, (float)gen.length) / 2;
         cameraTransform = transform;
         cameraTransform.LookAt(origin);
     }

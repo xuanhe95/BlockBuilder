@@ -53,13 +53,16 @@ public partial class Generator : MonoBehaviour
             {
                 if (group.GetTypes() != GeoMap[(int)Geo.Empty])
                 {
+                    
                     GameObject GroupCollider = Instantiate(
                         collider,
                         group.Units[0].GetVector().transform.position - new Vector3(0.5f, 0, 0.5f),
                         Quaternion.identity
                     );
+                    group.Instance = GroupCollider;
                     //print(GroupCollider);
                     GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
+                    GroupCollider.AddComponent<GroupManager>();
                     // if(!colliderMap.ContainsKey(group)){
                     //     colliderMap.Add(group, GroupCollider);
                     // }

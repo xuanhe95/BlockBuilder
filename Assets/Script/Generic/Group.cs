@@ -9,6 +9,7 @@ public partial class Group<P, T>
     public int ID;
     public List<Unit<P, T>> Units { get; set; }
     public Choice<T> Choices { get; set; }
+    public GameObject Instance;
 
 
     public Group(int id, Type<T> type, Choice<T> choice)
@@ -24,6 +25,7 @@ public partial class Group<P, T>
     public Choice<T> GetChoices(){
         return Choices;
     }
+    
 
     public void AddUnit(Unit<P, T> unit)
     {
