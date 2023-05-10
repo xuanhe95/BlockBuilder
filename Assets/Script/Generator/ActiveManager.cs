@@ -16,6 +16,22 @@ public partial class Generator : MonoBehaviour
 
     private List<GameObject> GroupColliders = new List<GameObject>();
 
+    public void InitGroupManager()
+    {
+        foreach (Level<GameObject, GameObject> level in levels){
+            foreach (Group<GameObject, GameObject> group in level.Groups.Values){
+                            GameObject block = Instantiate(
+                    GoMap[(int)Geo.Empty],
+                    group.Units[0].GetVector().transform.position - new Vector3(0.5f, 0, 0.5f),
+                    Quaternion.identity
+                );
+                GroupManager gm = block.AddComponent<GroupManager>();
+                gm.Initialize(group, GeoMap, ModMap);
+                GroupMap.Add(group, gm);
+            }
+        }
+    }
+
     void Instantiator()
     {
         //print("Instantiator Called");
@@ -53,28 +69,19 @@ public partial class Generator : MonoBehaviour
             {
                 if (group.GetTypes() != GeoMap[(int)Geo.Empty])
                 {
-                    
                     GameObject GroupCollider = Instantiate(
                         collider,
                         group.Units[0].GetVector().transform.position - new Vector3(0.5f, 0, 0.5f),
                         Quaternion.identity
                     );
                     group.Instance = GroupCollider;
-                    //print(GroupCollider);
                     GroupCollider.GetComponent<GroupCollider>().SetGroup(group);
-                    GroupCollider.AddComponent<GroupManager>();
-                    // if(!colliderMap.ContainsKey(group)){
-                    //     colliderMap.Add(group, GroupCollider);
-                    // }
-                    //GroupColliders.Add(GroupCollider);
+
+
+                    //GroupManager gm = new GroupManager(group, GeoMap, ModMap);
+
                 }
-                else{
-                    // if(colliderMap.ContainsKey(group)){
-                    //     Destroy(colliderMap[group]);
-                    //     colliderMap.Remove(group);
-                    // }
-                    
-                }
+
             }
         }
     }

@@ -341,6 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9024365458297649428}
+  - component: {fileID: 1263113773196986852}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -367,3 +368,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1263113773196986852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536340266247955374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5877a9c76c5f94c60b5e09e7f487f251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rule: []
+  Up:
+  - {fileID: 7267987929096762572, guid: e2c6c544098b14df08d6db1491ec0844, type: 3}
+  - {fileID: 5891887969008597611, guid: 9e9c0d3d697ed4931b14b59962668288, type: 3}
+  Down: []
+  CL: []
+  CR: []
+  CF: []
+  CB: []
+  O: []
+  LL: []
+  LR: []
+  LF: []
+  LB: []
+  HL: []
+  HF: []

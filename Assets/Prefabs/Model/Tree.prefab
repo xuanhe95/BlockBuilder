@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5731569675021945391}
-  - component: {fileID: -8210120706144090867}
+  - component: {fileID: 6324416196636140497}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -202,7 +202,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8210120706144090867
+--- !u!114 &6324416196636140497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,14 +211,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3546575603583193904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030c5f88339714afa973e0c4e701521f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5877a9c76c5f94c60b5e09e7f487f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Rule:
   - {fileID: 3546575603583193904}
-  Up: []
+  Up:
+  - {fileID: 3546575603583193904}
   Down: []
-  IntRule: 03000000
+  C: []
+  O: []
+  L: []
+  H:
+  - {fileID: 5891887969008597611, guid: 9e9c0d3d697ed4931b14b59962668288, type: 3}
 --- !u!1 &4881282041044995320
 GameObject:
   m_ObjectHideFlags: 0

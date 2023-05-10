@@ -13,23 +13,14 @@ public partial class Generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //rd = new System.Random();
         GenerateMeshs();
         GenerateRules();
-
         LevelBuilder(width, length, height);
-
-        //Debug.Log(levels.Count);
-        // PrintRules();
-        foreach (Level<GameObject, GameObject> level in levels)
-        {
-            //Debug.Log(level.ID);
-            //PrintRules(level);
-        }
+        CursorStart();
+        InitGroupManager();
         Instantiator();
     }
-
-    // Update is called once per frame
+        // Update is called once per frame
     void LateUpdate()
     {
         if (Input.GetMouseButtonUp(0))
@@ -46,9 +37,4 @@ public partial class Generator : MonoBehaviour
         }
     }
 
-    // IEnumerator UpdateIns()
-    // {
-    //     yield return new WaitForSeconds(0);
-    //
-    // }
 }

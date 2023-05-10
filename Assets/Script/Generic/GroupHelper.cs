@@ -196,24 +196,24 @@ public partial class Group<P, T>
     //         return -1;
     // }
 
-    // public Group<P, T> FindRelativeGroup(int direction)
-    // {
-    //     switch (direction)
-    //     {
-    //         case Direction.Forward:
-    //             return GetForward();
-    //         case Direction.Back:
-    //             return GetBack();
-    //         case Direction.Left:
-    //             return GetLeft();
-    //         case Direction.Right:
-    //             return GetRight();
-    //         case Direction.Up:
-    //             return GetUp();
-    //         case Direction.Down:
-    //             return GetDown();
-    //         default:
-    //             return null;
-    //     }
-    // }
+    public Group<P, T> FindRelativeGroup(int direction)
+    {
+        switch (direction)
+        {
+            case Direction.Forward:
+                return GetForward();
+            case Direction.Back:
+                return GetBack();
+            case Direction.Left:
+                return GetLeft();
+            case Direction.Right:
+                return GetRight();
+            case Direction.Up:
+                return GetUp();
+            case Direction.Down:
+                return GetDown();
+            default:
+                return null;
+        }
+    }
 }

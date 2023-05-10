@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4159723588059638184}
-  - component: {fileID: 2198421338116147334}
+  - component: {fileID: 5865657523007757412}
   m_Layer: 0
   m_Name: Sand
   m_TagString: Untagged
@@ -368,7 +368,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2198421338116147334
+--- !u!114 &5865657523007757412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -377,11 +377,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7267987929096762572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030c5f88339714afa973e0c4e701521f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5877a9c76c5f94c60b5e09e7f487f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Rule:
   - {fileID: 7267987929096762572}
-  Up: []
+  - {fileID: 5891887969008597611, guid: 9e9c0d3d697ed4931b14b59962668288, type: 3}
+  Up:
+  - {fileID: 5891887969008597611, guid: 9e9c0d3d697ed4931b14b59962668288, type: 3}
   Down: []
-  IntRule: 03000000
+  CL: []
+  CR: []
+  CF: []
+  CB: []
+  O: []
+  LL: []
+  LR: []
+  LF: []
+  LB: []
+  HL: []
+  HF: []

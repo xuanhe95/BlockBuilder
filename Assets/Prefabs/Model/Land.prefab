@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8931349087169569658}
-  - component: {fileID: 4501173824197975594}
+  - component: {fileID: 1569512808298925186}
   m_Layer: 0
   m_Name: Land
   m_TagString: Untagged
@@ -119,7 +119,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4501173824197975594
+--- !u!114 &1569512808298925186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,16 +128,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 5891887969008597611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 030c5f88339714afa973e0c4e701521f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5877a9c76c5f94c60b5e09e7f487f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rule: []
-  Up: []
+  Rule:
+  - {fileID: 5891887969008597611}
+  Up:
+  - {fileID: 5891887969008597611}
+  - {fileID: 3546575603583193904, guid: 916c437da765c41a88568baf20cdabc7, type: 3}
   Down: []
-  C: 0
-  O: 0
-  L: 0
-  H: 0
+  CL:
+  - {fileID: 3142674958994256654, guid: 69d5f106a568a40cc8bb535c24908bcd, type: 3}
+  CR:
+  - {fileID: 7501458131400783298, guid: b12de13722d334067a8994604e40588e, type: 3}
+  CF:
+  - {fileID: 1316770164813582280, guid: ddd56662c3a7e401ebd48a5988376e44, type: 3}
+  CB:
+  - {fileID: 3598476638226730268, guid: c006dd4cca1fe4f43944754f3550d815, type: 3}
+  O: []
+  LL:
+  - {fileID: 137299558949590217, guid: f57bb3662c42f4633996605dc8e07eac, type: 3}
+  LR:
+  - {fileID: 2383562375240332337, guid: 4337a3deb237540a8b3f62c85e91688c, type: 3}
+  LF:
+  - {fileID: 8744705609181952829, guid: 36bdaee3564c643b2878d729ef8d5ce0, type: 3}
+  LB:
+  - {fileID: 1280216703885091536, guid: 459c2705f04b249e88917000f551d957, type: 3}
+  HL:
+  - {fileID: 2830614248040330345, guid: d72683187617047258e0214c8b86e50a, type: 3}
+  HF:
+  - {fileID: 8045777676790680802, guid: 9d985b2ccabbb4d2ba33722828fdc4dc, type: 3}
 --- !u!1 &6082222911460909828
 GameObject:
   m_ObjectHideFlags: 0

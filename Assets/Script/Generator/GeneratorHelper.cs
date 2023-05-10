@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class Generator
+public partial class Generator : MonoBehaviour
 {
     public void SetRotation(Unit<GameObject, GameObject> unit, float x, float y, float z)
     {
