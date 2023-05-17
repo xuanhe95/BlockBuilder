@@ -9,21 +9,7 @@ public partial class Generator : MonoBehaviour
 
     public void GenerateRules()
     {
-        //AddSimpleRule(midRule, GeoMap[(int)Geo.Sand], GeoMap[(int)Geo.Land]);
-        //AddSimpleRule(midRule, GeoMap[(int)Geo.Sand]);
-        //AddSimpleRule(midRule, GeoMap[(int)Geo.Land]);
-        //AddSimpleRule(midRule, GeoMap[(int)Geo.Tree]);
-        //AddSimpleRule(midRule, GeoMap[(int)Geo.Water]);
-
-        //AddSimpleUpRule(midRule, GeoMap[(int)Geo.Water], GeoMap[(int)Geo.Sand]);
-        //AddSimpleUpRule(midRule, GeoMap[(int)Geo.Water], GeoMap[(int)Geo.Land]);
-        //AddSimpleUpRule(midRule, GeoMap[(int)Geo.Sand], GeoMap[(int)Geo.Land]);
-        //AddSimpleUpRule(midRule, GeoMap[(int)Geo.Land], GeoMap[(int)Geo.Tree]);
-        //AddSimpleUpRule(midRule, GeoMap[(int)Geo.Tree]);
-
-        //AddSimpleUpRule(midRule, GeoMap[(int)Geo.Land]);
-
-        foreach(GameObject go in GoMap.Values){
+        foreach(GameObject go in GoMap.Values){ // Generate rules from Rule Creator Component
             if(go.GetComponent<RuleCreator>() == null) continue;
             foreach(GameObject relative in go.GetComponent<RuleCreator>().Rule){
                 AddSimpleRule(midRule, ModMap[go], ModMap[relative]);

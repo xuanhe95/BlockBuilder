@@ -14,10 +14,10 @@ public partial class Generator : MonoBehaviour
     void Start()
     {
         GenerateMeshs();
-        GenerateRules();
-        LevelBuilder(width, length, height);
+        GenerateRules();    // 创建规则
+        LevelBuilder(width, length, height);    // 创建levels
         CursorStart();
-        InitGroupManager();
+        InitGroupManager(); // 生成并挂载GroupManager
         Instantiator();
     }
         // Update is called once per frame

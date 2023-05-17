@@ -58,11 +58,11 @@ public partial class Group<P, T>
         return Type.GetName();
     }
 
-    public void SetTypes()
-    {
-        SetUnitTypes();
-        Debug.Log("SET TYPE " + Type.GetName());
-    }
+    // public void SetTypes()
+    // {
+    //     SetUnitTypes();
+    //     Debug.Log("SET TYPE " + Type.GetName());
+    // }
 
 
     public void SetType(Type<T> type)

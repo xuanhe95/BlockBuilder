@@ -131,7 +131,7 @@ public partial class Generator : MonoBehaviour
 
                 level.Groups.Add(i * length / 2 + j / 2, group);
 
-                group.SetTypes();
+                group.SetUnitTypes();   //初始化所有units
             }
         }
 

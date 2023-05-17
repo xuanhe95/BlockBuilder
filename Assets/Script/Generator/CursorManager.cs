@@ -30,7 +30,8 @@ public partial class Generator : MonoBehaviour
             Group<GameObject, GameObject> group = hit.collider.gameObject
                 .GetComponent<GroupCollider>()
                 .thisGroup;
-            GroupManager manager = hit.collider.gameObject.GetComponent<GroupManager>();
+            //GroupManager manager = hit.collider.gameObject.GetComponent<GroupManager>();
+            //if(manager !=null) RecursiveSelect(manager, 1);
             if (hit.collider.gameObject != lastHit)
             {
                 ResetPreview(true);
@@ -41,6 +42,7 @@ public partial class Generator : MonoBehaviour
             }
             lastHit = hit.collider.gameObject;
         }
+
 
         if(Input.GetMouseButtonDown(1)){
             Withdraw();
@@ -94,7 +96,8 @@ public partial class Generator : MonoBehaviour
         if(depth == 0) return;
         visited.Add(manager);
         for(int dir = 0; dir < 6; dir++){
-            Group<GameObject, GameObject> relative = manager.GetGroup().FindRelativeGroup(dir);
+            Group<GameObject, GameObject> group = manager.GetGroup();
+            Group<GameObject, GameObject> relative = group.FindRelativeGroup(dir);
             if(relative == null) continue;
             GroupManager relativeManager = GroupMap[relative];
             if(relativeManager == null  || visited.Contains(relativeManager)) continue;

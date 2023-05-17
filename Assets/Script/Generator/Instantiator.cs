@@ -6,10 +6,9 @@ public partial class Generator : MonoBehaviour
 {
     private List<GameObject> InstantiatedGo = new List<GameObject>();
     public GameObject collider;
-
     private List<GameObject> GroupColliders = new List<GameObject>();
 
-    public void InitGroupManager()
+    public void InitGroupManager()  //挂载GroupManager
     {
         foreach (Level<GameObject, GameObject> level in levels){
             foreach (Group<GameObject, GameObject> group in level.Groups.Values){
@@ -19,8 +18,8 @@ public partial class Generator : MonoBehaviour
                     Quaternion.identity
                 );
                 GroupManager gm = block.AddComponent<GroupManager>();
-                gm.Initialize(group, GeoMap, ModMap);
-                GroupMap.Add(group, gm);
+                gm.Initialize(group, GeoMap, ModMap);   //初始化GroupManager
+                GroupMap.Add(group, gm);    //记录GroupManager和Group的对应关系
             }
         }
     }
