@@ -22,7 +22,6 @@ public partial class GroupManager : MonoBehaviour
         Group.SetType(GeoMap[(int) Geo.Empty]);
     }
 
-
     public Choice<GameObject> CreateTempChoices()
     {
         List<Type<GameObject>> tempChoices = new List<Type<GameObject>>();
@@ -31,10 +30,13 @@ public partial class GroupManager : MonoBehaviour
         return newChoices;
     }
 
+    // public void Select(System.Random random)
+    // {
+    //     Group.SetType(Group.GetChoices(), random);
+    // }
 
-    public void Select(System.Random random)
-    {
-        Group.SetType(Group.GetChoices(), random);
+    public void Select(System.Random random){
+        Group.SetType(CreateTempChoices(), random);
     }
 
     public void RegulateAdd(Choice<GameObject> choices)
@@ -46,8 +48,6 @@ public partial class GroupManager : MonoBehaviour
             AddH(choices, rg, go);
             AddL(choices, rg, go);
             AddC(choices, rg, go);
-
-
         }
     }
 
@@ -99,7 +99,6 @@ public partial class GroupManager : MonoBehaviour
             case Direction.Left:
                 foreach(GameObject relative in rc.CL){
                     AddChoice(choices, ModMap[relative], 12);
-
                 }
                                     break;
             case Direction.Right:
@@ -120,7 +119,6 @@ public partial class GroupManager : MonoBehaviour
 
                 }
                                     break;
-
         }
     }
 

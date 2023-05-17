@@ -6,6 +6,7 @@ public partial class GroupManager : MonoBehaviour
 {
     private List<Type<GameObject>> ChoicesSet;
     private int ChoicesID = 0;
+    private HashSet<Group<GameObject, GameObject>> visited = new HashSet<Group<GameObject, GameObject>>();
 
     public List<Type<GameObject>> GetChoicesSet()
     {
@@ -28,4 +29,11 @@ public partial class GroupManager : MonoBehaviour
         Group.Type = ChoicesSet[ChoicesID];
     }
 
+
+
+
+
 }
+
+
+

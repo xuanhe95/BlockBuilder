@@ -11,7 +11,7 @@ public partial class Generator : MonoBehaviour
     System.Random rd;
 
     private Dictionary<Group<GameObject, GameObject>, GroupManager> GroupMap = new Dictionary<Group<GameObject, GameObject>, GroupManager>();
-
+    private HashSet<GroupManager> visited = new HashSet<GroupManager>();
     // Start is called before the first frame update
     void CursorStart()
     {
@@ -89,4 +89,22 @@ public partial class Generator : MonoBehaviour
             }
 
         }
+
+    public void RecursiveSelect(GroupManager manager, int depth = 0){
+        if(depth == 0) return;
+        visited.Add(manager);
+        for(int dir = 0; dir < 6; dir++){
+            Group<GameObject, GameObject> relative = manager.GetGroup().FindRelativeGroup(dir);
+            if(relative == null) continue;
+            GroupManager relativeManager = GroupMap[relative];
+            if(relativeManager == null  || visited.Contains(relativeManager)) continue;
+            relativeManager.Select(rd);
+            RecursiveSelect(relativeManager, depth-1);
+            PushToHistory(relativeManager);
+        }
+    }
+
+
+
+
 }
