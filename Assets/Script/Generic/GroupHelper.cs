@@ -32,7 +32,7 @@ public partial class Group<P, T>
 
     public Group<P, T> GetLeft()
     {
-        Debug.Log("get Left");
+        //Debug.Log("get Left");
         Unit<P, T> unit = Units[0].Relatives[Direction.Left];
         if (unit == null)
             return null;
@@ -41,7 +41,7 @@ public partial class Group<P, T>
 
     public Group<P, T> GetRight()
     {
-        Debug.Log("get Right");
+        //Debug.Log("get Right");
         Unit<P, T> unit = Units[3].Relatives[Direction.Right];
         if (unit == null)
             return null;

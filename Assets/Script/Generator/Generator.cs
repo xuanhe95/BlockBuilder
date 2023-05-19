@@ -30,11 +30,16 @@ public partial class Generator : MonoBehaviour
         if(Input.GetMouseButtonUp(1)){
             Instantiator();
         }
-        
         if (Input.GetMouseButtonUp(2))
         {
             Instantiator();
         }
+
+        // if (Input.GetKeyUp(KeyCode.X))
+        // {
+        //     print("xPressed");
+        //     RecursiveSelect();
+        // }
     }
 
 }

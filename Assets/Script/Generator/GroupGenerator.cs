@@ -15,6 +15,8 @@ public partial class Generator
 
     public void GenerateMeshs()
     {
+        // GameObject ModelsGO = new GameObject();
+        // ModelsGO.name = "Models";
         picker = new GeoPicker();
         GeoMap = new Dictionary<int, Type<GameObject>>();
         GoMap = new Dictionary<int, GameObject>();
@@ -22,7 +24,10 @@ public partial class Generator
         ModMap = new Dictionary<GameObject, Type<GameObject>>();
 
         int index = 0;
-        foreach(GameObject go in Models){
+        foreach(GameObject go in Models)
+        {
+            //go.transform.SetParent(ModelsGO.transform);
+            //go.name = index.ToString();
             GeoMap.Add(index, Pick(go));
             GoMap.Add(index, go);
             IdxMap.Add(go, index);

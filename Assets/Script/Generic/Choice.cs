@@ -40,7 +40,7 @@ public class Choice<T>
 
     public void Add(Type<T> type, int times)
     {
-        Debug.Log("ADD " + times);
+        //Debug.Log("ADD " + times);
         for (int i = 0; i < times; i++)
         {
             Types.Add(type);
@@ -54,7 +54,7 @@ public class Choice<T>
 
     public Type<T> GetRandomType(System.Random random)
     {
-        Debug.Log(Types.Count);
+        //Debug.Log(Types.Count);
         if (Types.Count == 0)
             return null;
         Type<T> type = Types[random.Next(Types.Count)];

@@ -16,7 +16,7 @@ public partial class Generator : MonoBehaviour
         GroupManager gm = GroupMap[group];
         currentTypes = gm.GetChoicesSet();
         currentSelection = Random.Range(0, currentTypes.Count);
-        print(currentTypes.Count);
+        //print(currentTypes.Count);
         if (currentTypes.Count > 0)
             return true;
         else

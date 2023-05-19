@@ -9,9 +9,13 @@ public partial class Generator : MonoBehaviour
     private GameObject lastHit;
     private RectTransform rectTransform;
     System.Random rd;
+    private bool XPressed = false;
 
-    private Dictionary<Group<GameObject, GameObject>, GroupManager> GroupMap = new Dictionary<Group<GameObject, GameObject>, GroupManager>();
+    private Dictionary<Group<GameObject, GameObject>, GroupManager> GroupMap =
+        new Dictionary<Group<GameObject, GameObject>, GroupManager>();
+
     private HashSet<GroupManager> visited = new HashSet<GroupManager>();
+
     // Start is called before the first frame update
     void CursorStart()
     {
@@ -40,21 +44,34 @@ public partial class Generator : MonoBehaviour
                     InstancePreview(currentSelection, currentTypes, currentGroup);
                 }
             }
+
             lastHit = hit.collider.gameObject;
         }
 
 
-        if(Input.GetMouseButtonDown(1)){
+        if (Input.GetMouseButtonDown(1))
+        {
             Withdraw();
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            XPressed = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.X))
+        {
+            XPressed = false;
+        }
+
     }
 
     public void SetCursor(int input)
     {
-                print("SetCursorCalled");
+        print("SetCursorCalled");
         Group<GameObject, GameObject> group = lastHit.GetComponent<GroupCollider>().thisGroup;
         GroupManager manager = hit.collider.gameObject.GetComponent<GroupManager>();
+        print(manager);
 
         switch (input)
         {
@@ -78,33 +95,87 @@ public partial class Generator : MonoBehaviour
                 SetGroup(group, Direction.Down);
                 break;
         }
+
+        if (XPressed)
+        {
+            print("recursive called");
+            Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(Direction.Up);
+            BSelect(GroupMap[relativeGroup], 10);
+        }
+
+
     }
 
-        public void SetGroup(Group<GameObject, GameObject> group, int direction){
-            Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(direction);
-            Debug.Log(relativeGroup);
-            if (relativeGroup != null){
-                if(currentTypes[currentSelection] != null){
-                    relativeGroup.SetType(currentTypes[currentSelection]);
-                }
-                PushToHistory(GroupMap[relativeGroup]);
+    public void SetGroup(Group<GameObject, GameObject> group, int direction)
+    {
+        Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(direction);
+        Debug.Log(relativeGroup);
+        if (relativeGroup != null)
+        {
+            if (currentTypes[currentSelection] != null)
+            {
+                relativeGroup.SetType(currentTypes[currentSelection]);
             }
 
+            PushToHistory(GroupMap[relativeGroup]);
         }
 
-    public void RecursiveSelect(GroupManager manager, int depth = 0){
-        if(depth == 0) return;
+    }
+
+    public void RecursiveSelect(GroupManager manager, int depth = 1)
+    {
+        if (manager == null) return;
+        print("recursive " + depth);
+        if (depth == 0) return;
         visited.Add(manager);
-        for(int dir = 0; dir < 6; dir++){
+        
+        for (int dir = 0; dir < 5; dir++)
+        {
             Group<GameObject, GameObject> group = manager.GetGroup();
             Group<GameObject, GameObject> relative = group.FindRelativeGroup(dir);
-            if(relative == null) continue;
+            if (relative == null) continue;
             GroupManager relativeManager = GroupMap[relative];
-            if(relativeManager == null  || visited.Contains(relativeManager)) continue;
+            if (relativeManager == null || visited.Contains(relativeManager)) continue;
+            if (relativeManager.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty]) continue;
+            relativeManager.SetEmpty();
             relativeManager.Select(rd);
-            RecursiveSelect(relativeManager, depth-1);
+            RecursiveSelect(relativeManager, depth - 1);
             PushToHistory(relativeManager);
         }
+    }
+
+    public void BSelect(GroupManager manager, int depth = 1)
+    {
+        if (manager == null || depth == 0) return;
+        visited.Clear();
+        Queue<GroupManager> q = new Queue<GroupManager>();
+        //visited.Add(manager);
+        q.Enqueue(manager);
+        int size = q.Count;
+        int level = 0;
+        while (q.Count > 0 && level < depth)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                GroupManager gm = q.Dequeue();
+                
+                if (visited.Contains(gm) || gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty]) continue;
+                gm.SetEmpty();
+                gm.Select(rd);
+
+                for (int dir = 0; dir < 5; dir++)
+                {
+                    Group<GameObject, GameObject> relative = gm.GetGroup().FindRelativeGroup(dir);
+                    GroupManager relativeManager = GroupMap[relative];
+                    q.Enqueue(relativeManager);
+                }
+                visited.Add(gm);
+            }
+
+            size = q.Count;
+            level++;
+        }
+        
     }
 
 

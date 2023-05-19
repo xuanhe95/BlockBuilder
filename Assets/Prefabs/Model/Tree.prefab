@@ -219,11 +219,17 @@ MonoBehaviour:
   Up:
   - {fileID: 3546575603583193904}
   Down: []
-  C: []
+  CL: []
+  CR: []
+  CF: []
+  CB: []
   O: []
-  L: []
-  H:
-  - {fileID: 5891887969008597611, guid: 9e9c0d3d697ed4931b14b59962668288, type: 3}
+  LL: []
+  LR: []
+  LF: []
+  LB: []
+  HL: []
+  HF: []
 --- !u!1 &4881282041044995320
 GameObject:
   m_ObjectHideFlags: 0

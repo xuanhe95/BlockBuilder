@@ -30,13 +30,20 @@ public partial class GroupManager : MonoBehaviour
         return newChoices;
     }
 
+    public Choice<GameObject> CreateSelectChoices()
+    {
+        List<Type<GameObject>> choices = GetChoicesSet();
+        Choice<GameObject> newChoices = new Choice<GameObject>(choices);
+        return newChoices;
+    }
+
     // public void Select(System.Random random)
     // {
     //     Group.SetType(Group.GetChoices(), random);
     // }
 
     public void Select(System.Random random){
-        Group.SetType(CreateTempChoices(), random);
+        Group.SetType(CreateSelectChoices(), random);
     }
 
     public void RegulateAdd(Choice<GameObject> choices)
@@ -58,12 +65,12 @@ public partial class GroupManager : MonoBehaviour
                 foreach(GameObject relative in rc.HL){
                     AddChoice(choices, ModMap[relative], 15);
                 }
-            break;
+                break;
             case Direction.Forward:
                 foreach(GameObject relative in rc.HF){
                     AddChoice(choices, ModMap[relative], 15);
                 }
-            break;
+                break;
         }
     }
 
@@ -100,13 +107,13 @@ public partial class GroupManager : MonoBehaviour
                 foreach(GameObject relative in rc.CL){
                     AddChoice(choices, ModMap[relative], 12);
                 }
-                                    break;
+                break;
             case Direction.Right:
                 foreach(GameObject relative in rc.CR){
                     AddChoice(choices, ModMap[relative], 12);
 
                 }
-                                    break;
+                break;
             case Direction.Forward:
                 foreach(GameObject relative in rc.CF){
                     AddChoice(choices, ModMap[relative], 12);
@@ -118,7 +125,7 @@ public partial class GroupManager : MonoBehaviour
                     AddChoice(choices, ModMap[relative], 12);
 
                 }
-                                    break;
+                break;
         }
     }
 

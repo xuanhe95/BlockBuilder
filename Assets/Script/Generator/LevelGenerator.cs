@@ -73,14 +73,18 @@ public partial class Generator : MonoBehaviour
         level.SetRule(rule);
         //GameObject go = levelID == 0 ? Water : Empty;
 
+        GameObject UnitHolder = new GameObject();
+        UnitHolder.name = "level "+level.ID.ToString();
         for (int i = 0; i < width; i++)
         {
             Unit<GameObject, GameObject> backUnit = null;
             for (int j = 0; j < length; j++)
             {
                 GameObject location = new GameObject();
+                location.transform.SetParent(UnitHolder.transform);
                 //location.transform.rotation = Quaternion.Euler(0f,90f,0f);
                 location.transform.position = new Vector3(i, levelID, j);
+                location.name = "Unit" + location.transform.position.ToString();
                 Unit<GameObject, GameObject> unit = new Unit<GameObject, GameObject>(
                     id,
                     location,
