@@ -1,11 +1,15 @@
-# 🌆 GenericBuilder 🏙
+<h1><p align="center">🌆 GenericBuilder 🏙</p></h1>
 
-**Generic Builder**是一款基于Unity的游戏。  
-我们来自 🏫 UCLA，这个游戏是我们Studio成果的一部分。🐻Go Bruins！   
-We are from 🏫 UCLA and this program is one of our studio works. 🐻Go Bruins! 
+<p align="center"><b>Generic Builder</b> 是一款基于Unity的游戏。</p>
+<p align="center">我们来自 🏫 UCLA，这个游戏是我们Studio成果的一部分。🐻Go Bruins!</p>  
+<p align="center">We are from 🏫 UCLA and this program is one of our studio works. 🐻Go Bruins!</p>
 
-☕️🧑‍💻 Program Designer:    **Xander Zhang**  
-🎨🧑‍🎨 Technical Artist:     **Ishmeal Luo** 
+---
+
+<h3><p align="center">Program Designer:</p></h3>
+<p align="center"><b>☕️🧑‍💻&nbsp;&nbsp;&nbsp; Xander Zhang</b></p>
+<h3><p align="center">Technical Artist:</p></h3>
+<p align="center"><b>🎨🧑‍🎨&nbsp;&nbsp;&nbsp; Ishmeal Luo</b>
 
 ---
 
