@@ -33,10 +33,10 @@ Pressing X and left-clicking allows you to regenerate blocks within a certain ra
 ---
 
 ## Generic文件夹下的类：
-用于对游戏物体数据进行管理的类。  
+ 用于对游戏物体数据进行管理的类。  
 
 ### Group
-用来显示方块，维护管理方块类型及选择的类  
+ 用来显示方块，维护管理方块类型及选择的类  
 
 Group类中有：
  - Unit列表，用来储存组成当前方块的GameObjects。 
@@ -61,23 +61,23 @@ Rule类型中包含：
 
 ---
 
-### GroupManager类   
+## GroupManager类   
 
 用来维护方块之间的动态关系，生成每个位置的可选择方块列表。 
 为了保持代码功能的清晰，GroupManager被分为了几个部分：   
 
-#### GroupManager 
+### GroupManager 
 
 GroupManager类中有：  
 - Group类型，记录被管理的Group。  
 - GeoMap字典，建立Geo和Type之间的数据关系。 
 - ModMap字典，建立GameObject和Type之间的数据关系，用来获得临近的Group。（Group中的GetRelatives方法只能获得GameObject，因此需要此方法记录对应关系） 
 
-#### GroupNext
+### GroupNext
 
-获取当前Group的可选Type列表，用来实现Preview功能。
+获取当前Group的可选Type列表，用来实现Preview功能。 
 
-#### GroupHelper
+### GroupHelper
 - 一些工具方法用来判断当前同类型方格形成的空间状态关系，以此实现更复杂的交互逻辑规则。 
 - L：检测当前生成位置的两个对角是否是同样类型的方块，并返回一个方向。  
 - H：检测当前生成位置的两个相对边是否是同样类型的方块，并返回一个方向。  
@@ -90,23 +90,23 @@ GroupManager类中有：
 
 ### Generator
 为了保持代码功能的清晰，Generator被分为了几个部分：
-#### Instantiator
+### Instantiator
 - 实例化需要显示的GameObject类。
-#### GroupGenerator
+### GroupGenerator
 - 用以生成并组织Group与Unit类型。
-#### LevelGenerator
+### LevelGenerator
 - 用以生成并组织Level类型。
-#### RuleGenerator
+### RuleGenerator
 - 用以生成Rule类型。
 ### ChoiceGenerator
 - 用以生成Choice类型。
-#### CursorManager
+### CursorManager
 - 实现方块的六个面的交互。
-#### GeneratorHelper
+### GeneratorHelper
 - 一些工具类，用以辅助Unity GameObject的创建。
-#### Preview
+### Preview
 - 通过记录并维护当前可选择的GameObject列表来实现方块的预览。
-#### History
+### History
 - 使用栈保存访问过的Group以实现游戏历史及回退功能。
 
 ---
