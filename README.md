@@ -91,64 +91,69 @@ Level类包含：
 
 ## 📁 GroupManager类   
 
-用来维护方块之间的动态关系，生成每个位置的可选择方块列表。 
-为了保持代码功能的清晰，GroupManager被分为了几个部分：   
+GroupManager类被用来维护方块之间的动态关系，并生成每个位置的可选方块列表。  
+为了保持代码的可读性，GroupManager被分为了几个部分：
 
 ### 📃 GroupManager 
 
-GroupManager类中有：  
+GroupManager类包含：  
 - Group类型，记录被管理的Group。  
-- GeoMap字典，建立Geo和Type之间的数据关系。 
-- ModMap字典，建立GameObject和Type之间的数据关系，用来获得临近的Group。（Group中的GetRelatives方法只能获得GameObject，因此需要此方法记录对应关系） 
+- GeoMap字典，用来建立Geo和Type之间的数据关系。
+- ModMap字典，用来建立GameObject和Type之间的数据关系。这个字典用于获取临近的Group。
+   （Group类的GetRelatives方法只能获取GameObject，所以需要这个字典来记录对应的关系）。 
 
 ### 📃 GroupNext
 
-获取当前Group的可选Type列表，用来实现Preview功能。 
+GroupNext负责获取当前Group的可选Type列表，这个功能用于实现预览功能。
 
 ### 📃 GroupHelper
-- 一些工具方法用来判断当前同类型方格形成的空间状态关系，以此实现更复杂的交互逻辑规则。 
-- L：检测当前生成位置的两个对角是否是同样类型的方块，并返回一个方向。  
-- H：检测当前生成位置的两个相对边是否是同样类型的方块，并返回一个方向。  
-- C：检测当前生成位置的三个边是否是同样的类型方块，并返回一个方向。  
-- O：检测当前生成位置是否被四个同样的类型方块所包围。 
+   
+GroupHelper提供了一些🔧工具方法，用来判断当前相同类型方块形成的空间状态关系，以此来实现更复杂的交互逻辑规则。  
+具体方法包括：
+
+   - L：检查当前生成位置的两个对角是否为同一类型的方块，并返回一个方向。
+   - H：检查当前生成位置的两个相对边是否为同一类型的方块，并返回一个方向。
+   - C：检查当前生成位置的三个边是否为同一类型的方块，并返回一个方向。
+   - O：检查当前生成位置是否被四个相同类型的方块所包围。
 
 ---
 
 ## 📁 Generator类：  
 
 ### 📃 Generator
-为了保持代码功能的清晰，Generator被分为了几个部分：
+为了保持代码的可读性，Generator类被划分为多个部分：
 ### 📃 Instantiator
-- 实例化需要显示的GameObject类。
+- 此部分用于实例化需要显示的GameObject类。
 ### 📃 GroupGenerator
-- 用以生成并组织Group与Unit类型。
+- 此部分被用来生成并组织Group和Unit类型。
 ### 📃 LevelGenerator
-- 用以生成并组织Level类型。
+- 此部分被用来生成并组织Level类型。
 ### 📃 RuleGenerator
-- 用以生成Rule类型。
+- 此部分被用来生成Rule类型。
 ### 📃 ChoiceGenerator
-- 用以生成Choice类型。
+- 此部分被用来生成Choice类型。
 ### 📃 CursorManager
-- 实现方块的六个面的交互。
+- 此部分用于实现Block六个面的交互。
 ### 📃 GeneratorHelper
-- 一些工具类，用以辅助Unity GameObject的创建。
+- 一些工具类，用于辅助Unity GameObject的创建。
 ### 📃 Preview
-- 通过记录并维护当前可选择的GameObject列表来实现方块的预览。
+- 此部分通过记录和维护当前可选的GameObject列表，来实现方块的预览。
 ### 📃 History
-- 使用栈保存访问过的Group以实现游戏历史及回退功能。
+- 此部分使用栈来保存访问过的Group，从而实现游戏历史和回退功能。
 
 ---
 
 ## 📁 Helper下的类：
 ### 📃 RuleCreator
 
-用于指定方块连接关系的工具，在Unity中暴露。使得可以通过Unity的UI界面编写连接关系。 
+- RuleCreator是一个用于指定Block连接关系的工具，在Unity中公开。它允许用户通过Unity的UI界面来编写连接关系。
+- RuleGenerator将读取RuleCreator中的数据，以此为模版创建Rules。
 
 ### 📃 GeoPicker
-读取Prefab并返回生成的GameObject列表。 
+- GeoPicker负责读取Prefab并返回生成的GameObject列表。
 
 ### 📃 Direction
-静态类，用于记录方向。 
+- Direction是一个静态类，用于记录方向。
 
 ### 📃 Geo
-枚举，用于记录模型的类型。 
+- Geo是一个枚举类型，用于记录模型的类型。
