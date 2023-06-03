@@ -27,22 +27,28 @@ Pressing X and left-clicking allows you to regenerate blocks within a certain ra
 ## 设计亮点：  
 
 - ✨使用泛型对游戏数据类型进行包装，以保证代码在不同库下（Unity，Rhino等）有更好的扩展性。  
-- 🌲通过面向对象设计来管理组织游戏数据，使游戏层级逻辑更清晰。 
+- 🌲通过面向对象设计来管理组织游戏数据，使游戏层级逻辑更加清晰。 
 - ☯️将用来进行数据管理的类型（Generic）和用来操作数据的类型（GroupManager）相分隔，使代码更易维护。  
 - 🧑‍🎨游戏设计师可以通过Unity的GUI来自由建立方块之间的规则。 
 
 ---
 
 ## Generic文件夹下的类：
- 用于对游戏物体数据进行管理的类。  
+用于对游戏物体数据进行管理。  
 
 ### Group
- 用来显示方块，维护管理方块类型及选择的类  
+用来储存方块的GameObject模型，维护管理方块的Type以及Choice类。  
+此外，GroupHelper用来实现一些Group相关的方法。
 
 Group类中有：
  - Unit列表，用来储存组成当前方块的GameObjects。 
  - Choice类，用来存放当前位置的可选项。  
  - Type类，用来标识方块的类型。 
+
+#### Group Helper
+
+- GetAdjacnetGroup方法：获得Group对应方向的相邻Group。
+- GetLevel：获得Group对应的Level。
 
 ### Unit  
 用来组成模型的最小单元，为了方便未来实现更自由的网格形态而留下的stub。 
@@ -55,10 +61,17 @@ Level类中有：
 - Groups及Units字典，用以管理每一层的Groups及Units。  
 - Up以及Down，用来获得每个Level的上一个Level或下一个Level。 
 
+### Type
+- 记录一个泛型<T> Parent 和一组List<T> Types，用来记录方块的当前类型信息。
+- 调用instantiator时会根据Types实例化对应的GameObject。
+ 
 ### Rule  
 用来记录并管理方块间的连接关系。  
 Rule类型中包含：  
 - Type类型的字典，用来记录Type和Type之间的连接关系。 
+
+### Choice
+- 记录一个Type列表，用来保存可以选择的类。
 
 ---
 
