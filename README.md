@@ -1,5 +1,6 @@
 # GenericBuilder
 
+**Generic Builder**是一款基于Unity的游戏。  
 我们来自UCLA，这个游戏是我们Studio成果的一部分。🐻Go Bruins！   
 We are from UCLA and this program is one of our studio works. 🐻Go Bruins! 
 
@@ -7,8 +8,6 @@ We are from UCLA and this program is one of our studio works. 🐻Go Bruins!
 *Technical Art by Ishmeal*
 
 ---
-
-**Generic Builder**是一款基于Unity的游戏。  
 
 ## 基本功能：  
 
