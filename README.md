@@ -25,7 +25,7 @@
 - **鼠标右键**：🖱️ 点击任意位置可以执行 🔙 回退操作。  
 - **按X并鼠标左键**：⌨️ “X“按下时 🖱️ 点击方块可以按规则 ♻️ 更新范围距离内的*方块*。  
 - **鼠标移动**：🖱️ 移动到可生成方块的位置时，🎲 随机生成合法的*方块*。
-- **WASD按键**：⌨️ “W/A/S/D”按下时可以控制📹游戏镜头角度。
+- **WASD按键**：⌨️ “W/A/S/D”按下时可以控制 📹 游戏镜头角度。
 
 ## ♟️ Game Function:
 
@@ -34,7 +34,7 @@
 - **Using "X" key with the left mouse button**: When ⌨️ the "X" key is pressed, 🖱️ clicking on the block allows for ♻️ updating blocks within a specified range. 
 - **Mouse movement**: When 🖱️ the mouse is moved to a position where a block can be generated, 
 a preview of random selectable block will be created.
-- **WASD keys**: The game's camera angle can be adjusted by pressing ⌨️ the "W/A/S/D" keys. 
+- **WASD keys**: The 📹 camera angle can be adjusted by pressing ⌨️ the "W/A/S/D" keys. 
 
 ---
 
