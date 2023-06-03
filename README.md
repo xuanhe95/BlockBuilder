@@ -6,10 +6,16 @@
 
 ---
 
-<h3><p align="center">Program Designer:</p></h3>
-<p align="center"><b>☕️🧑‍💻&nbsp;&nbsp;&nbsp; Xander Zhang</b></p>
-<h3><p align="center">Technical Artist:</p></h3>
-<p align="center"><b>🎨🧑‍🎨&nbsp;&nbsp;&nbsp; Ishmeal Luo</b>
+<h3><p align="center">Program Designer:
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   Technical Artist:</p></h3>
+<p align="center"><b>☕️🧑‍💻&nbsp;&nbsp;&nbsp;Xander Zhang
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   &nbsp;&nbsp;&nbsp;&nbsp;
+   🎨🧑‍🎨&nbsp;&nbsp;&nbsp;Ishmeal Luo
+   </b></p>
 
 ---
 
