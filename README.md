@@ -1,4 +1,4 @@
-<h1><p align="center">🌆 GenericBuilder 🏙</p></h1>
+<h1><p align="center">🌆 Generic Builder 🏙</p></h1>
 
 <p align="center"><b>Generic Builder</b> 是一款基于Unity的游戏。</p>
 <p align="center">我们来自 🏫 UCLA，这个游戏是我们Studio成果的一部分。🐻Go Bruins!</p>  
