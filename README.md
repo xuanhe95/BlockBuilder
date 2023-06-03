@@ -36,7 +36,7 @@ Pressing X and left-clicking allows you to regenerate blocks within a certain ra
 ## 📁 Generic下的类：
 用于对游戏物体数据进行管理。  
 
-### 📃 Group<P, T>
+### 📃 Group <P, T>
 用来储存方块的GameObject模型，维护管理方块的Type以及Choice类。  
 此外，GroupHelper用来实现一些Group相关的方法。
 
@@ -50,10 +50,10 @@ Group类中有：
 - GetAdjacnetGroup方法：获得Group对应方向的相邻Group。
 - GetLevel：获得Group对应的Level。
 
-### 📃 Unit<P, T> 
+### 📃 Unit <P, T> 
 用来组成模型的最小单元，为了方便未来实现更自由的网格形态而留下的stub。 
 
-### 📃 Level<P, T>
+### 📃 Level <P, T>
 用来记录每一个层级的信息。 
 Level类中有： 
 - 生成地图网格的长度与宽度，以及每个Level的高度，用以指导模型生成。 
@@ -61,16 +61,16 @@ Level类中有：
 - Groups及Units字典，用以管理每一层的Groups及Units。  
 - Up以及Down，用来获得每个Level的上一个Level或下一个Level。 
 
-### 📃 Type<T>
+### 📃 Type <T\> 
 - 记录一个泛型<T> Parent 和一组List<T> Types，用来记录方块的当前类型信息。
 - 调用instantiator时会根据Types实例化对应的GameObject。
  
-### 📃 Rule<T>  
+### 📃 Rule <T\>  
 用来记录并管理方块间的连接关系。  
 Rule类型中包含：  
 - Type类型的字典，用来记录Type和Type之间的连接关系。 
 
-### 📃 Choice<T>
+### 📃 Choice <T\>
 - 记录一个Type列表，用来保存可以选择的类。
 
 ---
