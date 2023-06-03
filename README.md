@@ -4,8 +4,8 @@
 我们来自UCLA，这个游戏是我们Studio成果的一部分。🐻Go Bruins！   
 We are from UCLA and this program is one of our studio works. 🐻Go Bruins! 
 
-*Program by Xander*  
-*Technical Art by Ishmeal*
+*Program by Xander Zhang*  
+*Technical Art by Ishmeal Luo*
 
 ---
 
@@ -57,7 +57,6 @@ Level类中有：
 用来记录并管理方块间的连接关系。  
 Rule类型中包含：  
 - Type类型的字典，用来记录Type和Type之间的连接关系。 
-
 
 ---
 
