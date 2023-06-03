@@ -11,67 +11,81 @@ We are from 🏫 UCLA and this program is one of our studio works. 🐻Go Bruins
 
 ## ♟️ 基本功能：  
 
-- **鼠标左键**：🖱️ 点击方块可以根据 🔗 链接规则生成新*方块*。  
+- **鼠标左键**：🖱️ 点击方块可以根据 🔗 连接规则生成新*方块*。  
 - **鼠标右键**：🖱️ 点击任意位置可以执行 🔙 回退操作。  
 - **按X并鼠标左键**：⌨️ “X“按下时 🖱️ 点击方块可以按规则 ♻️ 更新范围距离内的*方块*。  
 - **鼠标移动**：🖱️ 移动到可生成方块的位置时，🎲 随机生成合法的*方块*。
 - **WASD按键**：⌨️ “W/A/S/D”按下时可以控制📹游戏镜头角度。
 
-**Generic Builder** is a Unity game.  
-Left-clicking on each block allows you to generate new blocks based on predefined rules.  
-Right-clicking allows you to undo the previous step.  
-Pressing X and left-clicking allows you to regenerate blocks within a certain range.  
+## ♟️ Game Function:
+
+- **Left mouse button**: 🖱️ By clicking on the block, a new block can be created according to 🔗 the rules. 
+- **Right mouse button**: 🖱️ A click anywhere enables 🔙 the undo operation. 
+- **Using "X" key with the left mouse button**: When ⌨️ the "X" key is pressed, 🖱️ clicking on the block allows for ♻️ updating blocks within a specified range. 
+- **Mouse movement**: When 🖱️ the mouse is moved to a position where a block can be generated, 
+a preview of random selectable block will be created.
+- **WASD keys**: The game's camera angle can be adjusted by pressing ⌨️ the "W/A/S/D" keys. 
 
 ---
 
-## ✨ 设计亮点：  
+## ✨ 程序设计：  
 
-- 📦 使用泛型对游戏数据类型进行包装，以保证代码在不同库下（Unity，Rhino等）有更好的扩展性。  
-- 🌲 通过面向对象设计来管理组织游戏数据，使游戏层级逻辑更加清晰。 
-- ☯️ 将用来进行数据管理的类型（Generic）和用来操作数据的类型（GroupManager）相分隔，使代码更易维护。  
-- 🧑‍🎨 游戏设计师可以通过Unity的GUI来自由建立方块之间的规则。 
+- 📦 采用泛型来封装游戏数据类型，以确保在不同的库（如Unity，Rhino等）下提高代码的扩展性。 
+- 🌲 利用面向对象设计管理游戏数据，使游戏的层级逻辑更为清晰和易理解。
+- ☯️ 将用于数据管理的类型（Generic）与用于操作数据的类型（GroupManager）进行区分，以便于代码的维护和管理。
+- 🧑‍🎨 游戏设计师可通过Unity的图形用户界面来自由地建立方块间的规则。
+
+## ✨ Program Design:
+
+- 📦 We use generics to encapsulate game data types, enhancing code extensibility across various libraries like Unity, Rhino, and others.
+- 🌲 By utilizing object-oriented design to manage game data, we ensure that the game's hierarchical logic is more clear and understandable.
+- ☯️ By segregating the types used for data management (Generic) from those used to manipulate data (GroupManager), we facilitate easier code maintenance.
+- 🧑‍🎨 Game designers have the freedom to establish rules between blocks via Unity's Graphical User Interface.
 
 ---
 
 ## 📁 Generic下的类：
-用于对游戏物体数据进行管理。  
+这些类被用于管理游戏对象的数据。 
 
 ### 📃 Group <P, T>
-用来储存方块的GameObject模型，维护管理方块的Type以及Choice类。  
-此外，GroupHelper用来实现一些Group相关的方法。
+Group类用于存储方块的GameObject模型，并维护管理方块的Type和Choice类。  
+此外，GroupHelper被用于实现一些与Group类相关的方法。
 
-Group类中有：
- - Unit列表，用来储存组成当前方块的GameObjects。 
- - Choice类，用来存放当前位置的可选项。  
- - Type类，用来标识方块的类型。 
+Group类包含：
+   - Unit列表，用于存储组成当前方块的GameObjects。
+   - Choice类，用于存储当前Block的可选Type。
+   - Type类，用于标识Block的Type。 
 
 #### Group Helper
 
 - GetAdjacnetGroup方法：获得Group对应方向的相邻Group。
-- GetLevel：获得Group对应的Level。
+- GetLevel方法：获得Group对应的Level。
 
 ### 📃 Unit <P, T> 
-用来组成模型的最小单元，为了方便未来实现更自由的网格形态而留下的stub。 
+Unit类是组成模型的最小单元，这是为了方便未来实现*更自由的网格形状*而预留的接口。
 
 ### 📃 Level <P, T>
-用来记录每一个层级的信息。 
-Level类中有： 
-- 生成地图网格的长度与宽度，以及每个Level的高度，用以指导模型生成。 
-- Rule类，用来指导每个Level的方块生成关系。 
-- Groups及Units字典，用以管理每一层的Groups及Units。  
-- Up以及Down，用来获得每个Level的上一个Level或下一个Level。 
+Level类用于记录每一层级的信息。
+Level类包含：
+
+- 用于生成地图网格的长度和宽度，以及每个Level的高度，这些信息用于指导游戏模型的生成。
+- Rule类，用于指导每层Level的方块生成规则。
+- Groups和Units字典，用于管理每一层的Groups和Units。
+- Up和Down，用于获取每个Level的上一个或下一个Level。
 
 ### 📃 Type <T\> 
-- 记录一个泛型<T> Parent 和一组List<T> Types，用来记录方块的当前类型信息。
-- 调用instantiator时会根据Types实例化对应的GameObject。
+ 
+- Type类记录了一个泛型<T> Parent和一组List<T> Types，用于记录方块的当前类型信息。
+- 在调用instantiator时，游戏程序将根据Types内的GameObject实例化对应的游戏模型。
  
 ### 📃 Rule <T\>  
-用来记录并管理方块间的连接关系。  
-Rule类型中包含：  
-- Type类型的字典，用来记录Type和Type之间的连接关系。 
+
+- Rule类用于记录并管理Block间的连接关系。
+- Rule类包含一个Type类型的字典，用于记录Type与其他Type之间的连接关系。
 
 ### 📃 Choice <T\>
-- 记录一个Type列表，用来保存可以选择的类。
+ 
+- Choice类记录了一个Type列表，用于保存可选择的类型。
 
 ---
 
