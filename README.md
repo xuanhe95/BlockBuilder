@@ -4,18 +4,18 @@
 我们来自 🏫 UCLA，这个游戏是我们Studio成果的一部分。🐻Go Bruins！   
 We are from 🏫 UCLA and this program is one of our studio works. 🐻Go Bruins! 
 
-*🧑‍💻    Program Design:    **Xander Zhang***  
-*🎨    Technical Art:     **Ishmeal Luo***
+☕️🧑‍💻 Program Design:    **Xander Zhang**  
+🎨🧑‍🎨 Technical Art:     **Ishmeal Luo** 
 
 ---
 
-## 基本功能：  
+## ♟️ 基本功能：  
 
-- **鼠标左键**：🖱️点击方块可以根据🔗链接规则生成新*方块*。  
-- **鼠标右键**：🖱️点击任意位置可以执行🔙回退操作。  
-- **按X并鼠标左键**：⌨️“X“按下时🖱️点击方块可以按规则♻️更新范围距离内的*方块*。  
-- **鼠标移动**：🖱️移动到可生成方块的位置时，🎲随机生成合法的*方块*。
-- **WASD按键**：⌨️“W/A/S/D”按下时可以控制📹游戏镜头角度。
+- **鼠标左键**：🖱️ 点击方块可以根据 🔗 链接规则生成新*方块*。  
+- **鼠标右键**：🖱️ 点击任意位置可以执行 🔙 回退操作。  
+- **按X并鼠标左键**：⌨️ “X“按下时 🖱️ 点击方块可以按规则 ♻️ 更新范围距离内的*方块*。  
+- **鼠标移动**：🖱️ 移动到可生成方块的位置时，🎲 随机生成合法的*方块*。
+- **WASD按键**：⌨️ “W/A/S/D”按下时可以控制📹游戏镜头角度。
 
 **Generic Builder** is a Unity game.  
 Left-clicking on each block allows you to generate new blocks based on predefined rules.  
@@ -24,16 +24,16 @@ Pressing X and left-clicking allows you to regenerate blocks within a certain ra
 
 ---
 
-## 设计亮点：  
+## ✨ 设计亮点：  
 
-- ✨使用泛型对游戏数据类型进行包装，以保证代码在不同库下（Unity，Rhino等）有更好的扩展性。  
-- 🌲通过面向对象设计来管理组织游戏数据，使游戏层级逻辑更加清晰。 
-- ☯️将用来进行数据管理的类型（Generic）和用来操作数据的类型（GroupManager）相分隔，使代码更易维护。  
-- 🧑‍🎨游戏设计师可以通过Unity的GUI来自由建立方块之间的规则。 
+- 📦 使用泛型对游戏数据类型进行包装，以保证代码在不同库下（Unity，Rhino等）有更好的扩展性。  
+- 🌲 通过面向对象设计来管理组织游戏数据，使游戏层级逻辑更加清晰。 
+- ☯️ 将用来进行数据管理的类型（Generic）和用来操作数据的类型（GroupManager）相分隔，使代码更易维护。  
+- 🧑‍🎨 游戏设计师可以通过Unity的GUI来自由建立方块之间的规则。 
 
 ---
 
-## Generic文件夹下的类：
+## 📁 Generic下的类：
 用于对游戏物体数据进行管理。  
 
 ### Group
@@ -125,7 +125,7 @@ GroupManager类中有：
 
 ---
 
-## Helper文件夹下的类：
+## 📁 Helper下的类：
 ### RuleCreator
 
 用于指定方块连接关系的工具，在Unity中暴露。使得可以通过Unity的UI界面编写连接关系。 
