@@ -4,8 +4,8 @@
 我们来自 🏫 UCLA，这个游戏是我们Studio成果的一部分。🐻Go Bruins！   
 We are from 🏫 UCLA and this program is one of our studio works. 🐻Go Bruins! 
 
-☕️🧑‍💻 Program Design:    **Xander Zhang**  
-🎨🧑‍🎨 Technical Art:     **Ishmeal Luo** 
+☕️🧑‍💻 Program Designer:    **Xander Zhang**  
+🎨🧑‍🎨 Technical Artist:     **Ishmeal Luo** 
 
 ---
 
