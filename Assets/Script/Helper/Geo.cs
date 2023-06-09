@@ -18,5 +18,9 @@ public enum Geo
     T2A,
     T2B,
     T2C,
-    T2D
+    T2D,
+    Tile0Dir0,
+    Tile0Dir1,
+    Tile0Dir2,
+    Tile0Dir3
 }
