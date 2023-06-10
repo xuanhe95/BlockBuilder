@@ -43,7 +43,7 @@ public class BatchFBXToPrefabConverter : EditorWindow
             string prefabPath = fbxFile.Replace(".fbx", ".prefab");
             string renamePath = prefabPath.Replace("Dir", "");
             renamePath = renamePath.Replace("FBX/", "");
-            renamePath = renamePath.Replace("/T", "/R");
+            //renamePath = renamePath.Replace("/T", "/P");
             //renamePath = renamePath.Replace("", "Assets/Dir");
             //prefabPath = prefabPath.Replace(folderPath, "Assets");
             
