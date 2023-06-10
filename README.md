@@ -42,8 +42,9 @@ a preview of random selectable block will be created.
 
 - 📦 采用泛型来封装游戏数据类型，以确保在不同的库（如Unity，Rhino等）下提高代码的扩展性。 
 - 🌲 利用面向对象设计管理游戏数据，使游戏的层级逻辑更为清晰和易理解。
-- ☯️ 将用于数据管理的类型（Generic）与用于操作数据的类型（GroupManager）进行区分，以便于代码的维护和管理。
-- 🧑‍🎨 游戏设计师可通过Unity的图形用户界面来自由地建立方块间的规则。
+- ☯️ 基于(Entity-Component-System)ECS设计模式，GroupManager对Group进行全局操作，以便于代码的维护和管理。
+- 🧑‍🎨 提供了静态工具类及GUI界面，允许设计师通过图形界面生成模型间的连接规则。
+- 🤝 实现了用户友好的交互模式和复杂的模型生成逻辑，采用BFS及WFC算法建造方块，并支持预览及回退等操作。
 
 ## ✨ Program Design:
 
