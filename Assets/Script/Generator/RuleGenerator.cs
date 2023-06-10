@@ -15,6 +15,7 @@ public partial class Generator : MonoBehaviour
                 AddSimpleRule(midRule, ModMap[go], ModMap[relative]);
             }
             foreach(GameObject relative in go.GetComponent<RuleCreator>().Up){
+                Debug.Log(go.name + " " + relative.name);
                 AddSimpleUpRule(midRule, ModMap[go], ModMap[relative]);
             }
         }
