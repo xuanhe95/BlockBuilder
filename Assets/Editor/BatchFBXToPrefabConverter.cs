@@ -6,7 +6,7 @@ public class BatchFBXToPrefabConverter : EditorWindow
 {
     private string folderPath; // 文件夹路径
 
-    [MenuItem("Custom Tools/Batch FBX to Prefab Converter")]
+    [MenuItem("Custom/Batch FBX to Prefab Converter")]
     private static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(BatchFBXToPrefabConverter));

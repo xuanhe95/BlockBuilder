@@ -9,13 +9,13 @@ public partial class Generator : MonoBehaviour
 
     public int length = 30;
 
-    public int height = 16;
+    public int levelsNumber = 16;
     // Start is called before the first frame update
     void Start()
     {
         GenerateMeshs();
         GenerateRules();    // 创建规则
-        LevelBuilder(width, length, height);    // 创建levels
+        LevelBuilder(width, length, levelsNumber);    // 创建levels
         CursorStart();
         InitGroupManager(); // 生成并挂载GroupManager
         Instantiator();

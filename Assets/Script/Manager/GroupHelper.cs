@@ -48,6 +48,7 @@ public partial class GroupManager : MonoBehaviour
             i++;
         return i;
     }
+
     public int CheckH(Type<GameObject> type)
     {
         if (CheckC(type) != -1)

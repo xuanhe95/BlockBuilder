@@ -52,7 +52,7 @@ public partial class Generator : MonoBehaviour
             foreach (Group<GameObject, GameObject> group in level.Groups.Values)
             {
                 GroupManager blockGm = GroupMap[group];
-                print(blockGm);
+                //print(blockGm);
                 GameObject block = blockGm.transform.gameObject;
 
                 if (group.GetTypes() != GeoMap[(int)Geo.Empty])

@@ -11,6 +11,8 @@ public partial class Generator : MonoBehaviour
         //Choice<GameObject> choices = ChoiceGenerator();
         for (int i = 0; i < height; i++)
         {
+            Debug.Log(height.ToString() + " levels in total.");
+            Debug.Log("Level " + i.ToString() + " generating...");
             if (i == 0) // base level
             {
                 levels.Add(
@@ -18,7 +20,7 @@ public partial class Generator : MonoBehaviour
                         i,
                         width,
                         length,
-                        2,
+                        //2,
                         GeoMap[(int)Geo.Water],
                         ChoiceGenerator(),
                         baseRule
@@ -32,7 +34,7 @@ public partial class Generator : MonoBehaviour
                     i,
                     width,
                     length,
-                    2,
+                    //2,
                     GeoMap[(int)Geo.Empty],
                     ChoiceGenerator(),
                     midRule
@@ -49,6 +51,7 @@ public partial class Generator : MonoBehaviour
                 }
                 levels.Add(upLevel);
             }
+            Debug.Log("Level " + i.ToString() + " generated.");
         }
     }
 
@@ -56,18 +59,31 @@ public partial class Generator : MonoBehaviour
         int levelID,
         int width,
         int length,
-        double height,
+        //double height,
         Type<GameObject> initGo,
         Choice<GameObject> choices,
         Rule<GameObject> rule
     )
-    {
+    {   
+        // 这里控制层数比例
+        float LOW_LEVELS = 2;
+        float LOW_LEVEL_SCALE = 1;
+        float HIGH_LEVEL_SCALE = 2; 
+        //
         int id = 0;
+        float levelHight = 0;
+        // 这里控制level高度
+        if(levelID < LOW_LEVELS){
+            levelHight = levelID * LOW_LEVEL_SCALE;
+        }
+        else{
+            levelHight = levelID * HIGH_LEVEL_SCALE - (LOW_LEVELS-1) * (HIGH_LEVEL_SCALE - LOW_LEVEL_SCALE);
+        }
         Level<GameObject, GameObject> level = new Level<GameObject, GameObject>(
             levelID,
             width,
             length,
-            height
+            levelHight
         );
         //levels.Add(level);
         level.SetRule(rule);
@@ -83,7 +99,10 @@ public partial class Generator : MonoBehaviour
                 GameObject location = new GameObject();
                 location.transform.SetParent(UnitHolder.transform);
                 //location.transform.rotation = Quaternion.Euler(0f,90f,0f);
-                location.transform.position = new Vector3(i, levelID, j);
+
+
+
+                location.transform.position = new Vector3(i, level.Height, j);
                 location.name = "Unit" + location.transform.position.ToString();
                 Unit<GameObject, GameObject> unit = new Unit<GameObject, GameObject>(
                     id,

@@ -12,6 +12,7 @@ public partial class Generator : MonoBehaviour
     private bool PrepareCurrent(Group<GameObject, GameObject> group)
     {
         currentGroup = group;
+        if(currentGroup == null) return false;
         //currentTypes = group.GetChoicesSet();
         GroupManager gm = GroupMap[group];
         currentTypes = gm.GetChoicesSet();

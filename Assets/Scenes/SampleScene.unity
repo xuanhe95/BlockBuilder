@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 36
   length: 30
-  height: 4
+  levelsNumber: 16
   Models:
   - {fileID: 8536340266247955374, guid: a2039e93c75d24abea772e0adb05f773, type: 3}
   - {fileID: 8536340266247955374, guid: 4e043857b5211473ba0f956d86731eb1, type: 3}
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 36
   length: 30
-  height: 4
+  levelsNumber: 16
   Models:
   - {fileID: 8536340266247955374, guid: a2039e93c75d24abea772e0adb05f773, type: 3}
   - {fileID: 8536340266247955374, guid: 4e043857b5211473ba0f956d86731eb1, type: 3}

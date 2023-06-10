@@ -5,7 +5,7 @@ using UnityEngine;
 public class Level<P, T>
 {  // 每个level有一个平面图
     public int ID;
-    public double Height;
+    public float Height;
     public int Length;
     public int Width;
     public Dictionary<int, Unit<P, T>> Units{get; set;}
@@ -15,7 +15,7 @@ public class Level<P, T>
     public Level<P, T> Down {get; set;}
 
     //public Possibility<T> choices;
-    public Level(int level, int width, int length, double height){
+    public Level(int level, int width, int length, float height){
         ID = level;
         Height = height;
         Units = new Dictionary<int, Unit<P, T>>();

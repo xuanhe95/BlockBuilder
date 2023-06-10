@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         gen = GameObject.FindObjectOfType<Generator>();
-        origin = new Vector3((float)gen.width, (float)gen.height, (float)gen.length) / 2;
+        origin = new Vector3((float)gen.width, (float)gen.levelsNumber, (float)gen.length) / 2;
         cameraTransform = transform;
         cameraTransform.LookAt(origin);
     }
