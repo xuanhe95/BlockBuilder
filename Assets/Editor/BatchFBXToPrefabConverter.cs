@@ -41,6 +41,10 @@ public class BatchFBXToPrefabConverter : EditorWindow
         foreach (string fbxFile in fbxFiles)
         {
             string prefabPath = fbxFile.Replace(".fbx", ".prefab");
+            string renamePath = prefabPath.Replace("Dir", "");
+            renamePath = renamePath.Replace("FBX/", "");
+            renamePath = renamePath.Replace("/T", "/R");
+            //renamePath = renamePath.Replace("", "Assets/Dir");
             //prefabPath = prefabPath.Replace(folderPath, "Assets");
             
             GameObject fbxObject = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
@@ -48,7 +52,7 @@ public class BatchFBXToPrefabConverter : EditorWindow
             if (fbxObject == null)
             {
                 var SceneObject = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(fbxFile)); 
-                PrefabUtility.SaveAsPrefabAsset (SceneObject, prefabPath); 
+                PrefabUtility.SaveAsPrefabAsset (SceneObject, renamePath); 
                 DestroyImmediate (SceneObject);
                 //GameObject prefab = PrefabUtility.SaveAsPrefabAsset(AssetDatabase.LoadAssetAtPath<GameObject>(fbxFile), prefabPath);
                 Debug.Log("FBX file converted to prefab: " + prefabPath);
