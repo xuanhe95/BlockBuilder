@@ -7,7 +7,7 @@ public class SavePrefabFileNames : MonoBehaviour
     [MenuItem("Custom/Save Prefab File Names")]
     private static void SaveFileNames()
     {
-        string folderPath = "Assets/Prefabs/Model/Roof"; // 替换为您想要保存文件名的文件夹路径
+        string folderPath = "Assets/Prefabs/Model/Grass"; // 替换为您想要保存文件名的文件夹路径
         string writeText = "";
         string filePath = folderPath + "/name.txt";
         //string filePath = Path.Combine(folderPath, fileName + ".txt");
