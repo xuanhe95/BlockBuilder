@@ -380,11 +380,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5877a9c76c5f94c60b5e09e7f487f251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FixedRules: []
   Rule: []
-  Up:
-  - {fileID: 7267987929096762572, guid: e2c6c544098b14df08d6db1491ec0844, type: 3}
-  - {fileID: 5891887969008597611, guid: 9e9c0d3d697ed4931b14b59962668288, type: 3}
+  Up: []
   Down: []
+  IL: []
+  IR: []
+  IF: []
+  IB: []
   CL: []
   CR: []
   CF: []

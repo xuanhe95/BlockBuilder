@@ -22,7 +22,7 @@ public partial class Generator : MonoBehaviour
                 //     Quaternion.identity);
                 block.name = "newBlock";
                 GroupManager gm = block.AddComponent<GroupManager>();
-                gm.Initialize(group, GeoMap, ModMap); //初始化GroupManager
+                gm.Initialize(group, GeoMap, ModMap, GoMap); //初始化GroupManager
                 GroupMap.Add(group, gm); //记录GroupManager和Group的对应关系
             }
         }

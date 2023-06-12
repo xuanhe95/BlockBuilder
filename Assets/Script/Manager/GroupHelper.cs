@@ -61,6 +61,8 @@ public partial class GroupManager : MonoBehaviour
             return -1;
     }
 
+
+
     public int CheckL(Type<GameObject> type)
     {
         if (CheckC(type) != -1)
@@ -134,4 +136,7 @@ public partial class GroupManager : MonoBehaviour
                 return null;
         }
     }
+
+
+
 }

@@ -28,17 +28,18 @@ public partial class Generator
         {
             //go.transform.SetParent(ModelsGO.transform);
             //go.name = index.ToString();
-            GeoMap.Add(index, Pick(go));
+            GeoMap.Add(index, Pick(go, index));
             GoMap.Add(index, go);
             IdxMap.Add(go, index);
             ModMap.Add(go, GeoMap[index]);
+            Debug.Log(go.name + " " + index);
             index++;
         }
     }
 
-    public Type<GameObject> Pick(GameObject go)
+    public Type<GameObject> Pick(GameObject go, int index)
     {
-        return new Type<GameObject>(picker.ReadListFrom(go));
+        return new Type<GameObject>(picker.ReadListFrom(go), index);
     }
 
     public Dictionary<int, Type<GameObject>> GetGeo()
