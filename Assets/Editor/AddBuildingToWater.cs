@@ -2,20 +2,20 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-public class GetPrefabScripts : MonoBehaviour
+public class AddBuildingsToWater : MonoBehaviour
 {
     public static string addPrefabPath = "Assets/Prefabs/Model/Water.prefab";
-    public static string folderPath = "Assets/Prefabs/Model/Grass"; // 文件夹路径
+    public static string folderPath = "Assets/Prefabs/Model/Roof"; // 文件夹路径
 
-    [MenuItem("Custom/Add Prefabs to Water")]
+    [MenuItem("Custom/Add Buildings to Water")]
     private static void GetScriptsFromPrefabs()
     {
-        // 获取文件夹中的所有 Prefab 文件路径
+        Debug.Log("Running");
         string[] prefabPaths = Directory.GetFiles(folderPath, "*.prefab", SearchOption.AllDirectories);
 
         // 加载要添加的 Prefab
         GameObject addPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(addPrefabPath);
-
+        Debug.Log(addPrefab.name);
         // 遍历每个 Prefab
         foreach (string prefabPath in prefabPaths)
         {

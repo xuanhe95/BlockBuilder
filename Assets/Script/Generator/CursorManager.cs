@@ -100,7 +100,7 @@ public partial class Generator : MonoBehaviour
         {
             print("recursive called");
             Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(Direction.Up);
-            BSelect(GroupMap[relativeGroup], 10);
+            BSelect(GroupMap[relativeGroup], 2);
         }
 
 
@@ -160,6 +160,7 @@ public partial class Generator : MonoBehaviour
                 GroupManager gm = q.Dequeue();
                 
                 if (visited.Contains(gm) || gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty]) continue;
+                visited.Add(gm);
                 gm.SetEmpty();
                 gm.Select(rd);
 
@@ -169,7 +170,7 @@ public partial class Generator : MonoBehaviour
                     GroupManager relativeManager = GroupMap[relative];
                     q.Enqueue(relativeManager);
                 }
-                visited.Add(gm);
+                
             }
 
             size = q.Count;
