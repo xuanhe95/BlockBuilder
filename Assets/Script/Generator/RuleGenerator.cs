@@ -26,20 +26,20 @@ public partial class Generator : MonoBehaviour
     public void AddSimpleUpRule(Rule<GameObject> rule, Type<GameObject> baseGo, Type<GameObject> go)
     {
         rule.AddRule(GeoMap[(int)Geo.Empty], go);
-        rule.AddRule(go, go);
+        //rule.AddRule(go, go);
         rule.AddUpRule(baseGo, go);
     }
 
     public void AddSimpleUpRule(Rule<GameObject> rule, Type<GameObject> go)
     {
         rule.AddRule(GeoMap[(int)Geo.Empty], go);
-        rule.AddRule(go, go);
+        //rule.AddRule(go, go);
         rule.AddUpRule(go, go);
     }
 
     public void AddSimpleRule(Rule<GameObject> rule, Type<GameObject> go)
     {
-        rule.AddRule(go, go);
+        //rule.AddRule(go, go);
         rule.AddRule(GeoMap[(int)Geo.Empty], go);
     }
 

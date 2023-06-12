@@ -384,8 +384,6 @@ MonoBehaviour:
   Up:
   - {fileID: 7267987929096762572, guid: e2c6c544098b14df08d6db1491ec0844, type: 3}
   - {fileID: 5891887969008597611, guid: 9e9c0d3d697ed4931b14b59962668288, type: 3}
-  - {fileID: 5891887969008597611, guid: 9e9c0d3d697ed4931b14b59962668288, type: 3}
-  - {fileID: 4005977895583142693, guid: 98d862fb5080944dfb88cef7893a9ee0, type: 3}
   Down: []
   CL: []
   CR: []
