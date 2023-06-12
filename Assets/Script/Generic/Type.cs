@@ -6,8 +6,10 @@ public class Type<T>
 {
     public T Parent;
     public List<T> Types;
-    public Type(List<T> types)
+    public int id;
+    public Type(List<T> types, int ID)
     {
+        id = ID;
         Types = types;
         Parent = types[0];
     }

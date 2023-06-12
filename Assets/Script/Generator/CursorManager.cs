@@ -70,37 +70,44 @@ public partial class Generator : MonoBehaviour
     {
         print("SetCursorCalled");
         Group<GameObject, GameObject> group = lastHit.GetComponent<GroupCollider>().thisGroup;
+        print(group);
         GroupManager manager = hit.collider.gameObject.GetComponent<GroupManager>();
         print(manager);
+
+        int dir = 0;
 
         switch (input)
         {
 
             case 1:
-                SetGroup(group, Direction.Left);
+                dir = Direction.Left;
                 break;
             case 2:
-                SetGroup(group, Direction.Right);
+                dir = Direction.Right;
                 break;
             case 3:
-                SetGroup(group, Direction.Forward);
+                dir = Direction.Forward;
                 break;
             case 4:
-                SetGroup(group, Direction.Back);
+                dir = Direction.Back;
                 break;
             case 5:
-                SetGroup(group, Direction.Up);
+                dir = Direction.Up;
                 break;
             case 6:
-                SetGroup(group, Direction.Down);
+                dir = Direction.Down;
                 break;
         }
 
-        if (XPressed)
+        if (dir != Direction.Up)
         {
             print("recursive called");
-            Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(Direction.Up);
+            Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(dir);
+            Debug.Log(GroupMap[relativeGroup]);
             BSelect(GroupMap[relativeGroup], 2);
+        }
+        else{
+            SetGroup(group, dir);
         }
 
 
@@ -115,6 +122,7 @@ public partial class Generator : MonoBehaviour
             if (currentTypes[currentSelection] != null)
             {
                 relativeGroup.SetType(currentTypes[currentSelection]);
+                //GroupMap[relativeGroup].Select();
             }
 
             PushToHistory(GroupMap[relativeGroup]);
@@ -146,23 +154,33 @@ public partial class Generator : MonoBehaviour
 
     public void BSelect(GroupManager manager, int depth = 1)
     {
-        if (manager == null || depth == 0) return;
+        if (manager == null || depth == 0){
+            Debug.Log("BSelect return");
+            return;
+        }
+        bool flag = false;
         visited.Clear();
         Queue<GroupManager> q = new Queue<GroupManager>();
         //visited.Add(manager);
         q.Enqueue(manager);
         int size = q.Count;
         int level = 0;
+        Debug.Log("BSelect");
         while (q.Count > 0 && level < depth)
         {
             for (int i = 0; i < size; i++)
             {
                 GroupManager gm = q.Dequeue();
+                Debug.Log("Recursive " + gm.GetGroup().GetTypes());
+                Debug.Log(flag);
+                if (flag && (visited.Contains(gm) || gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty])) continue;
                 
-                if (visited.Contains(gm) || gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty]) continue;
+                flag = true;
+                Debug.Log(flag);
                 visited.Add(gm);
                 gm.SetEmpty();
-                gm.Select(rd);
+                //gm.Select(rd);
+                gm.Select();
 
                 for (int dir = 0; dir < 5; dir++)
                 {

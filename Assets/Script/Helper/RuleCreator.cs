@@ -5,9 +5,18 @@ using UnityEngine;
 public class RuleCreator : MonoBehaviour
 {
     // Start is called before the first frame update
+    public List<GameObject> FixedRules;
+
+
     public List<GameObject> Rule;
     public List<GameObject> Up;
     public List<GameObject> Down;
+
+    public List<GameObject> IL;
+    public List<GameObject> IR;
+    public List<GameObject> IF;
+    public List<GameObject> IB;
+
     public List<GameObject> CL;
     public List<GameObject> CR;
     public List<GameObject> CF;

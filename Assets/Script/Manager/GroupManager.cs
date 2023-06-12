@@ -6,14 +6,17 @@ public partial class GroupManager : MonoBehaviour
 {
     private Dictionary<int, Type<GameObject>> GeoMap;
     private Dictionary<GameObject, Type<GameObject>> ModMap;
+    private Dictionary<int, GameObject> GoMap;
     private Group<GameObject, GameObject> Group;
 
     public void Initialize(Group<GameObject, GameObject> group,
         Dictionary<int, Type<GameObject>> geoMap, 
-        Dictionary<GameObject, Type<GameObject>> modMap){
+        Dictionary<GameObject, Type<GameObject>> modMap,
+        Dictionary<int, GameObject> goMap){
                     Group = group;
-        GeoMap = geoMap;
-        ModMap = modMap;
+                    GeoMap = geoMap;
+                    ModMap = modMap;
+                    GoMap = goMap;
         }
     public Group<GameObject, GameObject> GetGroup(){
         return Group;
@@ -190,4 +193,118 @@ public partial class GroupManager : MonoBehaviour
         }
     }
 
+    //新的生成方法
+
+    public string GetDirection(){
+        string dir = "";
+        if(Group.GetForward().GetTypes() != GeoMap[(int) Geo.Empty]){
+            dir += "1";
+        }
+        else{
+            dir+="0";
+        }
+
+        if(Group.GetBack().GetTypes() != GeoMap[(int) Geo.Empty]){
+            dir += "1";
+        }
+        else{
+            dir+="0";
+        }
+
+        if(Group.GetLeft().GetTypes() != GeoMap[(int) Geo.Empty]){
+            dir += "1";
+        }
+        else{
+            dir+="0";
+        }
+
+        if(Group.GetRight().GetTypes() != GeoMap[(int) Geo.Empty]){
+            dir += "1";
+        }
+        else{
+            dir+="0";
+        }
+        return dir;
+
+    }
+
+    public void Select(){
+        string dir = GetDirection();
+        Debug.Log("Direction: " + dir);
+        int index = Group.GetTypes().id;
+        //Debug.Log("ID: " + index);
+        //Debug.Log(GoMap.Count);
+        GameObject go = GoMap[index];
+        //Debug.Log(go);
+        RuleCreator rules = GoMap[index].GetComponent<RuleCreator>();
+        //Debug.Log(rules);
+        List<GameObject> list = rules.FixedRules;
+        List<GameObject> wait = new List<GameObject>();
+
+        switch(dir){
+            case "0000":
+                wait.Add(list[0]);
+                wait.Add(list[1]);
+                wait.Add(list[2]);
+                wait.Add(list[3]);
+                break;
+            case "0001":
+                wait.Add(list[4]);
+                break;
+            case "0010":
+                wait.Add(list[5]);
+                break;
+            case "0100":
+                wait.Add(list[6]);
+                break;
+            case "1000":
+                wait.Add(list[7]);
+                break;
+            case "0011":
+                wait.Add(list[8]);
+                wait.Add(list[9]);
+                break;
+            case "0110":
+                wait.Add(list[12]);
+                break;
+            case "0101":
+                wait.Add(list[15]);
+                break;
+            case "1001":
+                wait.Add(list[13]);
+                break;
+            case "1010":
+                wait.Add(list[14]);
+                break;
+            case "1100":
+                wait.Add(list[10]);
+                wait.Add(list[11]);
+                break;
+            case "1110":
+                wait.Add(list[16]);
+                break;
+            case "1101":
+                wait.Add(list[17]);
+                break;
+            case "1011":
+                wait.Add(list[18]);
+                break;
+            case "0111":
+                wait.Add(list[19]);
+                break;
+            case "1111":
+                wait.Add(list[20]);
+                wait.Add(list[21]);
+                wait.Add(list[22]);
+                wait.Add(list[23]);
+                break;
+        }
+        int selectedIndex = Random.Range(0, wait.Count);
+        Debug.Log(selectedIndex);
+        GameObject select = wait[selectedIndex];  
+        //Debug.Log(select.name);  
+        Group.SetType(ModMap[select]);
+
+        //Group.SetType(CreateSelectChoices(), random);
+    }
 }
