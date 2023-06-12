@@ -98,11 +98,11 @@ public partial class Generator : MonoBehaviour
                 dir = Direction.Down;
                 break;
         }
-
-        if (dir != Direction.Up)
+        Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(dir);
+        if (GroupMap[relativeGroup].GetDirection() != "0000")
         {
             print("recursive called");
-            Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(dir);
+            
             Debug.Log(GroupMap[relativeGroup]);
             BSelect(GroupMap[relativeGroup], 2);
         }
@@ -117,6 +117,7 @@ public partial class Generator : MonoBehaviour
     {
         Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(direction);
         Debug.Log(relativeGroup);
+        Debug.Log(currentSelection);
         if (relativeGroup != null)
         {
             if (currentTypes[currentSelection] != null)
