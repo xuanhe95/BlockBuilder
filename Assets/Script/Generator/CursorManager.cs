@@ -181,7 +181,10 @@ public partial class Generator : MonoBehaviour
                 visited.Add(gm);
                 gm.SetEmpty();
                 //gm.Select(rd);
-                gm.Select();
+
+                Group<GameObject, GameObject> group = gm.GetGroup();
+                Group<GameObject, GameObject> down = group.FindRelativeGroup(Direction.Down);
+                gm.Select(GroupMap[down]);
 
                 for (int dir = 0; dir < 5; dir++)
                 {

@@ -228,15 +228,20 @@ public partial class GroupManager : MonoBehaviour
 
     }
 
-    public void Select(){
+    public void Select(GroupManager down){
+        RuleCreator rc = GoMap[down.GetGroup().GetTypes().id].GetComponent<RuleCreator>();
+        List<GameObject> gos = rc.Up;
+        GameObject go = gos[Random.Range(0, gos.Count)];
+        RuleCreator rules = go.GetComponent<RuleCreator>();
+
         string dir = GetDirection();
-        Debug.Log("Direction: " + dir);
-        int index = Group.GetTypes().id;
+        //Debug.Log("Direction: " + dir);
+        //int index = Group.GetTypes().id;
         //Debug.Log("ID: " + index);
         //Debug.Log(GoMap.Count);
-        GameObject go = GoMap[index];
+        //GameObject go = GoMap[index];
         //Debug.Log(go);
-        RuleCreator rules = GoMap[index].GetComponent<RuleCreator>();
+        //RuleCreator rules = GoMap[index].GetComponent<RuleCreator>();
         //Debug.Log(rules);
         List<GameObject> list = rules.FixedRules;
         List<GameObject> wait = new List<GameObject>();
