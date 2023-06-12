@@ -2,14 +2,18 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DemoMat5
   m_Shader: {fileID: 4800000, guid: 128c5f1edaefa4c4fb3f9f7a4615edb2, type: 3}
-  m_ShaderKeywords: _RIMOVERLAP_ON _SEGMENTED_ON _SPCOVERLAP_ON
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _RIMOVERLAP_ON
+  - _SEGMENTED_ON
+  - _SPCOVERLAP_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -55,8 +59,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
-    - _AmbientCol: 0
+    - _AmbientCol: 0.5
     - _BumpScale: 1
     - _Clipped: 0
     - _ColBright: 0
@@ -71,11 +76,11 @@ Material:
     - _MaxAtten: 0
     - _MaxLight: 1
     - _Metallic: 0
-    - _MinLight: 0.351
+    - _MinLight: 0.2
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Offset: 0.02
-    - _OtlWidth: 3.84
+    - _Offset: 0
+    - _OtlWidth: 5
     - _Parallax: 0.02
     - _PostAtten: 0
     - _RimIntense: 0.316
@@ -84,10 +89,10 @@ Material:
     - _RimSmooth: 1
     - _RimTolerc: 0.623
     - _Segmented: 1
-    - _ShnIntense: 0.553
+    - _ShnIntense: 0.5
     - _ShnOverlap: 0
-    - _ShnRange: 0.052
-    - _ShnSmooth: 0
+    - _ShnRange: 0.2
+    - _ShnSmooth: 0.3
     - _SmoothnessTextureChannel: 0
     - _SpcIntence: 0
     - _SpcLimit: 0
@@ -96,11 +101,12 @@ Material:
     - _SpcTolerc: 0.05
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Steps: 2.9
+    - _Steps: 2.5
     - _StpSmooth: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - _BotColor: {r: 1, g: 0, b: 1, a: 1}
     - _Color: {r: 1, g: 0.8309244, b: 0.16509432, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MaxColor: {r: 0, g: 0.8590385, b: 0.8962264, a: 1}
@@ -109,4 +115,5 @@ Material:
     - _RimColor: {r: 0.48124656, g: 0.43867922, b: 1, a: 1}
     - _ShnColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpcColor: {r: 1, g: 1, b: 1, a: 1}
+    - _UpColor: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
