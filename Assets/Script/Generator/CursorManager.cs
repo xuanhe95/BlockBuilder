@@ -98,6 +98,7 @@ public partial class Generator : MonoBehaviour
                 dir = Direction.Down;
                 break;
         }
+        dir = Direction.Up;
         Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(dir);
         if (true)
         {

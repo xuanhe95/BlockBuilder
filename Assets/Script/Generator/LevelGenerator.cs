@@ -66,7 +66,7 @@ public partial class Generator : MonoBehaviour
     )
     {   
         // 这里控制层数比例
-        float LOW_LEVELS = 2;
+        float LOW_LEVELS = 1;
         float LOW_LEVEL_SCALE = 1;
         float HIGH_LEVEL_SCALE = 2; 
         //
