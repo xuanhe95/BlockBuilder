@@ -243,6 +243,7 @@ public partial class GroupManager : MonoBehaviour
         //Debug.Log(go);
         //RuleCreator rules = GoMap[index].GetComponent<RuleCreator>();
         //Debug.Log(rules);
+        Debug.Log(go.name);
         List<GameObject> list = rules.FixedRules;
         List<GameObject> wait = new List<GameObject>();
 

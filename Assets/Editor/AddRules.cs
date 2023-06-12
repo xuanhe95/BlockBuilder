@@ -15,12 +15,15 @@ public class AddRules : MonoBehaviour
 
         SetFixedRules("Assets/Prefabs/Model/Grass","Assets/Prefabs/Model/Grass");
         SetFixedRules("Assets/Prefabs/Model/Pillar","Assets/Prefabs/Model/Pillar");
+        SetFixedRules("Assets/Prefabs/Model/Building","Assets/Prefabs/Model/Building");
         SetFixedRules("Assets/Prefabs/Model/Roof","Assets/Prefabs/Model/Roof");
 
         SetUpRule("Assets/Prefabs/Model/Water.prefab", "Assets/Prefabs/Model/Grass");
         SetUpRules("Assets/Prefabs/Model/Grass", "Assets/Prefabs/Model/Pillar");
-        SetUpRules("Assets/Prefabs/Model/Pillar", "Assets/Prefabs/Model/Building");
+        SetUpRules("Assets/Prefabs/Model/Pillar", "Assets/Prefabs/Model/Pillar");
+        SetUpRules("Assets/Prefabs/Model/Pillar", "Assets/Prefabs/Model/Building", false);
         SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof");
+        SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Building", false);
     }
 
     private static void SetFixedRule(string addPrefabPath, string folderPath){
@@ -78,7 +81,7 @@ public class AddRules : MonoBehaviour
             }
         }
     }
-    private static void SetUpRules(string downPath, string upPath)
+    private static void SetUpRules(string downPath, string upPath, bool isClear = true)
     {
         // 获取文件夹中的所有 Prefab 文件路径
         string[] downPaths = Directory.GetFiles(downPath, "*.prefab", SearchOption.AllDirectories);
@@ -88,7 +91,7 @@ public class AddRules : MonoBehaviour
         foreach(string downPrefabPath in downPaths){
             // 加载要添加的 Prefab
             GameObject downPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(downPrefabPath);
-            downPrefab.GetComponent<RuleCreator>().Up.Clear();
+            if(isClear) downPrefab.GetComponent<RuleCreator>().Up.Clear();
 
         // 遍历每个 Prefab
         foreach (string upPrefabPath in upPaths)

@@ -99,7 +99,7 @@ public partial class Generator : MonoBehaviour
                 break;
         }
         Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(dir);
-        if (GroupMap[relativeGroup].GetDirection() != "0000")
+        if (true)
         {
             print("recursive called");
             
