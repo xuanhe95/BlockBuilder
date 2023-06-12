@@ -228,24 +228,17 @@ public partial class GroupManager : MonoBehaviour
 
     }
 
-    public void Select(GroupManager down){
-        RuleCreator rc = GoMap[down.GetGroup().GetTypes().id].GetComponent<RuleCreator>();
-        List<GameObject> gos = rc.Up;
-        GameObject go = gos[Random.Range(0, gos.Count)];
-        RuleCreator rules = go.GetComponent<RuleCreator>();
 
+    public List<Type<GameObject>> Preview(GroupManager down){
+        RuleCreator rc = GoMap[down.GetGroup().GetTypes().id].GetComponent<RuleCreator>();
+        List<GameObject> goTypes = rc.Up;
+        HashSet<GameObject> wait = new HashSet<GameObject>();
         string dir = GetDirection();
-        //Debug.Log("Direction: " + dir);
-        //int index = Group.GetTypes().id;
-        //Debug.Log("ID: " + index);
-        //Debug.Log(GoMap.Count);
-        //GameObject go = GoMap[index];
-        //Debug.Log(go);
-        //RuleCreator rules = GoMap[index].GetComponent<RuleCreator>();
-        //Debug.Log(rules);
-        Debug.Log(go.name);
-        List<GameObject> list = rules.FixedRules;
-        List<GameObject> wait = new List<GameObject>();
+        foreach(GameObject goType in goTypes){
+            RuleCreator rules = goType.GetComponent<RuleCreator>();
+            
+            List<GameObject> list = rules.FixedRules;
+        
 
         switch(dir){
             case "0000":
@@ -305,12 +298,43 @@ public partial class GroupManager : MonoBehaviour
                 wait.Add(list[23]);
                 break;
         }
-        int selectedIndex = Random.Range(0, wait.Count);
-        Debug.Log(selectedIndex);
-        GameObject select = wait[selectedIndex];  
-        //Debug.Log(select.name);  
-        Group.SetType(ModMap[select]);
 
+        }
+
+
+
+        //GameObject go = gos[Random.Range(0, gos.Count)];
+        
+        //Debug.Log("Direction: " + dir);
+        //int index = Group.GetTypes().id;
+        //Debug.Log("ID: " + index);
+        //Debug.Log(GoMap.Count);
+        //GameObject go = GoMap[index];
+        //Debug.Log(go);
+        //RuleCreator rules = GoMap[index].GetComponent<RuleCreator>();
+        //Debug.Log(rules);
+        //Debug.Log(go.name);
+        
+        //int selectedIndex = Random.Range(0, wait.Count);
+        //Debug.Log(selectedIndex);
+        //GameObject select = wait[selectedIndex];  
+        //Debug.Log(select.name);  
+        List<Type<GameObject>> selections = new List<Type<GameObject>>();
+        foreach(GameObject g in wait){
+            selections.Add(ModMap[g]);
+        }
+
+        return selections;
         //Group.SetType(CreateSelectChoices(), random);
+    }
+
+    public void Select(GroupManager down){
+        List<Type<GameObject>> list = Preview(down);
+        int selectedIndex = Random.Range(0, list.Count);
+        Group.SetType(list[selectedIndex]);
+    }
+
+    public void Select(Type<GameObject> type){
+        Group.SetType(type);
     }
 }

@@ -5,9 +5,9 @@ using System;
 
 public partial class Generator : MonoBehaviour
 {
-    public int width = 36;
+    public int width = 1000;
 
-    public int length = 30;
+    public int length = 1000;
 
     public int levelsNumber = 16;
     // Start is called before the first frame update

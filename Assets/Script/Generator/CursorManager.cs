@@ -100,16 +100,20 @@ public partial class Generator : MonoBehaviour
         }
         dir = Direction.Up;
         Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(dir);
-        if (true)
+        if (relativeGroup.GetTypes() == GeoMap[(int)Geo.Empty])
         {
             print("recursive called");
             
             Debug.Log(GroupMap[relativeGroup]);
-            BSelect(GroupMap[relativeGroup], 2);
+            //GroupMap[relativeGroup].Select(currentSelection);
+            BSelect(GroupMap[relativeGroup], currentTypes[currentSelection], 2);
         }
         else{
-            SetGroup(group, dir);
+            Debug.Log("Empty");
         }
+        // else{
+        //     SetGroup(group, dir);
+        // }
 
 
     }
@@ -154,7 +158,7 @@ public partial class Generator : MonoBehaviour
         }
     }
 
-    public void BSelect(GroupManager manager, int depth = 1)
+    public void BSelect(GroupManager manager, Type<GameObject> type,int depth = 1)
     {
         if (manager == null || depth == 0){
             Debug.Log("BSelect return");
@@ -176,16 +180,22 @@ public partial class Generator : MonoBehaviour
                 Debug.Log("Recursive " + gm.GetGroup().GetTypes());
                 Debug.Log(flag);
                 if (flag && (visited.Contains(gm) || gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty])) continue;
-                
-                flag = true;
-                Debug.Log(flag);
                 visited.Add(gm);
                 gm.SetEmpty();
+                if(!flag){
+                    flag = true;
+                    gm.Select(type);
+                }
+                else{
+                    Group<GameObject, GameObject> group = gm.GetGroup();
+                    Group<GameObject, GameObject> down = group.FindRelativeGroup(Direction.Down);
+                    gm.Select(GroupMap[down]);
+                }
+
+                
                 //gm.Select(rd);
 
-                Group<GameObject, GameObject> group = gm.GetGroup();
-                Group<GameObject, GameObject> down = group.FindRelativeGroup(Direction.Down);
-                gm.Select(GroupMap[down]);
+
 
                 for (int dir = 0; dir < 5; dir++)
                 {

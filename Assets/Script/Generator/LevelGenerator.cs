@@ -65,6 +65,8 @@ public partial class Generator : MonoBehaviour
         Rule<GameObject> rule
     )
     {   
+        Debug.Log(length.ToString() + " units in total.");
+        Debug.Log(width.ToString() + " units in width.");
         // 这里控制层数比例
         float LOW_LEVELS = 1;
         float LOW_LEVEL_SCALE = 1;
@@ -91,6 +93,7 @@ public partial class Generator : MonoBehaviour
 
         GameObject UnitHolder = new GameObject();
         UnitHolder.name = "level "+level.ID.ToString();
+        
         for (int i = 0; i < width; i++)
         {
             Unit<GameObject, GameObject> backUnit = null;

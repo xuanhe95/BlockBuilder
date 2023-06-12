@@ -11,7 +11,7 @@ public class AddRules : MonoBehaviour
     private static void GetScriptsFromPrefabs()
     {
         SetFixedRule("Assets/Prefabs/Model/Empty.prefab", "Assets/Prefabs/Model/Grass");
-        SetUpRule("Assets/Prefabs/Model/Water.prefab", "Assets/Prefabs/Model/Grass");
+        
 
         SetFixedRules("Assets/Prefabs/Model/Grass","Assets/Prefabs/Model/Grass");
         SetFixedRules("Assets/Prefabs/Model/Pillar","Assets/Prefabs/Model/Pillar");
@@ -20,10 +20,12 @@ public class AddRules : MonoBehaviour
 
         SetUpRule("Assets/Prefabs/Model/Water.prefab", "Assets/Prefabs/Model/Grass");
         SetUpRules("Assets/Prefabs/Model/Grass", "Assets/Prefabs/Model/Pillar");
+        SetUpRules("Assets/Prefabs/Model/Grass", "Assets/Prefabs/Model/Building", false);
         SetUpRules("Assets/Prefabs/Model/Pillar", "Assets/Prefabs/Model/Pillar");
         SetUpRules("Assets/Prefabs/Model/Pillar", "Assets/Prefabs/Model/Building", false);
         SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof");
         SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Building", false);
+
     }
 
     private static void SetFixedRule(string addPrefabPath, string folderPath){
