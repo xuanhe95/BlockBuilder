@@ -48,9 +48,14 @@ public partial class Generator : MonoBehaviour
 
             }
 
-                            if(Input.GetMouseButton(0)){
-                    Debug.Log("Mouse Clicked");
-                    SetGroup(group, GetButtonDirection());
+                if(Input.GetMouseButton(0)){
+                    //Debug.Log("Mouse Clicked");
+                    SetGroup(group, Direction.Up, 2);
+                }
+                else if(Input.GetMouseButton(1)){
+                    ResetPreview(true);
+                    PrepareCurrent(group);
+                    SetGroup(group, GetButtonDirection(), 10);
                 }
 
             lastHit = hit.collider.gameObject;
@@ -80,29 +85,41 @@ public partial class Generator : MonoBehaviour
     }
 
     public int GetButtonDirection(){
-        if(hit.collider == null) return 0;
+        if(hit.collider == null) {
+            Debug.Log("No Collider");
+            return 0;
+        }
         Button button = hit.collider.gameObject.GetComponent<Button>();
-        if(button == null) return 0;
+        if(button == null) {
+            Debug.Log("No Button");
+            return 0;
+        }
         Debug.Log("Checking Button...");
         int dir = 0;
         switch(button.name){
             case "X+":
                 dir = Direction.Left;
+                Debug.Log("left");
                 break;
             case "X-":
                 dir = Direction.Right;
+                Debug.Log("right");
                 break;
             case "Y+":
                 dir = Direction.Forward;
+                Debug.Log("forward");
                 break;
             case "Y-":
                 dir = Direction.Back;
+                Debug.Log("back");
                 break;
             case "Z+":
                 dir = Direction.Up;
+                Debug.Log("up");
                 break;
             case "Z-":
                 dir = Direction.Down;
+                Debug.Log("down");
                 break;
         }
         return dir;
@@ -141,17 +158,32 @@ public partial class Generator : MonoBehaviour
         Debug.Log("Button Clicked");
     }
 
-    public void SetGroup(Group<GameObject, GameObject> group, int direction){
+    public void SetGroup(Group<GameObject, GameObject> group, int direction, int depth){
+        Group<GameObject, GameObject> relativeGroup = group;
         //dir = Direction.Up;
-        Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(Direction.Up);
-        if (relativeGroup.GetTypes() == GeoMap[(int)Geo.Empty])
+        switch(direction){
+            case Direction.Left:
+            case Direction.Right:
+            case Direction.Forward:
+            case Direction.Back:
+            case Direction.Down:
+                relativeGroup = group;
+                break;
+            case Direction.Up:
+                relativeGroup = group.FindRelativeGroup(Direction.Up);
+                break;
+
+        }
+        
+        //if (relativeGroup.GetTypes() == GeoMap[(int)Geo.Empty])
+        if(true)
         {
-            print("recursive called");
+            //print("recursive called");
             
-            Debug.Log(GroupMap[relativeGroup]);
+            //Debug.Log(GroupMap[relativeGroup]);
             //GroupMap[relativeGroup].Select(currentSelection);
             if(GroupMap.ContainsKey(relativeGroup) && currentTypes.Count > currentSelection){
-                BSelect(GroupMap[relativeGroup], currentTypes[currentSelection], 2);
+                BSelect(GroupMap[relativeGroup], currentTypes[currentSelection], depth);
             }
             
         }
@@ -273,6 +305,7 @@ public partial class Generator : MonoBehaviour
                 GroupManager gm = q.Dequeue();
                 //Debug.Log("Recursive " + gm.GetGroup().GetTypes());
                 //Debug.Log(flag);
+                if(gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Water]) continue;
                 if (flag && (visited.Contains(gm) || gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty])) continue;
                 visited.Add(gm);
                 gm.SetEmpty();

@@ -36,7 +36,7 @@ public class BatchFBXToPrefabConverter : EditorWindow
             return;
         }
 
-        string[] fbxFiles = Directory.GetFiles(folderPath, "*.fbx");
+        string[] fbxFiles = Directory.GetFiles(folderPath, "*.fbx",SearchOption.AllDirectories);
 
         foreach (string fbxFile in fbxFiles)
         {
