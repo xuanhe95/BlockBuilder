@@ -337,7 +337,11 @@ public partial class GroupManager : MonoBehaviour
     public void Select(GroupManager down){
         //if(down.GetGroup().GetTypes() == GeoMap[(int) Geo.Empty]) return;
         List<Type<GameObject>> list = Preview(down);
-        if(list.Count == 0) return;
+        if(list.Count == 0) {
+            //Debug.Log("Empty");
+            Group.SetType(GeoMap[(int) Geo.Empty]);
+            return;
+        }
         int selectedIndex = Random.Range(0, list.Count);
         Group.SetType(list[selectedIndex]);
     }

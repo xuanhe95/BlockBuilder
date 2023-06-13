@@ -16,6 +16,7 @@ public class AddRules : MonoBehaviour
         SetFixedRules("Assets/Prefabs/Model/Pillar_Mid","Assets/Prefabs/Model/Pillar_Mid");
         SetFixedRules("Assets/Prefabs/Model/Pillar_Roof","Assets/Prefabs/Model/Pillar_Roof");
         SetFixedRules("Assets/Prefabs/Model/Building","Assets/Prefabs/Model/Building");
+        SetFixedRules("Assets/Prefabs/Model/Building_WithWindow","Assets/Prefabs/Model/Building_WithWindow");
         SetFixedRules("Assets/Prefabs/Model/Roof","Assets/Prefabs/Model/Roof");
         SetFixedRules("Assets/Prefabs/Model/Roof2","Assets/Prefabs/Model/Roof2");
         SetFixedRules("Assets/Prefabs/Model/Roof3","Assets/Prefabs/Model/Roof3");
@@ -30,6 +31,7 @@ public class AddRules : MonoBehaviour
         // Pillar_Mid
         SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Pillar_Mid");
         SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Building", false);
+        SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Building_WithWindow", false);
         //SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Roof", false);
         //SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Roof2", false);
         //SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Roof3", false);
@@ -39,7 +41,14 @@ public class AddRules : MonoBehaviour
         SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Building");
         SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof", false);
         SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof2", false);
+        SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Building_WithWindow", false);
         //SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof3", false);
+
+        // Building with Window
+        SetUpRules("Assets/Prefabs/Model/Building_WithWindow", "Assets/Prefabs/Model/Building");
+        SetUpRules("Assets/Prefabs/Model/Building_WithWindow", "Assets/Prefabs/Model/Roof", false);
+        SetUpRules("Assets/Prefabs/Model/Building_WithWindow", "Assets/Prefabs/Model/Roof2", false);
+        SetUpRules("Assets/Prefabs/Model/Building_WithWindow", "Assets/Prefabs/Model/Building_WithWindow", false);
 
     }
 

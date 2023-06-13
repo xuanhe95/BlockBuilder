@@ -48,14 +48,13 @@ public partial class Generator : MonoBehaviour
 
             }
 
-                if(Input.GetMouseButton(0)){
+                if(Input.GetMouseButton(0) && group.FindRelativeGroup(Direction.Up).GetTypes() == GeoMap[(int)Geo.Empty]){
                     //Debug.Log("Mouse Clicked");
-                    SetGroup(group, Direction.Up, 2);
+                    SetGroup(group, Direction.Up, 2, false);
                 }
                 else if(Input.GetMouseButton(1)){
-                    ResetPreview(true);
-                    PrepareCurrent(group);
-                    SetGroup(group, GetButtonDirection(), 10);
+
+                    SetGroup(group, GetButtonDirection(), 5, true);
                 }
 
             lastHit = hit.collider.gameObject;
@@ -158,7 +157,7 @@ public partial class Generator : MonoBehaviour
         Debug.Log("Button Clicked");
     }
 
-    public void SetGroup(Group<GameObject, GameObject> group, int direction, int depth){
+    public void SetGroup(Group<GameObject, GameObject> group, int direction, int depth, bool changeEmpty){
         Group<GameObject, GameObject> relativeGroup = group;
         //dir = Direction.Up;
         switch(direction){
@@ -168,6 +167,8 @@ public partial class Generator : MonoBehaviour
             case Direction.Back:
             case Direction.Down:
                 relativeGroup = group;
+                ResetPreview(true);
+                PrepareCurrent(group);
                 break;
             case Direction.Up:
                 relativeGroup = group.FindRelativeGroup(Direction.Up);
@@ -183,7 +184,7 @@ public partial class Generator : MonoBehaviour
             //Debug.Log(GroupMap[relativeGroup]);
             //GroupMap[relativeGroup].Select(currentSelection);
             if(GroupMap.ContainsKey(relativeGroup) && currentTypes.Count > currentSelection){
-                BSelect(GroupMap[relativeGroup], currentTypes[currentSelection], depth);
+                BSelect(GroupMap[relativeGroup], currentTypes[currentSelection], depth, changeEmpty);
             }
             
         }
@@ -284,7 +285,7 @@ public partial class Generator : MonoBehaviour
         }
     }
 
-    public void BSelect(GroupManager manager, Type<GameObject> type,int depth = 1)
+    public void BSelect(GroupManager manager, Type<GameObject> type,int depth = 1, bool changeEmpty = false)
     {
         if (manager == null || depth == 0){
             Debug.Log("BSelect return");
@@ -306,9 +307,10 @@ public partial class Generator : MonoBehaviour
                 //Debug.Log("Recursive " + gm.GetGroup().GetTypes());
                 //Debug.Log(flag);
                 if(gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Water]) continue;
-                if (flag && (visited.Contains(gm) || gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty])) continue;
+                if (flag && (visited.Contains(gm) )) continue;
+                if(flag && !changeEmpty && gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty]) continue;
                 visited.Add(gm);
-                gm.SetEmpty();
+                //gm.SetEmpty();
                 if(!flag){
                     flag = true;
                     gm.Select(type);
@@ -321,9 +323,6 @@ public partial class Generator : MonoBehaviour
 
                 
                 //gm.Select(rd);
-
-
-
                 for (int dir = 0; dir < 5; dir++)
                 {
                     Group<GameObject, GameObject> relative = gm.GetGroup().FindRelativeGroup(dir);

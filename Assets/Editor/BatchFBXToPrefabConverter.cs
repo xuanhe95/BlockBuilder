@@ -52,6 +52,7 @@ public class BatchFBXToPrefabConverter : EditorWindow
             if (fbxObject == null)
             {
                 var SceneObject = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(fbxFile)); 
+                SceneObject.AddComponent<RuleCreator>();
                 PrefabUtility.SaveAsPrefabAsset (SceneObject, renamePath); 
                 DestroyImmediate (SceneObject);
                 //GameObject prefab = PrefabUtility.SaveAsPrefabAsset(AssetDatabase.LoadAssetAtPath<GameObject>(fbxFile), prefabPath);
