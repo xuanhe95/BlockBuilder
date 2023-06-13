@@ -196,29 +196,33 @@ public partial class GroupManager : MonoBehaviour
     //新的生成方法
 
     public string GetDirection(){
+        if(Group == null) return "No Group";
         string dir = "";
-        if(Group.GetForward().GetTypes() != GeoMap[(int) Geo.Empty]){
+        Group<GameObject, GameObject> forward = Group.GetForward();
+        Group<GameObject, GameObject> back = Group.GetBack();
+        Group<GameObject, GameObject> left = Group.GetLeft();
+        Group<GameObject, GameObject> right = Group.GetRight();
+        if(forward != null && forward.GetTypes() != GeoMap[(int) Geo.Empty]){
             dir += "1";
         }
         else{
             dir+="0";
         }
 
-        if(Group.GetBack().GetTypes() != GeoMap[(int) Geo.Empty]){
+        if(back != null && back.GetTypes() != GeoMap[(int) Geo.Empty]){
             dir += "1";
         }
         else{
             dir+="0";
         }
 
-        if(Group.GetLeft().GetTypes() != GeoMap[(int) Geo.Empty]){
+        if(left != null && left.GetTypes() != GeoMap[(int) Geo.Empty]){
             dir += "1";
         }
         else{
             dir+="0";
         }
-
-        if(Group.GetRight().GetTypes() != GeoMap[(int) Geo.Empty]){
+        if(right != null && right.GetTypes() != GeoMap[(int) Geo.Empty]){
             dir += "1";
         }
         else{
@@ -297,6 +301,8 @@ public partial class GroupManager : MonoBehaviour
                 wait.Add(list[22]);
                 wait.Add(list[23]);
                 break;
+            default:
+                return new List<Type<GameObject>>();
         }
 
         }
@@ -329,12 +335,15 @@ public partial class GroupManager : MonoBehaviour
     }
 
     public void Select(GroupManager down){
+        //if(down.GetGroup().GetTypes() == GeoMap[(int) Geo.Empty]) return;
         List<Type<GameObject>> list = Preview(down);
+        if(list.Count == 0) return;
         int selectedIndex = Random.Range(0, list.Count);
         Group.SetType(list[selectedIndex]);
     }
 
     public void Select(Type<GameObject> type){
+        //if(Group.FindRelativeGroup(Direction.Down).GetTypes() == GeoMap[(int) Geo.Empty]) return;
         Group.SetType(type);
     }
 }
