@@ -36,8 +36,9 @@ Shader "Simple Toon/SToon Outline"
         _ShnSmooth ("Smoothness", Range(0,1)) = 0
     	
     	[Header(Blend)][Space(5)]  //shine
-		[HDR] _UpColor ("Color", COLOR) = (1,1,0,1)
-        [HDR] _BotColor ("Color", COLOR) = (1,0,1,1)
+		[HDR] _UpColor ("Color Up", COLOR) = (1,1,0,1)
+        [HDR] _BotColor ("Color Bot", COLOR) = (1,0,1,1)
+    	_BlendFactor ("Blend Factor", Range(0,1)) = 1
 
     }
 
@@ -61,6 +62,7 @@ Shader "Simple Toon/SToon Outline"
 
 			float4 _UpColor;
             float4 _BotColor;
+            float _BlendFactor;
             
             struct appdata
             {
@@ -111,6 +113,7 @@ Shader "Simple Toon/SToon Outline"
             	fixed3 worldY = i.worldPos.y;
             	fixed3 alphaY = (worldY+5)/10;
             	float4 gradient = ColorBlend(_UpColor, _BotColor, alphaY);
+            	float4 usedgradient = ColorBlend(gradient, (1,1,1,1), _BlendFactor);
 
                 float NdotL = dot(normal, light_dir);
 				float NdotH = dot(normal, halfVec);
@@ -125,7 +128,7 @@ Shader "Simple Toon/SToon Outline"
 				fixed4 texcol = tex2D(_MainTex, i.uv) * litcol * _ColIntense + _ColBright;
 
 				float4 blendCol = ColorBlend(shadecol, texcol, toon);
-            	blendCol.rgb *= gradient;
+            	blendCol.rgb *= gradient * usedgradient;
 				float4 postCol = PostEffects(blendCol, toon, atten, NdotL, NdotH, VdotN, FdotV);
 
 				postCol.a = 1.;

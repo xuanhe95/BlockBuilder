@@ -1117,8 +1117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80836ffc10d4d47ba9a54978a4943e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 36
-  length: 30
+  width: 12
+  length: 12
   levelsNumber: 16
   Models:
   - {fileID: 8536340266247955374, guid: a2039e93c75d24abea772e0adb05f773, type: 3}
@@ -1209,7 +1209,7 @@ MeshCollider:
   m_GameObject: {fileID: 1714337442}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -1272,7 +1272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714337442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.4, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []

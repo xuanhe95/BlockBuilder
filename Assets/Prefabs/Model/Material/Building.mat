@@ -62,6 +62,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AmbientCol: 0.5
+    - _BlendFactor: 1
     - _BumpScale: 1
     - _Clipped: 0
     - _ColBright: 0

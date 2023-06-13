@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c4581060-1088-4496-94d4-4f7b4f514cbd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IDEO/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IDEO/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Generator/CursorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Generator/CursorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Script/Generator/LevelGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Script/Generator/LevelGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Model/Material/Building.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Model/Material/Building.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Model/Material/Water.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Model/Material/Water.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Model/Water.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Model/Water.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Toon/Shaders/STOutline.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Simple Toon/Shaders/STOutline.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Simple Toon/Shaders/STTransparent.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Simple Toon/Shaders/STTransparent.shader" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_06.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_06.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +103,7 @@
       <workItem from="1686532187073" duration="382000" />
       <workItem from="1686541432022" duration="816000" />
       <workItem from="1686543382309" duration="546000" />
+      <workItem from="1686611206705" duration="2297000" />
     </task>
     <servers />
   </component>

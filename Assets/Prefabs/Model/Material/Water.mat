@@ -45,7 +45,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a4e98370bf01f364d909e62b42091cd5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -63,6 +63,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AmbientCol: 0
+    - _BlendFactor: 0
     - _BumpScale: 1
     - _Clipped: 0
     - _ColBright: 0
@@ -73,11 +74,11 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Lumin: 0
+    - _Lumin: 1.69
     - _MaxAtten: 0.342
-    - _MaxLight: 0.798
+    - _MaxLight: 1
     - _Metallic: 0
-    - _MinLight: 0.491
+    - _MinLight: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Offset: 0.23
@@ -102,19 +103,19 @@ Material:
     - _SpcTolerc: 0.015
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Steps: 2.7
-    - _StpSmooth: 0.205
+    - _Steps: 6.7
+    - _StpSmooth: 0.244
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BotColor: {r: 1, g: 0, b: 1, a: 1}
-    - _Color: {r: 0.2216981, g: 0.8853903, b: 1, a: 1}
+    - _BotColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 1, b: 0.93873954, a: 0.5764706}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _MaxColor: {r: 0, g: 0.76902664, b: 0.8113208, a: 1}
     - _MinColor: {r: 0, g: 0, b: 0, a: 1}
     - _OtlColor: {r: 0.1882353, g: 0.1781615, b: 0.078431375, a: 1}
     - _RimColor: {r: 1, g: 0.9904847, b: 0.8160377, a: 1}
-    - _ShnColor: {r: 0.9406834, g: 1, b: 0.7294118, a: 1}
+    - _ShnColor: {r: 0.40943396, g: 1, b: 0.9724856, a: 1}
     - _SpcColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UpColor: {r: 1, g: 1, b: 0, a: 1}
+    - _UpColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
