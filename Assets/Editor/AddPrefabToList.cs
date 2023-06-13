@@ -19,33 +19,33 @@ public class AddPrefabsToList : MonoBehaviour
         {
             string[] prefabPaths = Directory.GetFiles(folderPath, "*.prefab", SearchOption.AllDirectories);
 
-            // foreach (string prefabPath in prefabPaths)
-            // {
-            //     GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
-            //     if (prefab != null)
-            //     {
-            //         // 将Prefab添加到脚本的公共列表中
-            //         scriptWithList.Models.Add(prefab);
-            //     }
-            // }
-
-            foreach (Geo geo in Enum.GetValues(typeof(Geo))){
-                string geoName = Enum.GetName(typeof(Geo), geo);
-                Debug.Log(geoName);
-                //int index = Array.IndexOf(prefabPaths, geoName);
-
-                for(int i = 0; i < prefabPaths.Length; i++){
-                    if(prefabPaths[i].Contains(geoName)){
-                        GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPaths[i]);
-                    if (prefab != null)
-                    {
-                        // 将Prefab添加到脚本的公共列表中
-                        scriptWithList.Models.Add(prefab);
-                    }
-                    }
+            foreach (string prefabPath in prefabPaths)
+            {
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+                if (prefab != null)
+                {
+                    // 将Prefab添加到脚本的公共列表中
+                    scriptWithList.Models.Add(prefab);
                 }
-
             }
+
+            // foreach (Geo geo in Enum.GetValues(typeof(Geo))){
+            //     string geoName = Enum.GetName(typeof(Geo), geo);
+            //     Debug.Log(geoName);
+            //     //int index = Array.IndexOf(prefabPaths, geoName);
+
+            //     for(int i = 0; i < prefabPaths.Length; i++){
+            //         if(prefabPaths[i].Contains(geoName)){
+            //             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPaths[i]);
+            //         if (prefab != null)
+            //         {
+            //             // 将Prefab添加到脚本的公共列表中
+            //             scriptWithList.Models.Add(prefab);
+            //         }
+            //         }
+            //     }
+
+            // }
 
             Debug.Log("Prefab已添加到列表");
         }

@@ -10,21 +10,36 @@ public class AddRules : MonoBehaviour
     [MenuItem("Custom/Add Rules")]
     private static void GetScriptsFromPrefabs()
     {
-        SetFixedRule("Assets/Prefabs/Model/Empty.prefab", "Assets/Prefabs/Model/Grass");
-        
+        SetFixedRule("Assets/Prefabs/Model/Empty.prefab", "Assets/Prefabs/Model/Rock");
 
-        SetFixedRules("Assets/Prefabs/Model/Grass","Assets/Prefabs/Model/Grass");
-        SetFixedRules("Assets/Prefabs/Model/Pillar","Assets/Prefabs/Model/Pillar");
+        SetFixedRules("Assets/Prefabs/Model/Rock","Assets/Prefabs/Model/Rock");
+        SetFixedRules("Assets/Prefabs/Model/Pillar_Mid","Assets/Prefabs/Model/Pillar_Mid");
+        SetFixedRules("Assets/Prefabs/Model/Pillar_Roof","Assets/Prefabs/Model/Pillar_Roof");
         SetFixedRules("Assets/Prefabs/Model/Building","Assets/Prefabs/Model/Building");
         SetFixedRules("Assets/Prefabs/Model/Roof","Assets/Prefabs/Model/Roof");
+        SetFixedRules("Assets/Prefabs/Model/Roof2","Assets/Prefabs/Model/Roof2");
+        SetFixedRules("Assets/Prefabs/Model/Roof3","Assets/Prefabs/Model/Roof3");
 
-        SetUpRule("Assets/Prefabs/Model/Water.prefab", "Assets/Prefabs/Model/Grass");
-        SetUpRules("Assets/Prefabs/Model/Grass", "Assets/Prefabs/Model/Pillar");
-        SetUpRules("Assets/Prefabs/Model/Grass", "Assets/Prefabs/Model/Building", false);
-        SetUpRules("Assets/Prefabs/Model/Pillar", "Assets/Prefabs/Model/Pillar");
-        SetUpRules("Assets/Prefabs/Model/Pillar", "Assets/Prefabs/Model/Building", false);
-        SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof");
-        SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Building", false);
+
+
+        SetUpRule("Assets/Prefabs/Model/Water.prefab", "Assets/Prefabs/Model/Rock");
+        // Rock
+        SetUpRules("Assets/Prefabs/Model/Rock", "Assets/Prefabs/Model/Pillar_Mid");
+        SetUpRules("Assets/Prefabs/Model/Rock", "Assets/Prefabs/Model/Building", false);
+
+        // Pillar_Mid
+        SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Pillar_Mid");
+        SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Building", false);
+        //SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Roof", false);
+        //SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Roof2", false);
+        //SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Roof3", false);
+        SetUpRules("Assets/Prefabs/Model/Pillar_Mid", "Assets/Prefabs/Model/Pillar_Roof", false);
+
+        // Building
+        SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Building");
+        SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof", false);
+        SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof2", false);
+        //SetUpRules("Assets/Prefabs/Model/Building", "Assets/Prefabs/Model/Roof3", false);
 
     }
 

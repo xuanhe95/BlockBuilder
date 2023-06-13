@@ -45,11 +45,13 @@ public partial class Generator : MonoBehaviour
                     InstancePreview(currentSelection, currentTypes, currentGroup);
                 }
 
-                if(Input.GetMouseButton(0)){
+
+            }
+
+                            if(Input.GetMouseButton(0)){
                     Debug.Log("Mouse Clicked");
                     SetGroup(group, GetButtonDirection());
                 }
-            }
 
             lastHit = hit.collider.gameObject;
         }
