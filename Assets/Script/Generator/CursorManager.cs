@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class Generator : MonoBehaviour
 {
@@ -43,11 +44,21 @@ public partial class Generator : MonoBehaviour
                 {
                     InstancePreview(currentSelection, currentTypes, currentGroup);
                 }
+
+                if(Input.GetMouseButton(0)){
+                    Debug.Log("Mouse Clicked");
+                    SetGroup(group, GetButtonDirection());
+                }
             }
 
             lastHit = hit.collider.gameObject;
         }
+        // if(Input.GetMouseButton(0)){
+        //     Debug.Log("Mouse Clicked");
+        //     SetButton();
+        // }
 
+        
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -64,6 +75,87 @@ public partial class Generator : MonoBehaviour
             XPressed = false;
         }
 
+    }
+
+    public int GetButtonDirection(){
+        if(hit.collider == null) return 0;
+        Button button = hit.collider.gameObject.GetComponent<Button>();
+        if(button == null) return 0;
+        Debug.Log("Checking Button...");
+        int dir = 0;
+        switch(button.name){
+            case "X+":
+                dir = Direction.Left;
+                break;
+            case "X-":
+                dir = Direction.Right;
+                break;
+            case "Y+":
+                dir = Direction.Forward;
+                break;
+            case "Y-":
+                dir = Direction.Back;
+                break;
+            case "Z+":
+                dir = Direction.Up;
+                break;
+            case "Z-":
+                dir = Direction.Down;
+                break;
+        }
+        return dir;
+    }
+
+    public void SetButton(){
+        if(hit.collider == null) return;
+        Button button = hit.collider.gameObject.GetComponent<Button>();
+        if(button == null) return;
+        Debug.Log("Checking Button...");
+        int dir = 0;
+        switch (button.name)
+        {
+            case "X+":
+                dir = Direction.Left;
+                break;
+            case "X-":
+                dir = Direction.Right;
+                break;
+            case "Y+":
+                dir = Direction.Forward;
+                break;
+            case "Y-":
+                dir = Direction.Back;
+                break;
+            case "Z+":
+                dir = Direction.Up;
+                break;
+            case "Z-":
+                dir = Direction.Down;
+                break;
+        }
+        //if(button.interactable) 
+        SetCursor(dir);
+        //button.OnClick().AddListener( () => SetCursor(dir) );
+        Debug.Log("Button Clicked");
+    }
+
+    public void SetGroup(Group<GameObject, GameObject> group, int direction){
+        //dir = Direction.Up;
+        Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(Direction.Up);
+        if (relativeGroup.GetTypes() == GeoMap[(int)Geo.Empty])
+        {
+            print("recursive called");
+            
+            Debug.Log(GroupMap[relativeGroup]);
+            //GroupMap[relativeGroup].Select(currentSelection);
+            if(GroupMap.ContainsKey(relativeGroup) && currentTypes.Count > currentSelection){
+                BSelect(GroupMap[relativeGroup], currentTypes[currentSelection], 2);
+            }
+            
+        }
+        else{
+            Debug.Log("Empty");
+        }
     }
 
     public void SetCursor(int input)
@@ -118,11 +210,11 @@ public partial class Generator : MonoBehaviour
 
     }
 
-    public void SetGroup(Group<GameObject, GameObject> group, int direction)
+    public void SetCursor(Group<GameObject, GameObject> group, int direction)
     {
         Group<GameObject, GameObject> relativeGroup = group.FindRelativeGroup(direction);
-        Debug.Log(relativeGroup);
-        Debug.Log(currentSelection);
+        //Debug.Log(relativeGroup);
+        //Debug.Log(currentSelection);
         if (relativeGroup != null)
         {
             if (currentTypes[currentSelection] != null)
@@ -177,8 +269,8 @@ public partial class Generator : MonoBehaviour
             for (int i = 0; i < size; i++)
             {
                 GroupManager gm = q.Dequeue();
-                Debug.Log("Recursive " + gm.GetGroup().GetTypes());
-                Debug.Log(flag);
+                //Debug.Log("Recursive " + gm.GetGroup().GetTypes());
+                //Debug.Log(flag);
                 if (flag && (visited.Contains(gm) || gm.GetGroup().GetTypes() == GeoMap[(int)Geo.Empty])) continue;
                 visited.Add(gm);
                 gm.SetEmpty();
@@ -200,6 +292,7 @@ public partial class Generator : MonoBehaviour
                 for (int dir = 0; dir < 5; dir++)
                 {
                     Group<GameObject, GameObject> relative = gm.GetGroup().FindRelativeGroup(dir);
+                    if (relative == null) continue;
                     GroupManager relativeManager = GroupMap[relative];
                     q.Enqueue(relativeManager);
                 }
