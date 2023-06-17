@@ -54,7 +54,9 @@ public partial class Generator : MonoBehaviour
                 }
                 else if(Input.GetMouseButton(1)){
 
-                    SetGroup(group, GetButtonDirection(), 5, true);
+                    //SetGroup(group, Direction.Up, 100, false);
+                    SetGroup(group, Direction.Up, 3, true);
+                    SetGroup(group, Direction.Up, 3, false);
                 }
 
             lastHit = hit.collider.gameObject;
@@ -298,7 +300,7 @@ public partial class Generator : MonoBehaviour
         q.Enqueue(manager);
         int size = q.Count;
         int level = 0;
-        Debug.Log("BSelect");
+        //Debug.Log("BSelect");
         while (q.Count > 0 && level < depth)
         {
             for (int i = 0; i < size; i++)
@@ -318,16 +320,31 @@ public partial class Generator : MonoBehaviour
                 else{
                     Group<GameObject, GameObject> group = gm.GetGroup();
                     Group<GameObject, GameObject> down = group.FindRelativeGroup(Direction.Down);
+
+
+                    // if(changeEmpty && Random.Range(0, 2) == 0) {
+                    //     continue;
+                    // }
+
                     gm.Select(GroupMap[down]);
                 }
 
                 
                 //gm.Select(rd);
+
+
+                
                 for (int dir = 0; dir < 5; dir++)
                 {
+
                     Group<GameObject, GameObject> relative = gm.GetGroup().FindRelativeGroup(dir);
                     if (relative == null) continue;
+
                     GroupManager relativeManager = GroupMap[relative];
+                    if(changeEmpty && Random.Range(0, 3) != 0) {
+                        visited.Add(relativeManager);
+                        continue;
+                    }
                     q.Enqueue(relativeManager);
                 }
                 
